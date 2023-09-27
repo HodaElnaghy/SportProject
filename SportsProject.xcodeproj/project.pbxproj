@@ -7,16 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32490D0E2AC47134001D7F06 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D0D2AC47134001D7F06 /* Alamofire */; };
+		32490D112AC47200001D7F06 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D102AC47200001D7F06 /* Lottie */; };
+		32490D142AC4724C001D7F06 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D132AC4724C001D7F06 /* Kingfisher */; };
 		32E2BDAB2AC4636A00257ADA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDAA2AC4636A00257ADA /* AppDelegate.swift */; };
 		32E2BDAD2AC4636A00257ADA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDAC2AC4636A00257ADA /* SceneDelegate.swift */; };
-		32E2BDAF2AC4636A00257ADA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDAE2AC4636A00257ADA /* ViewController.swift */; };
-		32E2BDB22AC4636A00257ADA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E2BDB02AC4636A00257ADA /* Main.storyboard */; };
 		32E2BDB52AC4636A00257ADA /* SportsProject.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDB32AC4636A00257ADA /* SportsProject.xcdatamodeld */; };
 		32E2BDB72AC4636C00257ADA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 32E2BDB62AC4636C00257ADA /* Assets.xcassets */; };
 		32E2BDBA2AC4636C00257ADA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 32E2BDB82AC4636C00257ADA /* LaunchScreen.storyboard */; };
 		32E2BDC52AC4636C00257ADA /* SportsProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDC42AC4636C00257ADA /* SportsProjectTests.swift */; };
 		32E2BDCF2AC4636C00257ADA /* SportsProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDCE2AC4636C00257ADA /* SportsProjectUITests.swift */; };
 		32E2BDD12AC4636C00257ADA /* SportsProjectUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDD02AC4636C00257ADA /* SportsProjectUITestsLaunchTests.swift */; };
+		32E2BDEA2AC4693400257ADA /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32E2BDE82AC4693400257ADA /* HomeViewController.swift */; };
+		32E2BDEB2AC4693400257ADA /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32E2BDE92AC4693400257ADA /* HomeViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +43,6 @@
 		32E2BDA72AC4636A00257ADA /* SportsProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SportsProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E2BDAA2AC4636A00257ADA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		32E2BDAC2AC4636A00257ADA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		32E2BDAE2AC4636A00257ADA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		32E2BDB12AC4636A00257ADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		32E2BDB42AC4636A00257ADA /* SportsProject.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SportsProject.xcdatamodel; sourceTree = "<group>"; };
 		32E2BDB62AC4636C00257ADA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		32E2BDB92AC4636C00257ADA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +52,8 @@
 		32E2BDCA2AC4636C00257ADA /* SportsProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SportsProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		32E2BDCE2AC4636C00257ADA /* SportsProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsProjectUITests.swift; sourceTree = "<group>"; };
 		32E2BDD02AC4636C00257ADA /* SportsProjectUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SportsProjectUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		32E2BDE82AC4693400257ADA /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		32E2BDE92AC4693400257ADA /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +61,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32490D142AC4724C001D7F06 /* Kingfisher in Frameworks */,
+				32490D0E2AC47134001D7F06 /* Alamofire in Frameworks */,
+				32490D112AC47200001D7F06 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -101,12 +107,12 @@
 		32E2BDA92AC4636A00257ADA /* SportsProject */ = {
 			isa = PBXGroup;
 			children = (
-				32E2BDAA2AC4636A00257ADA /* AppDelegate.swift */,
-				32E2BDAC2AC4636A00257ADA /* SceneDelegate.swift */,
-				32E2BDAE2AC4636A00257ADA /* ViewController.swift */,
-				32E2BDB02AC4636A00257ADA /* Main.storyboard */,
+				32E2BDE12AC4675500257ADA /* View */,
+				32E2BDE02AC4674400257ADA /* SupportingFile */,
+				32E2BDDF2AC4673800257ADA /* ViewModel */,
+				32E2BDDE2AC4672F00257ADA /* Model */,
+				32E2BDDD2AC4672400257ADA /* Module */,
 				32E2BDB62AC4636C00257ADA /* Assets.xcassets */,
-				32E2BDB82AC4636C00257ADA /* LaunchScreen.storyboard */,
 				32E2BDBB2AC4636C00257ADA /* Info.plist */,
 				32E2BDB32AC4636A00257ADA /* SportsProject.xcdatamodeld */,
 			);
@@ -130,6 +136,54 @@
 			path = SportsProjectUITests;
 			sourceTree = "<group>";
 		};
+		32E2BDDD2AC4672400257ADA /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				32E2BDEC2AC46D2B00257ADA /* Home */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		32E2BDDE2AC4672F00257ADA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		32E2BDDF2AC4673800257ADA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		32E2BDE02AC4674400257ADA /* SupportingFile */ = {
+			isa = PBXGroup;
+			children = (
+				32E2BDAA2AC4636A00257ADA /* AppDelegate.swift */,
+				32E2BDAC2AC4636A00257ADA /* SceneDelegate.swift */,
+			);
+			path = SupportingFile;
+			sourceTree = "<group>";
+		};
+		32E2BDE12AC4675500257ADA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				32E2BDB82AC4636C00257ADA /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		32E2BDEC2AC46D2B00257ADA /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				32E2BDE82AC4693400257ADA /* HomeViewController.swift */,
+				32E2BDE92AC4693400257ADA /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -146,6 +200,11 @@
 			dependencies = (
 			);
 			name = SportsProject;
+			packageProductDependencies = (
+				32490D0D2AC47134001D7F06 /* Alamofire */,
+				32490D102AC47200001D7F06 /* Lottie */,
+				32490D132AC4724C001D7F06 /* Kingfisher */,
+			);
 			productName = SportsProject;
 			productReference = 32E2BDA72AC4636A00257ADA /* SportsProject.app */;
 			productType = "com.apple.product-type.application";
@@ -218,6 +277,11 @@
 				Base,
 			);
 			mainGroup = 32E2BD9E2AC4636A00257ADA;
+			packageReferences = (
+				32490D0C2AC47134001D7F06 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				32490D0F2AC47200001D7F06 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				32490D122AC4724C001D7F06 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 32E2BDA82AC4636A00257ADA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -236,7 +300,7 @@
 			files = (
 				32E2BDBA2AC4636C00257ADA /* LaunchScreen.storyboard in Resources */,
 				32E2BDB72AC4636C00257ADA /* Assets.xcassets in Resources */,
-				32E2BDB22AC4636A00257ADA /* Main.storyboard in Resources */,
+				32E2BDEB2AC4693400257ADA /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,9 +326,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				32E2BDB52AC4636A00257ADA /* SportsProject.xcdatamodeld in Sources */,
-				32E2BDAF2AC4636A00257ADA /* ViewController.swift in Sources */,
 				32E2BDAB2AC4636A00257ADA /* AppDelegate.swift in Sources */,
 				32E2BDAD2AC4636A00257ADA /* SceneDelegate.swift in Sources */,
+				32E2BDEA2AC4693400257ADA /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,14 +365,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		32E2BDB02AC4636A00257ADA /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				32E2BDB12AC4636A00257ADA /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		32E2BDB82AC4636C00257ADA /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -445,7 +501,6 @@
 				INFOPLIST_FILE = SportsProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -472,7 +527,6 @@
 				INFOPLIST_FILE = SportsProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -600,6 +654,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		32490D0C2AC47134001D7F06 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = exactVersion;
+				version = 5.8.0;
+			};
+		};
+		32490D0F2AC47200001D7F06 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = exactVersion;
+				version = 4.3.2;
+			};
+		};
+		32490D122AC4724C001D7F06 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = exactVersion;
+				version = 7.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		32490D0D2AC47134001D7F06 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32490D0C2AC47134001D7F06 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		32490D102AC47200001D7F06 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32490D0F2AC47200001D7F06 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+		32490D132AC4724C001D7F06 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 32490D122AC4724C001D7F06 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		32E2BDB32AC4636A00257ADA /* SportsProject.xcdatamodeld */ = {

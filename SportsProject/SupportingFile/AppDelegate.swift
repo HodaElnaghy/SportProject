@@ -11,11 +11,18 @@ import CoreData
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var window: UIWindow?
 
+    class AppDelegate: UIResponder, UIApplicationDelegate {
+        var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        return true
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+            window = UIWindow()
+            window?.rootViewController = HomeViewController()
+            window?.makeKeyAndVisible()
+        
+            return true
+        }
     }
 
     // MARK: UISceneSession Lifecycle
