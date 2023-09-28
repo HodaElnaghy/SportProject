@@ -1,0 +1,27 @@
+//
+//  LeaguesAPI.swift
+//  SportsProject
+//
+//  Created by Mohammed Adel on 27/09/2023.
+//
+
+import Foundation
+
+class LeaguesAPI: BaseAPI<LeaguesNetworking>, LeaguesAPIProtocol {
+    
+
+    func getLeaguesData(met: String, APIKey: String, completion: @escaping (Result<[LeaguesModel]?, NSError>) -> Void) {
+        fetchData(target: .getLeagues(met: met, APIKey: APIKey), model: LeaguesData.self) { result in
+            switch result {
+                
+            case .success(let value):
+                let leagues = value?.result
+                print(value?.success)
+                completion(.success(leagues))
+               
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+}
