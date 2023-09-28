@@ -23,6 +23,8 @@ class LeagueCustomCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        backgroundImage.layer.cornerRadius = 20
+        backgroundImage.clipsToBounds = true
     }
 
 }

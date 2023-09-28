@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3217F9492AC5B23300E31B0D /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3217F9482AC5B23300E31B0D /* SectionHeaderView.swift */; };
 		32490D0E2AC47134001D7F06 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D0D2AC47134001D7F06 /* Alamofire */; };
 		32490D112AC47200001D7F06 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D102AC47200001D7F06 /* Lottie */; };
 		32490D142AC4724C001D7F06 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D132AC4724C001D7F06 /* Kingfisher */; };
@@ -88,6 +89,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3217F9482AC5B23300E31B0D /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
 		32490D152AC49F42001D7F06 /* HomeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomCell.swift; sourceTree = "<group>"; };
 		32490D162AC49F42001D7F06 /* HomeCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCustomCell.xib; sourceTree = "<group>"; };
 		32490D1B2AC4A5B0001D7F06 /* HomeSportsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSportsModel.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				32490D282AC4BFB9001D7F06 /* TeamCustomCell.xib */,
 				32490D2B2AC4C253001D7F06 /* LeagueCustomCell.swift */,
 				32490D2C2AC4C253001D7F06 /* LeagueCustomCell.xib */,
+				3217F9482AC5B23300E31B0D /* SectionHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -694,6 +697,7 @@
 				E578E9C62AC713C900752932 /* UICollectionViewCell + identifier.swift in Sources */,
 				E548A8482AC4AD8C001582FA /* LeaguesAPI.swift in Sources */,
 				32E2BDAD2AC4636A00257ADA /* SceneDelegate.swift in Sources */,
+				3217F9492AC5B23300E31B0D /* SectionHeaderView.swift in Sources */,
 				32490D2D2AC4C253001D7F06 /* LeagueCustomCell.swift in Sources */,
 				E578E9C22AC6FCC400752932 /* TeamResult.swift in Sources */,
 				E578E9C02AC6FCC400752932 /* TeamData.swift in Sources */,
