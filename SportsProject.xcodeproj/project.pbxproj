@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3217F9492AC5B23300E31B0D /* SectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3217F9482AC5B23300E31B0D /* SectionHeaderView.swift */; };
+		3217F9562AC7827F00E31B0D /* Sports.json in Resources */ = {isa = PBXBuildFile; fileRef = 3217F9552AC7827F00E31B0D /* Sports.json */; };
+		3217F95D2AC7996400E31B0D /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3217F95B2AC7996400E31B0D /* SplashViewController.swift */; };
+		3217F95E2AC7996400E31B0D /* SplashViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3217F95C2AC7996400E31B0D /* SplashViewController.xib */; };
 		32490D0E2AC47134001D7F06 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D0D2AC47134001D7F06 /* Alamofire */; };
 		32490D112AC47200001D7F06 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D102AC47200001D7F06 /* Lottie */; };
 		32490D142AC4724C001D7F06 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 32490D132AC4724C001D7F06 /* Kingfisher */; };
@@ -88,6 +92,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3217F9482AC5B23300E31B0D /* SectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeaderView.swift; sourceTree = "<group>"; };
+		3217F9552AC7827F00E31B0D /* Sports.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sports.json; sourceTree = "<group>"; };
+		3217F95B2AC7996400E31B0D /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		3217F95C2AC7996400E31B0D /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		32490D152AC49F42001D7F06 /* HomeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCustomCell.swift; sourceTree = "<group>"; };
 		32490D162AC49F42001D7F06 /* HomeCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeCustomCell.xib; sourceTree = "<group>"; };
 		32490D1B2AC4A5B0001D7F06 /* HomeSportsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSportsModel.swift; sourceTree = "<group>"; };
@@ -180,6 +188,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3217F94C2AC7804900E31B0D /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				3217F9552AC7827F00E31B0D /* Sports.json */,
+				3217F95B2AC7996400E31B0D /* SplashViewController.swift */,
+				3217F95C2AC7996400E31B0D /* SplashViewController.xib */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
 		32490D192AC4A585001D7F06 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -216,6 +234,7 @@
 				32490D282AC4BFB9001D7F06 /* TeamCustomCell.xib */,
 				32490D2B2AC4C253001D7F06 /* LeagueCustomCell.swift */,
 				32490D2C2AC4C253001D7F06 /* LeagueCustomCell.xib */,
+				3217F9482AC5B23300E31B0D /* SectionHeaderView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -276,6 +295,7 @@
 		32E2BDDD2AC4672400257ADA /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				3217F94C2AC7804900E31B0D /* SplashScreen */,
 				32490D1D2AC4BEEA001D7F06 /* Leage */,
 				E578E9A22AC6F9C100752932 /* Team */,
 				E548A81D2AC47B53001582FA /* Leagues */,
@@ -631,7 +651,9 @@
 				E578E9AE2AC6FACD00752932 /* TeamCell.xib in Resources */,
 				E548A8362AC4880D001582FA /* LeaguesCell.xib in Resources */,
 				32E2BDB72AC4636C00257ADA /* Assets.xcassets in Resources */,
+				3217F95E2AC7996400E31B0D /* SplashViewController.xib in Resources */,
 				32490D2E2AC4C253001D7F06 /* LeagueCustomCell.xib in Resources */,
+				3217F9562AC7827F00E31B0D /* Sports.json in Resources */,
 				32E2BDEB2AC4693400257ADA /* HomeViewController.xib in Resources */,
 				32490D2A2AC4BFB9001D7F06 /* TeamCustomCell.xib in Resources */,
 				32490D222AC4BF4D001D7F06 /* LeagueViewController.xib in Resources */,
@@ -681,6 +703,7 @@
 				E58FA4812AC817740049909E /* PlayerModelDB.swift in Sources */,
 				E578E9BF2AC6FCC400752932 /* Coaches.swift in Sources */,
 				E578E9A92AC6FA8500752932 /* TeamViewController.swift in Sources */,
+				3217F95D2AC7996400E31B0D /* SplashViewController.swift in Sources */,
 				32E2BDAB2AC4636A00257ADA /* AppDelegate.swift in Sources */,
 				E548A8412AC49334001582FA /* LeaguesProtocol.swift in Sources */,
 				E58FA47F2AC8174B0049909E /* TeamModelDB.swift in Sources */,
@@ -694,6 +717,7 @@
 				E578E9C62AC713C900752932 /* UICollectionViewCell + identifier.swift in Sources */,
 				E548A8482AC4AD8C001582FA /* LeaguesAPI.swift in Sources */,
 				32E2BDAD2AC4636A00257ADA /* SceneDelegate.swift in Sources */,
+				3217F9492AC5B23300E31B0D /* SectionHeaderView.swift in Sources */,
 				32490D2D2AC4C253001D7F06 /* LeagueCustomCell.swift in Sources */,
 				E578E9C22AC6FCC400752932 /* TeamResult.swift in Sources */,
 				E578E9C02AC6FCC400752932 /* TeamData.swift in Sources */,
@@ -872,12 +896,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SportsProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = SplashScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -898,12 +923,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SportsProject/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = SplashScreen.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

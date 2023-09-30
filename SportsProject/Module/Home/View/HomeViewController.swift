@@ -9,6 +9,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     
+    
+    
     let sportArray: [HomeSportsModel] = [HomeSportsModel(sportId: 0, sportsImage: "soccer", sportName: "Soccer"),
                                          HomeSportsModel(sportId: 1, sportsImage: "basketBall", sportName: "BasketBall"),
                                          HomeSportsModel(sportId: 2, sportsImage: "cricket", sportName: "Cricket"),
@@ -18,10 +20,17 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItems = []
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: "HomeCustomCell", bundle: nil), forCellWithReuseIdentifier: "HomeCustomCell")
         // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Hide the back button
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.title = "Sports"
     }
 
 

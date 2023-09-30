@@ -14,8 +14,8 @@
             filePath = "SportsProject/Module/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,10 +30,328 @@
             filePath = "SportsProject/Module/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0F56A9C3-7E55-489A-AB55-496B4EB2B98B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Leage/View/LeagueViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "collectionView(_:viewForSupplementaryElementOfKind:at:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0F56A9C3-7E55-489A-AB55-496B4EB2B98B - 57f175b7449befb7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.collectionView(_: __C.UICollectionView, viewForSupplementaryElementOfKind: Swift.String, at: Foundation.IndexPath) -&gt; __C.UICollectionReusableView"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "1028">
+               </Location>
+               <Location
+                  uuid = "0F56A9C3-7E55-489A-AB55-496B4EB2B98B - 57f175b7449beff9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.collectionView(_: __C.UICollectionView, viewForSupplementaryElementOfKind: Swift.String, at: Foundation.IndexPath) -&gt; __C.UICollectionReusableView"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50A4FD71-F968-4613-BD5B-880C23B2E33A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Leage/View/LeagueViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "168"
+            endingLineNumber = "168"
+            landmarkName = "collectionView(_:viewForSupplementaryElementOfKind:at:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C885DE9B-918A-4F11-81FF-16897FE59BC9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Leage/View/LeagueViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "collectionView(_:viewForSupplementaryElementOfKind:at:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4CADC329-422C-4D19-8EBB-9951398A555B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Leage/View/LeagueViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "collectionView(_:viewForSupplementaryElementOfKind:at:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4CADC329-422C-4D19-8EBB-9951398A555B - 57f175b7449befb7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.collectionView(_: __C.UICollectionView, viewForSupplementaryElementOfKind: Swift.String, at: Foundation.IndexPath) -&gt; __C.UICollectionReusableView"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "1028">
+               </Location>
+               <Location
+                  uuid = "4CADC329-422C-4D19-8EBB-9951398A555B - 57f175b7449beff9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.collectionView(_: __C.UICollectionView, viewForSupplementaryElementOfKind: Swift.String, at: Foundation.IndexPath) -&gt; __C.UICollectionReusableView"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "164">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D9CCF98E-9D99-49BF-8D90-ECF0E0DB5CCD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Leage/View/LeagueViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "collectionView(_:layout:referenceSizeForHeaderInSection:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D9CCF98E-9D99-49BF-8D90-ECF0E0DB5CCD - 57f175b7449bee7d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.collectionView(_: __C.UICollectionView, viewForSupplementaryElementOfKind: Swift.String, at: Foundation.IndexPath) -&gt; __C.UICollectionReusableView"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "154"
+                  endingLineNumber = "154"
+                  offsetFromSymbolStart = "580">
+               </Location>
+               <Location
+                  uuid = "D9CCF98E-9D99-49BF-8D90-ECF0E0DB5CCD - d462ea76ee2b2047"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.collectionView(_: __C.UICollectionView, layout: __C.UICollectionViewLayout, referenceSizeForHeaderInSection: Swift.Int) -&gt; __C.CGSize"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "153"
+                  endingLineNumber = "153"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B372858-92B6-4776-BC31-E02EB8468B97"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Leage/View/LeagueViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2B372858-92B6-4776-BC31-E02EB8468B97 - fb266a7ae5305b9d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "880">
+               </Location>
+               <Location
+                  uuid = "2B372858-92B6-4776-BC31-E02EB8468B97 - 7e99f1ece161b99d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Int, __C.NSCollectionLayoutEnvironment) -&gt; Swift.Optional&lt;__C.NSCollectionLayoutSection&gt; in SportsProject.LeagueViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "2B372858-92B6-4776-BC31-E02EB8468B97 - fb266a7ae5305bbc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.LeagueViewController.viewDidLoad() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Leage/View/LeagueViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "884">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B5A324A0-C595-46C5-8810-B429A7E3E238"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Leage/View/LeagueViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "MainNav()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54 - 8c9f49f78e840636"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.AnimatedLaunchScreen.MainNav() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54 - 8c9f49f78e840617"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.AnimatedLaunchScreen.MainNav() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54 - 8c9f49f78e840636"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.AnimatedLaunchScreen.MainNav() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
