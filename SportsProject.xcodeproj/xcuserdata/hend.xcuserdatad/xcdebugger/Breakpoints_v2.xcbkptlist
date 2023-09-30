@@ -354,5 +354,69 @@
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E18F991-6252-4B98-92EB-4C0AF053266E"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Team/View/Cell/TeamCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "displayImage(by:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3E18F991-6252-4B98-92EB-4C0AF053266E - 8d9628096d3e9456"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.TeamCell.displayImage(by: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Team/View/Cell/TeamCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "296">
+               </Location>
+               <Location
+                  uuid = "3E18F991-6252-4B98-92EB-4C0AF053266E - 8d9628096d3e9456"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.TeamCell.displayImage(by: Swift.Optional&lt;Swift.String&gt;) -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/Team/View/Cell/TeamCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "49"
+                  endingLineNumber = "49"
+                  offsetFromSymbolStart = "260">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6CE30AF8-1E84-4F2D-90EF-C9F85777DA3B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/Team/View/Cell/TeamCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "displayName(name:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

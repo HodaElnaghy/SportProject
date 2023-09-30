@@ -55,12 +55,13 @@ extension LeaguesViewController: UITableViewDataSource {
 //MARK: - TableView Delegate
 extension LeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108
+        return 60
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.didSelectRow(index: indexPath.row)
     }
+
 }
 
 
@@ -90,3 +91,5 @@ extension LeaguesViewController: LeaguesProtocol {
     }
     
 }
+
+

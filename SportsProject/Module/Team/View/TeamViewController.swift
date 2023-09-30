@@ -16,11 +16,14 @@ class TeamViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var playersCollectionView: UICollectionView!
-    @IBOutlet weak var coachNameLabel: UILabel!
+    //@IBOutlet weak var coachNameLabel: UILabel!
+    @IBOutlet weak var officialWebsiteView: UIView!
     @IBOutlet weak var teamTitleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var officialWebsiteButton: UIButton!
     
+    @IBOutlet weak var stadiumImageView: UIImageView!
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,40 @@ class TeamViewController: UIViewController {
         teamPresenter = TeamPresenter(view: self)
         configureCollectionView()
         teamPresenter.getData()
+        officialWebsiteView.layer.cornerRadius = 8
+        officialWebsiteView.clipsToBounds = true
+        officialWebsiteView.dropShadow()
+        
+        // Set the button title
+        officialWebsiteButton.setTitle("Official website ", for: .normal)
+
+        // Add a system image to the button
+        if let systemImage = UIImage(systemName: "arrow.right.circle.fill") {
+            officialWebsiteButton.setImage(systemImage, for: .normal)
+            officialWebsiteButton.semanticContentAttribute = .forceRightToLeft
+            officialWebsiteButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0) // Adjust the inset as needed
+        }
+        
+        // Create the gradient layer
+                let gradientLayer = CAGradientLayer()
+                gradientLayer.frame = stadiumImageView.bounds
+
+                // Define the colors
+                let whiteColor = UIColor.white.cgColor
+                let clearColor = UIColor.clear.cgColor
+
+                gradientLayer.colors = [whiteColor, clearColor, whiteColor]
+
+                // Define the locations for color stops
+                gradientLayer.locations = [0.0, 0.5, 1.0]
+
+                // Configure the gradient direction
+                gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+                gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+
+                // Add the gradient layer to your view's layer
+                stadiumImageView.layer.addSublayer(gradientLayer)
+
         
 //        // TODO: - Show Coach name
 //        coachNameLabel.text = teamPresenter.getCoachName()
@@ -54,7 +91,7 @@ class TeamViewController: UIViewController {
     
     private func updateViewContorllerUI() {
         DispatchQueue.main.async { [weak self] in
-            self?.coachNameLabel.text = self?.teamPresenter.getCoachName()
+           // self?.coachNameLabel.text = self?.teamPresenter.getCoachName()
             self?.teamTitleLabel.text = self?.teamPresenter.getTeamName()
             let stringURL: String? = self?.teamPresenter.getTeamLog()
             guard let stringURL = stringURL else { return }
@@ -94,13 +131,13 @@ extension TeamViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         // very important note:-
         // don't forget to assign  Collection View Estimate Size = none, from size inspector.
-        let width = collectionView.frame.width * 0.96
-        let height = collectionView.frame.height * 0.96
+        let width = collectionView.frame.width * 0.8
+        let height = collectionView.frame.height * 0.8
         return CGSize.init(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 25
     }
 
     

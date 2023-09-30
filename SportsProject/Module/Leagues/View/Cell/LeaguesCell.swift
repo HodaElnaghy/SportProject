@@ -18,8 +18,14 @@ class LeaguesCell: UITableViewCell {
         // disable selection style
         selectionStyle = .none
         // round card view
-        cardView.layer.cornerRadius = 16
+        cardView.layer.cornerRadius = 8
         cardView.layer.masksToBounds = true
+        cardView.dropShadow()
+        
+        self.leagueImageView.layer.masksToBounds = false
+        self.leagueImageView.layer.cornerRadius = leagueImageView.frame.size.width/2
+        self.leagueImageView.clipsToBounds = true
+
         // remove separator, shift separatorInset to rigt by 500
         self.separatorInset = UIEdgeInsets(top: 0, left: 500, bottom: 0, right: 0)
     }
