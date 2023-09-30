@@ -2,28 +2,24 @@
 //  LeaguesData.swift
 //  SportsProject
 //
-//  Created by Mohammed Adel on 27/09/2023.
+//  Created by Mohammed Adel on 30/09/2023.
 //
 
 import Foundation
+struct LeaguesData: Codable {
+	let success: Int?
+	let result: [LeaguesModel]?
 
-/*
-{
-    "success": 1,
-    "result": [
-        {
-            "league_key": 4,
-            "league_name": "UEFA Europa League",
-            "country_key": 1,
-            "country_name": "eurocups",
-            "league_logo": "https://apiv2.allsportsapi.com/logo/logo_leagues/",
-            "country_logo": null
-        },.....
-        
-}
-*/
+	enum CodingKeys: String, CodingKey {
+//		case success = "success"
+//		case result = "result"
+        case success, result
+	}
 
-struct LeaguesData: Decodable {
-    let success: Int?
-    let result: [LeaguesModel]?
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		success = try values.decodeIfPresent(Int.self, forKey: .success)
+		result = try values.decodeIfPresent([LeaguesModel].self, forKey: .result)
+	}
+
 }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22G120" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PlayerDB" representedClassName="PlayerDB" syncable="YES" codeGenerationType="class">
+        <attribute name="playerImage" optional="YES" attributeType="String"/>
+        <attribute name="playerImageData" optional="YES" attributeType="Binary"/>
+        <attribute name="playerKey" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="playerName" optional="YES" attributeType="String"/>
+        <attribute name="playerNumber" optional="YES" attributeType="String"/>
+        <attribute name="playerRating" optional="YES" attributeType="String"/>
+        <attribute name="playerType" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="TeamDB" representedClassName="TeamDB" syncable="YES" codeGenerationType="class">
+        <attribute name="coaches" optional="YES" attributeType="String"/>
+        <attribute name="teamKey" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="teamLogo" optional="YES" attributeType="String"/>
+        <attribute name="teamLogoData" optional="YES" attributeType="Binary"/>
+        <attribute name="teamName" optional="YES" attributeType="String"/>
+    </entity>
+</model>

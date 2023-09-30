@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaguesViewController" customModule="SportsProject" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="nMb-2F-9ZK" id="7c2-9I-RFZ"/>
                 <outlet property="leaguesTableView" destination="j6b-Wp-Mm9" id="1Lm-QS-syU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -23,13 +24,18 @@
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-2F-9ZK">
+                    <rect key="frame" x="186.66666666666666" y="428.66666666666669" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="j6b-Wp-Mm9" secondAttribute="bottom" id="6oT-vo-A52"/>
+                <constraint firstItem="nMb-2F-9ZK" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="6zX-8U-B7S"/>
                 <constraint firstItem="j6b-Wp-Mm9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="859-vm-vMr"/>
                 <constraint firstItem="j6b-Wp-Mm9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VQ7-PA-mkc"/>
+                <constraint firstItem="nMb-2F-9ZK" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="VdA-tU-AUN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="j6b-Wp-Mm9" secondAttribute="trailing" id="wlQ-IA-7kf"/>
             </constraints>
             <point key="canvasLocation" x="120" y="20"/>

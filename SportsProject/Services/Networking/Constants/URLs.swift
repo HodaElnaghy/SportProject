@@ -29,6 +29,13 @@ struct URLs {
     /// GET{met, leagueId, from, to, APIkey}
     static let latestResults = "/football/"
 
+    // Get Team Details
+    // https://apiv2.allsportsapi.com/football/?met=Teams&teamId=[teamId]&APIkey=[YourKey]
+    // https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=96&APIkey=0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73
+    /// get{met, teamId, APIkey}
+    static let teamDetails = "/football/"
+    
+    
     
     // Basketball
     //https://apiv2.allsportsapi.com/basketball/

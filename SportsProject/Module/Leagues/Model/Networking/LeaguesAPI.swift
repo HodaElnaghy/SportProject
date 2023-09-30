@@ -9,15 +9,14 @@ import Foundation
 
 class LeaguesAPI: BaseAPI<LeaguesNetworking>, LeaguesAPIProtocol {
     
-
-    func getLeaguesData(met: String, APIKey: String, completion: @escaping (Result<[LeaguesModel]?, NSError>) -> Void) {
+    func getLeaguesData(met: String, APIKey: String, completion: @escaping (Result<LeaguesData?, NSError>) -> Void) {
         fetchData(target: .getLeagues(met: met, APIKey: APIKey), model: LeaguesData.self) { result in
             switch result {
                 
             case .success(let value):
-                let leagues = value?.result
-                print(value?.success)
-                completion(.success(leagues))
+//                let leagues = value?.success
+                print(value?.success ?? 99)
+                completion(.success(value))
                
             case .failure(let error):
                 completion(.failure(error))

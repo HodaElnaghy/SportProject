@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class LeaguesCell: UITableViewCell {
     @IBOutlet weak var leagueImageView: UIImageView!
@@ -30,13 +31,32 @@ class LeaguesCell: UITableViewCell {
     }
     
     @IBAction func linkButtonPressed(_ sender: Any) {
-        
+        print("No link in API")
     }
     
-    
-    func configureCell(by leaguesModel: LeaguesModel) {
-        leagueTitleLabel.text = leaguesModel.league_name
-        print("UUUUUUUUUUU")
+}
+
+extension LeaguesCell: LeaguesCellProtocol {
+    func displayLeagueImage(by stringURL: String?) {
+        guard let stringURL = stringURL else { return }
+        guard let url = URL(string: stringURL) else { return }
         
+        // Download image By Kingfisher
+        leagueImageView.kf.indicatorType = .activity
+        leagueImageView.kf.setImage(with: url) { result in
+            switch result {
+                
+            case .success(let imageResult):
+                self.leagueImageView.image = imageResult.image
+            case .failure(let error):
+                print(error.localizedDescription)
+                self.leagueImageView.image = UIImage(systemName: "heart.fill")
+            }
+        }
     }
+    
+    func displayLeagueTitle(title: String) {
+        leagueTitleLabel.text = title
+    }
+    
 }

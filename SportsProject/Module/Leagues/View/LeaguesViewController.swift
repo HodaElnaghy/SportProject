@@ -14,7 +14,7 @@ class LeaguesViewController: UIViewController {
 
     // MARK: - Outlet
     @IBOutlet weak var leaguesTableView: UITableView!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -33,7 +33,6 @@ class LeaguesViewController: UIViewController {
         
         let nib = UINib(nibName: String(describing: LeaguesCell.self), bundle: nil)
         leaguesTableView.register(nib, forCellReuseIdentifier: LeaguesCell.identifier)
-        
     }
 
 
@@ -48,7 +47,7 @@ extension LeaguesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LeaguesCell.identifier, for: indexPath) as? LeaguesCell else {  return LeaguesCell() }
-        cell.configureCell(by:  presenter.getLeague(at: indexPath.row))
+        presenter.configureCell(cell: cell, for: indexPath.row)
         return cell
     }
 }
@@ -58,17 +57,36 @@ extension LeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 108
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter.didSelectRow(index: indexPath.row)
+    }
 }
 
 
 //MARK: - View Controller Extension
 
 extension LeaguesViewController: LeaguesProtocol {
+   
     func reloadLeaguesTableView() {
         DispatchQueue.main.async { [weak self] in
             self?.leaguesTableView.reloadData()
         }
     }
     
+    func showIndicator() {
+        activityIndicator.startAnimating()
+    }
+    
+    func hideIndicator() {
+        activityIndicator.stopAnimating()
+    }
+    
+    // Note: View has reference to LeaguesModel, Code Smells!
+    // Code Smells are a result of poor or misguided programming.
+    func navigateToLeagueDetailsScreen(league: LeaguesModel) {
+        let vc = UIViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
     
 }

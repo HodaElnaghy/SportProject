@@ -10,8 +10,8 @@ import Foundation
 class LeaguesPresenter {
     // MARK: - Variable
     private weak var view: LeaguesProtocol?
-    let api: LeaguesAPIProtocol = LeaguesAPI()
-    var leagues: [LeaguesModel] = []
+    private let api: LeaguesAPIProtocol = LeaguesAPI()
+    var leagues: [LeaguesModel] = Array<LeaguesModel>()
     
     private let met = "Leagues"
     private let APIKey = "0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73"
@@ -23,26 +23,28 @@ class LeaguesPresenter {
     
     // MARK: - Public Functions
     
+    // MARK: - Configure Table View
     func getData() {
-        api.getLeaguesData(met: met, APIKey: APIKey) { result in
-            //guard let self = self else { return }
+        view?.showIndicator()
+        api.getLeaguesData(met: met, APIKey: APIKey) { [weak self] result in
+            guard let self = self else { return }
+            self.view?.hideIndicator()
+
             switch result {
+            case .success(let leaguesData):
+                guard let leaguesData = leaguesData else { return }
+                guard let leagues = leaguesData.result else { return }
                 
-            case .success(let leagues):
-                guard let leagues = leagues else { return }
                 self.leagues = leagues
-                print(leagues.count)
-                for i in leagues {
-                    print(i.league_name ?? "NOT Found Name")
-                }
-                
                 self.view?.reloadLeaguesTableView()
-               
+                print(leagues.count)
+
             case .failure(let error):
                 print(error.localizedDescription)
             }
         }
     }
+    
     
     func getLeaguesCount() -> Int {
         return leagues.count
@@ -51,20 +53,19 @@ class LeaguesPresenter {
     func getLeague(at row: Int) -> LeaguesModel {
         return leagues[row]
     }
+    
+    // MARK: - Configure Cell
+    func configureCell(cell: LeaguesCellProtocol, for index: Int) {
+        cell.displayLeagueTitle(title: leagues[index].leagueName ?? "")
+        cell.displayLeagueImage(by: leagues[index].leagueLogo)
+    }
+    
+    // MARK: - Navigation
+    func didSelectRow(index: Int) {
+        let league = leagues[index]
+        view?.navigateToLeagueDetailsScreen(league: league)
+    }
 
-    
-//    func configure(cell: UserCellView, for index: Int) {
-//        let user = users[index]
-//        cell.displayName(name: user._name)
-//        cell.displayEmail(email: user._email)
-//        cell.displayAddress(address: "\(user._address._street) \(user._address._suite)")
-//    }
-//    
-//    func didSelectRow(index: Int) {
-//        let user = users[index]
-//        view?.navigateToUserDetailsScreen(user: user)
-//    }
-    
     // MARK: - Private Functions
     
     

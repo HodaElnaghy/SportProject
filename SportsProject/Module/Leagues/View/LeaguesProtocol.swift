@@ -9,11 +9,11 @@ import Foundation
 
 protocol LeaguesProtocol: AnyObject {
     func reloadLeaguesTableView()
-//    func showIndicator()
-//    func hideIndicator()
+    func showIndicator()
+    func hideIndicator()
 //    func fetchingDataSuccess()
 //    func showError(error: String)
-//    func navigateToLeaguesDetailsScreen(leagues: LeaguesModel)
+    func navigateToLeagueDetailsScreen(league: LeaguesModel)
 }
 
 
