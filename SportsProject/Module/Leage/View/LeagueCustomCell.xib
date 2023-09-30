@@ -99,7 +99,7 @@
                 <outlet property="teamOneLabel" destination="MkT-ag-E6E" id="JrF-2W-L8d"/>
                 <outlet property="teamTwoLabel" destination="H23-zb-bgy" id="tHn-sG-qGx"/>
             </connections>
-            <point key="canvasLocation" x="706.87022900763361" y="9.1549295774647899"/>
+            <point key="canvasLocation" x="742" y="2"/>
         </collectionViewCell>
     </objects>
     <resources>

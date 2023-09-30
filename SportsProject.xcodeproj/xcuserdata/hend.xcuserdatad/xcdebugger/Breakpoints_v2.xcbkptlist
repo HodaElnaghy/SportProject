@@ -14,8 +14,8 @@
             filePath = "SportsProject/Module/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "collectionView(_:layout:sizeForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "SportsProject/Module/Home/View/HomeViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "collectionView(_:cellForItemAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -289,6 +289,69 @@
             endingLineNumber = "116"
             landmarkName = "viewDidLoad()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
+            landmarkName = "MainNav()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54 - 8c9f49f78e840636"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.AnimatedLaunchScreen.MainNav() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54 - 8c9f49f78e840617"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.AnimatedLaunchScreen.MainNav() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "41"
+                  endingLineNumber = "41"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  uuid = "CD75B95F-29C3-408D-ACC9-1E3958064F54 - 8c9f49f78e840636"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SportsProject.AnimatedLaunchScreen.MainNav() -&gt; ()"
+                  moduleName = "SportsProject"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/hend/Desktop/iOS/ITI/Swift/SportProject/SportsProject/SportsProject/Module/SplashScreen/AnimatedLaunchScreen.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "40"
+                  endingLineNumber = "40"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

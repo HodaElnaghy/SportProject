@@ -48,7 +48,7 @@
             <connections>
                 <outlet property="TeamCusonCellBackground" destination="z1Q-ye-uCh" id="AJt-Kb-DaZ"/>
             </connections>
-            <point key="canvasLocation" x="92.36641221374046" y="-0.35211267605633806"/>
+            <point key="canvasLocation" x="62" y="-24"/>
         </collectionViewCell>
     </objects>
     <resources>

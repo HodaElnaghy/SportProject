@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-Ft-Loe">
-                    <rect key="frame" x="0.0" y="769" width="393" height="49"/>
+                    <rect key="frame" x="0.0" y="735" width="393" height="83"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <items>
                         <tabBarItem title="Sports" id="eaT-2V-ECA">
@@ -30,14 +30,8 @@
                         <tabBarItem title="Favorites" image="heart" catalog="system" id="ZwC-0h-sF8"/>
                     </items>
                 </tabBar>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ud8-Re-Ug1">
-                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                    <items>
-                        <navigationItem title="Sports" id="coR-zF-ZV6" userLabel="Sports"/>
-                    </items>
-                </navigationBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n44-er-tBn">
-                    <rect key="frame" x="0.0" y="103" width="393" height="666"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="676"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JoC-wx-1Q5">
                         <size key="itemSize" width="128" height="128"/>
@@ -50,18 +44,15 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Ud8-Re-Ug1" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="EWP-Lh-8jB"/>
+                <constraint firstItem="n44-er-tBn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BZU-zx-28J"/>
                 <constraint firstItem="n44-er-tBn" firstAttribute="bottom" secondItem="d6S-Ft-Loe" secondAttribute="top" id="G4B-3c-lrX"/>
-                <constraint firstItem="Ud8-Re-Ug1" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="KDQ-gu-0ie"/>
                 <constraint firstItem="d6S-Ft-Loe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Kw1-ad-vBP"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n44-er-tBn" secondAttribute="trailing" id="Que-AA-ztR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="d6S-Ft-Loe" secondAttribute="bottom" id="ZiW-zE-g9D"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="d6S-Ft-Loe" secondAttribute="trailing" id="i3Z-3e-i11"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ud8-Re-Ug1" secondAttribute="trailing" id="kAE-z8-91v"/>
-                <constraint firstItem="n44-er-tBn" firstAttribute="top" secondItem="Ud8-Re-Ug1" secondAttribute="bottom" id="o2d-uo-y54"/>
                 <constraint firstItem="n44-er-tBn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zfT-Fz-ELE"/>
             </constraints>
-            <point key="canvasLocation" x="48" y="21"/>
+            <point key="canvasLocation" x="42" y="-72"/>
         </view>
     </objects>
     <resources>
