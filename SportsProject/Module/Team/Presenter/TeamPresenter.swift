@@ -21,29 +21,31 @@ class TeamPresenter {
     private var players: [Players] = []
     private var coaches: [Coaches] = []
     
+    private var pathURL: String!
+    private var teamId: Int?
+    
     // https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=96&APIkey=0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73
     var met = "Teams"
-    var teamId: Int = 96
-    var APIkey = "0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73"
+    var APIkey = Token.APIKey
     
     let url = URLs.teamDetails
     
     // MARK: - Init
-    init(view: TeamViewControllerProtocol? = nil) {
+    init(view: TeamViewControllerProtocol? = nil, pathURL: String, teamId: Int?) {
         self.view = view
+        self.pathURL = pathURL
+        self.teamId = teamId
     }
-    
-//    init(cell: TeamCellProtocol? = nil) {
-//        self.cellView = cell
-//    }
+
     
     // MARK: - Public Functions
     
     // MARK: - Configure Controller
     func getData() {
         view?.showIndicator()
-        api.getTeamData(met: met, teamId: teamId, APIkey: APIkey) { result in
-            
+        guard let teamId = teamId else { return }
+        api.getTeamData(met: met, teamId: teamId, APIkey: APIkey, pathURL: pathURL) { [weak self] result in
+            guard let self = self else { return }
             self.view?.hideIndicator()
             
             switch result {
@@ -58,7 +60,7 @@ class TeamPresenter {
                 guard let  coaches = result[0].coaches else { return }
                 self.coaches = coaches
                                 
-                self.view?.reloeadCollectionView()
+                self.view?.reloadCollectionView()
                 
             case .failure(let error):
                 print(error.localizedDescription)

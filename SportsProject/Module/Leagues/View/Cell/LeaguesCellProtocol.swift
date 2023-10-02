@@ -11,5 +11,4 @@ protocol LeaguesCellProtocol: AnyObject {
     
     func displayLeagueImage(by stringURL: String?)
     func displayLeagueTitle(title: String)
-    
 }

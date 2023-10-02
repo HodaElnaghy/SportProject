@@ -1,0 +1,21 @@
+{
+  "images" : [
+    {
+      "filename" : "Aluminium louvres and a membrane roof shade the Wuyuanhe Stadium in China.jpeg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

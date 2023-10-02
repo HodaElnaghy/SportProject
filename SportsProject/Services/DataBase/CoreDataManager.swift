@@ -35,7 +35,7 @@ final class CoreDataManager {
     // MARK: - insertLeague
     func insertLeague(league: LeagueModelDB) {
         let player = NSEntityDescription.insertNewObject(forEntityName: "PlayerDB", into: context) as! PlayerDB
-        let team = NSEntityDescription.insertNewObject(forEntityName: "TeamDB", into: context) as! TeamDB
+        let _ = NSEntityDescription.insertNewObject(forEntityName: "TeamDB", into: context) as! TeamDB
         
         guard let  leaguePlayers = league.players else { return }
         // player has 7 Attribute

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TeamAPIProtocol {
-    func getTeamData(met: String, teamId: Int, APIkey: String, completion: @escaping (Result<TeamData?, NSError>) -> Void)
+    func getTeamData(met: String, teamId: Int, APIkey: String, pathURL: String, completion: @escaping (Result<TeamData?, NSError>) -> Void)
 }

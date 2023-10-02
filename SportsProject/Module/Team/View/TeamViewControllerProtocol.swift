@@ -12,5 +12,5 @@ protocol TeamViewControllerProtocol: AnyObject {
     func hideIndicator()
 //    func fetchingDataSuccess()
 //    func showError(error: String)
-    func reloeadCollectionView()
+    func reloadCollectionView()
 }
