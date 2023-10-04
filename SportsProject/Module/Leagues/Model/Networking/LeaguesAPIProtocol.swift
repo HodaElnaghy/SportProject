@@ -8,5 +8,5 @@
 import Foundation
 
 protocol LeaguesAPIProtocol: AnyObject {
-    func getLeaguesData(met: String, APIKey: String, completion: @escaping (Result<LeaguesData?, NSError>) -> Void)
+    func getLeaguesData(met: String, APIKey: String, pathURL: String, completion: @escaping (Result<LeaguesData?, NSError>) -> Void)
 }

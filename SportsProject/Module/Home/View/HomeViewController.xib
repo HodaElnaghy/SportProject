@@ -2,8 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,18 +19,9 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d6S-Ft-Loe">
-                    <rect key="frame" x="0.0" y="735" width="393" height="83"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <items>
-                        <tabBarItem title="Sports" id="eaT-2V-ECA">
-                            <imageReference key="image" image="football" catalog="system" variableValue="1"/>
-                        </tabBarItem>
-                        <tabBarItem title="Favorites" image="heart" catalog="system" id="ZwC-0h-sF8"/>
-                    </items>
-                </tabBar>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n44-er-tBn">
-                    <rect key="frame" x="0.0" y="59" width="393" height="676"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n44-er-tBn">
+                    <rect key="frame" x="0.0" y="129" width="393" height="689"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JoC-wx-1Q5">
                         <size key="itemSize" width="128" height="128"/>
@@ -43,21 +33,10 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <constraints>
-                <constraint firstItem="n44-er-tBn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="BZU-zx-28J"/>
-                <constraint firstItem="n44-er-tBn" firstAttribute="bottom" secondItem="d6S-Ft-Loe" secondAttribute="top" id="G4B-3c-lrX"/>
-                <constraint firstItem="d6S-Ft-Loe" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Kw1-ad-vBP"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="n44-er-tBn" secondAttribute="trailing" id="Que-AA-ztR"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="d6S-Ft-Loe" secondAttribute="bottom" id="ZiW-zE-g9D"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="d6S-Ft-Loe" secondAttribute="trailing" id="i3Z-3e-i11"/>
-                <constraint firstItem="n44-er-tBn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="zfT-Fz-ELE"/>
-            </constraints>
-            <point key="canvasLocation" x="42" y="-72"/>
+            <point key="canvasLocation" x="41.984732824427482" y="-72.535211267605632"/>
         </view>
     </objects>
     <resources>
-        <image name="football" catalog="system" width="128" height="123"/>
-        <image name="heart" catalog="system" width="128" height="107"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

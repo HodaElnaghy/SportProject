@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum TeamNetworking {
-    case getTeam(met: String, teamId: Int, APIkey: String)
+    case getTeam(met: String, teamId: Int, APIkey: String, pathURL: String)
 }
 
 extension TeamNetworking: TargetType {
@@ -20,35 +20,27 @@ extension TeamNetworking: TargetType {
     
     var pathURL: String {
         switch self {
-            
-        case .getTeam:
-            return URLs.teamDetails
+        case .getTeam(_, _, _, let pathURL):
+            return pathURL
         }
     }
     
     var method: HTTPMethod {
-        switch self {
-            
-        case .getTeam:
-            return .get
-        }
+        return .get
     }
     
     var task: Task {
         switch self {
             
-        case .getTeam(met: let met, teamId: let teamId, APIkey: let APIkey):
+        case .getTeam(met: let met, teamId: let teamId, APIkey: let APIkey, _):
             return .requestParameters(parameters: ["met" : met, "teamId": teamId, "APIkey": APIkey], encoding: URLEncoding.default)
         }
     }
     
     var headers: [String : String]? {
-        switch self {
-            
-        case .getTeam:
-            return nil
-        }
+        return nil
     }
+    
     
     
 }

@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum LeaguesNetworking {
-    case getLeagues(met: String, APIKey: String)
+    case getLeagues(met: String, APIKey: String, pathURL: String)
 }
 
 extension LeaguesNetworking: TargetType {
@@ -19,31 +19,24 @@ extension LeaguesNetworking: TargetType {
     
     var pathURL: String {
         switch self {
-        case .getLeagues:
-            return URLs.getLeaguess
+        case .getLeagues(_, _, let pathURL):
+            return pathURL
         }
     }
     
     var method: HTTPMethod {
-        switch self {
-        case .getLeagues:
-            return .get
-        }
+        return .get
     }
     
     var task: Task {
         switch self {
-        case .getLeagues(let met, let APIKey):
+        case .getLeagues(let met, let APIKey, _):
             return .requestParameters(parameters: ["met" : met, "APIkey": APIKey], encoding: URLEncoding.default)
         }
     }
     
     var headers: [String : String]? {
-        switch self {
-        case .getLeagues:
-            return [:]
-        }
+        return [:]
     }
-    
     
 }
