@@ -58,8 +58,18 @@ class LeaguesPresenter {
     
     // MARK: - Configure Cell
     func configureCell(cell: LeaguesCellProtocol, for index: Int) {
-        cell.displayLeagueTitle(title: leagues[index].leagueName ?? "")
+        let title = leagues[index].leagueName ?? ""
+        cell.displayLeagueTitle(title: title)
+        
+//        switch SportType {
+//        case .basketball:
+//            break
+//        case .football:
+//        case .cricket:
+//        case .tennis:
+//        }
         cell.displayLeagueImage(by: leagues[index].leagueLogo)
+        
     }
     
     // MARK: - Navigation

@@ -20,7 +20,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.leftBarButtonItems = []
         presenter = HomePresenter(view: self)
         configureCollectionView()
-        
+        navigationItem.backBarButtonItem?.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
