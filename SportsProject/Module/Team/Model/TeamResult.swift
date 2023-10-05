@@ -1,5 +1,5 @@
 //
-//  Result.swift
+//  TeamResult.swift
 //  SportsProject
 //
 //  Created by Mohammed Adel on 29/09/2023.

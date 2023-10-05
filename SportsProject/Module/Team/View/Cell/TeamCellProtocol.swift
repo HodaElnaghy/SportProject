@@ -15,5 +15,4 @@ protocol TeamCellProtocol: AnyObject {
     func displayType(type: String)
     func displayImage(by stringURL: String?)
 //    func displayImage(image: UIImage)
-    
 }

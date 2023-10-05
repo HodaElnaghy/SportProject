@@ -9,8 +9,8 @@ import Foundation
 
 class LeaguesAPI: BaseAPI<LeaguesNetworking>, LeaguesAPIProtocol {
     
-    func getLeaguesData(met: String, APIKey: String, completion: @escaping (Result<LeaguesData?, NSError>) -> Void) {
-        fetchData(target: .getLeagues(met: met, APIKey: APIKey), model: LeaguesData.self) { result in
+    func getLeaguesData(met: String, APIKey: String, pathURL: String, completion: @escaping (Result<LeaguesData?, NSError>) -> Void) {
+        fetchData(target: .getLeagues(met: met, APIKey: APIKey, pathURL: pathURL), model: LeaguesData.self) { result in
             switch result {
                 
             case .success(let value):

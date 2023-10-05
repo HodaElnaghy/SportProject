@@ -12,21 +12,23 @@ class LeaguesPresenter {
     private weak var view: LeaguesProtocol?
     private let api: LeaguesAPIProtocol = LeaguesAPI()
     var leagues: [LeaguesModel] = Array<LeaguesModel>()
-    
-    private let met = "Leagues"
-    private let APIKey = "0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73"
-    
+    var pathURL: String
+
+    private let apiKey = Token.APIKey
+    private let met: String = "Leagues"
+
     // MARK: - Init
-    init(view: LeaguesProtocol? = nil) {
+    init(view: LeaguesProtocol? = nil, pathURL: String) {
         self.view = view
+        self.pathURL = pathURL
     }
     
-    // MARK: - Public Functions
+    // MARK: Public Functions
     
     // MARK: - Configure Table View
     func getData() {
         view?.showIndicator()
-        api.getLeaguesData(met: met, APIKey: APIKey) { [weak self] result in
+        api.getLeaguesData(met: met, APIKey: apiKey, pathURL: pathURL) { [weak self] result in
             guard let self = self else { return }
             self.view?.hideIndicator()
 
@@ -56,14 +58,24 @@ class LeaguesPresenter {
     
     // MARK: - Configure Cell
     func configureCell(cell: LeaguesCellProtocol, for index: Int) {
-        cell.displayLeagueTitle(title: leagues[index].leagueName ?? "")
+        let title = leagues[index].leagueName ?? ""
+        cell.displayLeagueTitle(title: title)
+        
+//        switch SportType {
+//        case .basketball:
+//            break
+//        case .football:
+//        case .cricket:
+//        case .tennis:
+//        }
         cell.displayLeagueImage(by: leagues[index].leagueLogo)
+        
     }
     
     // MARK: - Navigation
     func didSelectRow(index: Int) {
-        let league = leagues[index]
-        view?.navigateToLeagueDetailsScreen(league: league)
+        let leagueId = leagues[index].leagueKey
+        view?.navigateToLeagueEventsScreen(pathURL: pathURL, leagueId: leagueId)
     }
 
     // MARK: - Private Functions

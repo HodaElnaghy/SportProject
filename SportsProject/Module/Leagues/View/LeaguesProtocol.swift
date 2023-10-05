@@ -13,7 +13,7 @@ protocol LeaguesProtocol: AnyObject {
     func hideIndicator()
 //    func fetchingDataSuccess()
 //    func showError(error: String)
-    func navigateToLeagueDetailsScreen(league: LeaguesModel)
+    func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?)
 }
 
 

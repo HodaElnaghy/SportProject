@@ -10,7 +10,8 @@ import UIKit
 class LeaguesViewController: UIViewController {
     
     // MARK: - Variables
-    private var presenter: LeaguesPresenter!
+    var presenter: LeaguesPresenter!
+    var pathURL: String!
 
     // MARK: - Outlet
     @IBOutlet weak var leaguesTableView: UITableView!
@@ -20,8 +21,7 @@ class LeaguesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Leagues"
-        
-        presenter = LeaguesPresenter(view: self)
+        presenter = LeaguesPresenter(view: self, pathURL: pathURL)
         configureTableView()
         presenter.getData()
     }
@@ -64,8 +64,7 @@ extension LeaguesViewController: UITableViewDelegate {
 }
 
 
-//MARK: - View Controller Extension
-
+//MARK: - Conform LeaguesProtocol
 extension LeaguesViewController: LeaguesProtocol {
    
     func reloadLeaguesTableView() {
@@ -82,10 +81,12 @@ extension LeaguesViewController: LeaguesProtocol {
         activityIndicator.stopAnimating()
     }
     
-    // Note: View has reference to LeaguesModel, Code Smells!
+    // Note: IF View has reference to Any Model, Code Smells!
     // Code Smells are a result of poor or misguided programming.
-    func navigateToLeagueDetailsScreen(league: LeaguesModel) {
-        let vc = UIViewController()
+    func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?) {
+        let vc = LeagueViewController(nibName: "LeagueViewController", bundle: nil)
+        vc.pathURL = pathURL
+        vc.leagueId = leagueId
         navigationController?.pushViewController(vc, animated: true)
     }
     

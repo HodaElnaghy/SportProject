@@ -42,7 +42,7 @@ class AnimatedLaunchScreen: UIViewController {
     
 
     @objc func MainNav() {
-        let cartVC =  HomeViewController()
+        let cartVC =  HomeTabBarController()
         self.navigationController?.pushViewController(cartVC, animated: true)
         
         }

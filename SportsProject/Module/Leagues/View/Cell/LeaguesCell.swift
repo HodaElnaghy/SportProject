@@ -9,10 +9,13 @@ import UIKit
 import Kingfisher
 
 class LeaguesCell: UITableViewCell {
+    
+    // MARK: - Outlets
     @IBOutlet weak var leagueImageView: UIImageView!
     @IBOutlet weak var leagueTitleLabel: UILabel!
     @IBOutlet weak var cardView: UIView!
     
+    // MARK: - Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         // disable selection style
@@ -20,6 +23,12 @@ class LeaguesCell: UITableViewCell {
         // round card view
         cardView.layer.cornerRadius = 16
         cardView.layer.masksToBounds = true
+        cardView.dropShadow()
+        
+        self.leagueImageView.layer.masksToBounds = false
+        self.leagueImageView.layer.cornerRadius = leagueImageView.frame.size.width/2
+        self.leagueImageView.clipsToBounds = true
+        
         // remove separator, shift separatorInset to rigt by 500
         self.separatorInset = UIEdgeInsets(top: 0, left: 500, bottom: 0, right: 0)
     }
@@ -30,12 +39,15 @@ class LeaguesCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    // MARK: - Actions
     @IBAction func linkButtonPressed(_ sender: Any) {
         print("No link in API")
     }
     
 }
 
+
+// MARK: - LeaguesCellProtocol
 extension LeaguesCell: LeaguesCellProtocol {
     func displayLeagueImage(by stringURL: String?) {
         guard let stringURL = stringURL else { return }
@@ -43,9 +55,9 @@ extension LeaguesCell: LeaguesCellProtocol {
         
         // Download image By Kingfisher
         leagueImageView.kf.indicatorType = .activity
-        leagueImageView.kf.setImage(with: url) { result in
+        leagueImageView.kf.setImage(with: url) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-                
             case .success(let imageResult):
                 self.leagueImageView.image = imageResult.image
             case .failure(let error):

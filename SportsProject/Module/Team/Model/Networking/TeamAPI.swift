@@ -9,8 +9,8 @@ import Foundation
 
 class TeamAPI: BaseAPI<TeamNetworking>, TeamAPIProtocol {
     
-    func getTeamData(met: String, teamId: Int, APIkey: String, completion: @escaping (Result<TeamData?, NSError>) -> Void) {
-        fetchData(target: .getTeam(met: met, teamId: teamId, APIkey: APIkey), model: TeamData.self) { result in
+    func getTeamData(met: String, teamId: Int, APIkey: String, pathURL: String, completion: @escaping (Result<TeamData?, NSError>) -> Void) {
+        fetchData(target: .getTeam(met: met, teamId: teamId, APIkey: APIkey, pathURL: pathURL), model: TeamData.self) { result in
             switch result {
             case .success(let teamData):
                 print(teamData?.success ?? 99)
