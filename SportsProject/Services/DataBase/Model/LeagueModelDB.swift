@@ -8,13 +8,9 @@
 import Foundation
 
 struct LeagueModelDB {
-    let leagueKey: Int?
+    let leagueId: Int?
+    let pathURL: String?
     let leagueName: String?
-    let countryKey: Int?
-    let countryName: String?
     let leagueLogo: String?
-    let countryLogo: String?
-    
-    let players : [PlayerModelDB]?
-    let coaches : [TeamModelDB]?
+//    let leagueLogoData: Data?
 }

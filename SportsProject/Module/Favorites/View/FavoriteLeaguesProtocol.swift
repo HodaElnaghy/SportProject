@@ -1,20 +1,18 @@
 //
-//  LeaguesViewControllerProtocol.swift
+//  FavoriteLeaguesProtocol.swift
 //  SportsProject
 //
-//  Created by Mohammed Adel on 27/09/2023.
+//  Created by Mohammed Adel on 06/10/2023.
 //
 
 import Foundation
 
-protocol LeaguesProtocol: AnyObject {
+protocol FavoriteLeaguesProtocol {
     func reloadLeaguesTableView()
     func showIndicator()
     func hideIndicator()
+//    func displayMessage(message: String, messageError: Bool)
+    
     func showAlert()
-    func displayMessage(message: String, messageError: Bool)
     func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?)
-    //    func fetchingDataSuccess()
 }
-
-

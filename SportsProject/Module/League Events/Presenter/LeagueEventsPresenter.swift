@@ -11,6 +11,8 @@ class LeagueEventsPresenter {
     
     // MARK: - Variables
     private weak var view: LeagueEventsView?
+//    private var reachability: ReachabilityManager?
+    private var dbManager: DataBaseManagerProtocol?
    
     private let api: LeagueEventsAPIProtocol = LeagueEventsAPI()
     private var upcomingEvents = Array<LeagueEventData>()
@@ -20,33 +22,89 @@ class LeagueEventsPresenter {
     
     private var pathURL: String!
     private var leagueId: Int?
+//    private var isConnected: Bool!
     
     private var metFixtures: Met = .fixtures
     private var metTeams: Met = .teams
     private var apiKey = Token.APIKey
     
-    var upcomingFrom = DateManager.shared.currentDateInStringFormat()
-    var upcomingTo = DateManager.shared.nextDateInStringFormat(6)
+    private var upcomingFrom = DateManager.shared.currentDateInStringFormat()
+    private var upcomingTo = DateManager.shared.nextDateInStringFormat(6)
     
     // var latestTo = upcomingFrom // inside it's function
-    var latestFrom = DateManager.shared.previousDaysInStringFormat(-6)
+    private var latestFrom = DateManager.shared.previousDaysInStringFormat(-6)
     
     
-    var no = "!!"
+    private var no = "!!"
  
     // MARK: - Initializer
     init(view: LeagueEventsView? = nil, pathURL: String, leagueId: Int?) {
         self.view = view
         self.pathURL = pathURL
         self.leagueId = leagueId
+//        reachability = ReachabilityManager.shared
+        dbManager = CoreDataManager()
     }
     
     // MARK: -  Public Functions
     func viewDidLoad() {
+//        configConnectivity()
         getUpcomingEvents()
         getlatestResults()
         getAllTeams()
     }
+    
+//    func configConnectivity() {
+//        startNotification()
+//        handleReachability()
+//    }
+//
+    // MARK: - Connectivity
+//    private func startNotification() {
+//        reachability?.startNotification()
+//    }
+//
+//    func stopNotification() {
+//        reachability?.stopNotification()
+//    }
+//
+//    private func handleReachability() {
+//        reachability?.handleReachability(completion: { [weak self] connection in
+//            guard let self = self else { return }
+//            switch connection {
+//            case .none:
+//                print("SIIIIIIIIIIIIIIIII")
+//                isConnected = false
+//                view?.displayMessage(message: ConnectivityMessage.noInternet, messageError: true)
+//            case .unavailable:
+//                print("SIIIIIIIIIIIIIIIII")
+//                isConnected = false
+//                view?.displayMessage(message:  ConnectivityMessage.noInternet, messageError: true)
+//            case .wifi:
+//                print("SIIIIIIIIIIIIIIIII")
+//                isConnected = true
+//                if teams.isEmpty { // to make sure it called once
+////                    getAllTeams()
+////                    getUpcomingEvents()
+////                    getlatestResults()
+//                }
+//                view?.displayMessage(message: ConnectivityMessage.wifiConnect, messageError: false)
+//            case .cellular:
+//                print("SIIIIIIIIIIIIIIIII")
+//                isConnected = true
+//                if teams.isEmpty {
+////                    getAllTeams()
+////                    getUpcomingEvents()
+////                    getlatestResults()
+//                }
+//                view?.displayMessage(message: ConnectivityMessage.cellularConnect, messageError: false)
+//            }
+//        })
+//    }
+//
+//    func isConnectedToInternet() -> Bool {
+//        return isConnected
+//    }
     
     // MARK: - Fetch Data For Compositional Layout Controller
     func getUpcomingEvents() {
@@ -72,7 +130,7 @@ class LeagueEventsPresenter {
     }
     
     func getlatestResults() {
-        var latestTo = upcomingFrom
+        let latestTo = upcomingFrom
         
         // TODO: - api.getUpcomingEvents Error call api.upcoming events
         //view?.sectionTwoShowIndicator()
@@ -119,12 +177,10 @@ class LeagueEventsPresenter {
     
     // MARK: - Configure Sections
     func getUpcomingEventsCount() -> Int {
-//        print("Test One: \(upcomingEvents.count)")
         return upcomingEvents.count
     }
     
     func getLatestResultsCount() -> Int {
-//        print("Test Two: \(latestResults.count)")
         return latestResults.count
     }
     
@@ -138,7 +194,7 @@ class LeagueEventsPresenter {
     }
     
     func configurLatestResults(cell: LeagueCustomCellProtocol, for index: Int) {
-        let event = latestResults[index] 
+        let event = latestResults[index]
         configureCell(cell: cell, by: event, for: index)
     }
 
@@ -148,10 +204,28 @@ class LeagueEventsPresenter {
         cell.displayImage(by: team.teamLogo ?? no)
     }
     
-    // MARK: - Navigation
+    // MARK: - View Protocol, Navigation
+    
     func didSelectRow(index: Int) {
         let team = teams[index]
+        print(team.teamKey)
+        print(pathURL)
         view?.navigateToTeamScreen(pathURL: pathURL, teamId: team.teamKey)
+    }
+    
+    func showAlert() {
+        view?.showAlert()
+    }
+    
+    // MARK: - Private Functions
+    
+    func getLeagueDetails() -> (leagueName: String?, leagueLogo: String?) {
+        let event = upcomingEvents.first
+        return(event?.leagueName, event?.leagueLogo)
+    }
+    
+    func insertleague(_ item: LeagueModelDB) {
+        dbManager?.insertLeague(item)
     }
     
     // MARK: - Private Functions

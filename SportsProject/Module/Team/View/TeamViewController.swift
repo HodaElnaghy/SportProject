@@ -68,12 +68,6 @@ class TeamViewController: UIViewController {
             // Add the gradient layer to your view's layer
             stadiumImageView.layer.addSublayer(gradientLayer)
 
-            
-        
-//        // TODO: - Show Coach name
-//        coachNameLabel.text = teamPresenter.getCoachName()
-//        // TODO: - Show Team Image
-//        teamTitleLabel.text = teamPresenter.getTeamName()
     }
 
 

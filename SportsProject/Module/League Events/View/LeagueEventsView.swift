@@ -11,5 +11,7 @@ protocol LeagueEventsView: AnyObject {
 //    func ShowIndicator()
 //    func HideIndicator()
     func reloadCollectionView()
+    func showAlert()
+    func displayMessage(message: String, messageError: Bool)
     func navigateToTeamScreen(pathURL: String, teamId: Int?)
 }

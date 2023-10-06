@@ -1,28 +1,26 @@
 //
-//  LeaguesViewController.swift
+//  FavoriteLeaguesViewController.swift
 //  SportsProject
 //
-//  Created by Mohammed Adel on 27/09/2023.
+//  Created by Mohammed Adel on 06/10/2023.
 //
 
 import UIKit
-import SwiftMessages
 
-class LeaguesViewController: UIViewController {
-    
+class FavoriteLeaguesViewController: UIViewController {
+
     // MARK: - Variables
-    var presenter: LeaguesPresenter!
-    var pathURL: String!
+    var presenter: FavoritesPresenter!
     
     // MARK: - Outlet
-    @IBOutlet weak var leaguesTableView: UITableView!
+    @IBOutlet weak var favoritesTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Leagues"
-        presenter = LeaguesPresenter(view: self, pathURL: pathURL)
+        title = "Favorite Leagues"
+        presenter = FavoritesPresenter(view: self)
         presenter.viewDidLoad()
         configureTableView()
     }
@@ -31,26 +29,20 @@ class LeaguesViewController: UIViewController {
         super.viewWillAppear(animated)
         presenter.viewDidLoad()
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        presenter.stopNotification()
-    }
-    
-    
+
     //MARK: - Configure TableView
     private func configureTableView() {
-        leaguesTableView.dataSource = self
-        leaguesTableView.delegate = self
+        favoritesTableView.dataSource = self
+        favoritesTableView.delegate = self
         
         let nib = UINib(nibName: String(describing: LeaguesCell.self), bundle: nil)
-        leaguesTableView.register(nib, forCellReuseIdentifier: LeaguesCell.identifier)
+        favoritesTableView.register(nib, forCellReuseIdentifier: LeaguesCell.identifier)
     }
 
 }
 
 // MARK: - TableView DataSource
-extension LeaguesViewController: UITableViewDataSource {
+extension FavoriteLeaguesViewController: UITableViewDataSource {
    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.getLeaguesCount()
@@ -64,29 +56,28 @@ extension LeaguesViewController: UITableViewDataSource {
 }
 
 //MARK: - TableView Delegate
-extension LeaguesViewController: UITableViewDelegate {
+extension FavoriteLeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 108
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if presenter.isConnectedToInternet() {
-            presenter.didSelectRow(index: indexPath.row)
-        } else {
-            presenter.showAlert()
-        }
-        
-//        presenter.didSelectRow(index: indexPath.row)
+//        if presenter.isConnectedToInternet() {
+//            presenter.didSelectRow(index: indexPath.row)
+//        } else {
+//            presenter.showAlert()
+//        }
+        print("Tapped on Cell")
     }
 }
 
 
 //MARK: - Conform LeaguesProtocol
-extension LeaguesViewController: LeaguesProtocol {
-   
+extension FavoriteLeaguesViewController: FavoriteLeaguesProtocol {
+  
     func reloadLeaguesTableView() {
         DispatchQueue.main.async { [weak self] in
-            self?.leaguesTableView.reloadData()
+            self?.favoritesTableView.reloadData()
         }
     }
     
@@ -101,14 +92,14 @@ extension LeaguesViewController: LeaguesProtocol {
     // Note: IF View has reference to Any Model, Code Smells!
     // Code Smells are a result of poor or misguided programming.
     func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?) {
-        let vc = LeagueViewController(nibName: "LeagueViewController", bundle: nil)
-        vc.pathURL = pathURL
-        vc.leagueId = leagueId
-        navigationController?.pushViewController(vc, animated: true)
+//        let vc = LeagueViewController(nibName: "LeagueViewController", bundle: nil)
+//        vc.pathURL = pathURL
+//        vc.leagueId = leagueId
+//        navigationController?.pushViewController(vc, animated: true)
+        print("SIIIIIIIII")
     }
     
     func showAlert() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
     }
-    
 }
