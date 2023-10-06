@@ -40,8 +40,9 @@ final class DateManager {
     private init() {}
     
     // MARK: - Next number of days
-    func nextDateInStringFormat(_ day: Int = 0) -> String {
-        let components = DateComponents(calendar: calendar, day: day)  // next number of days
+    func nextDateInStringFormat(_ day: Int = 7) -> String {
+        let dayCopy = day > 0 ? day : day * -1 // To make sure the day will be a positive number
+        let components = DateComponents(calendar: calendar, day: dayCopy)  // next number of days
         let sevenDaysNetx = calendar.nextDate(after: now, matching: components, matchingPolicy: .nextTime)!
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -50,8 +51,8 @@ final class DateManager {
     }
     
     // MARK: - Last number of days
-    func previousDaysInStringFormat(_ day: Int = -1) -> String {
-        let dayCopy = day > 0 ? day * -1 : day // to make sure day is negative number
+    func previousDaysInStringFormat(_ day: Int = -7) -> String {
+        let dayCopy = day > 0 ? day * -1 : day // To make sure the day will be a negative number
         let sevenDaysBefore = Calendar.current.date(byAdding: .day, value: dayCopy, to: now)!
 
         dateFormatter.dateFormat = "yyyy-MM-dd"

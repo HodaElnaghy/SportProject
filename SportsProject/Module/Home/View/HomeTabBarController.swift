@@ -19,7 +19,7 @@ class HomeTabBarController: UITabBarController {
         super.viewDidLoad()
         navigationItem.backBarButtonItem?.isHidden = true
         let homeController = HomeViewController()
-        let favoriteController = UIViewController()
+        let favoriteController = FavoriteLeaguesViewController()
         
         
         homeController.title = "home"

@@ -11,6 +11,7 @@ extension UIViewController {
         show(error.localizedDescription)
     }
     
+    
     func show(messageAlert title: String, message: String? = "", actionTitle: String? = nil, action: ((UIAlertAction) -> Void)? = nil) {
         show(title, message: message, actionTitle: actionTitle, action: action)
     }
@@ -18,7 +19,7 @@ extension UIViewController {
     fileprivate func show(_ title: String, message: String? = "", actionTitle: String? = nil, action: ((UIAlertAction) -> Void)? = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        let closeAction = NSLocalizedString("Close", comment: "")
+        let closeAction = NSLocalizedString("OK", comment: "")
         alert.addAction(UIAlertAction(title: closeAction, style: .cancel, handler: action))
         if let _actionTitle = actionTitle {
             alert.addAction(UIAlertAction(title: _actionTitle, style: .default, handler: action))
