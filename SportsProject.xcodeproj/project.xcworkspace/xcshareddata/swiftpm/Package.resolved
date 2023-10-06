@@ -26,6 +26,24 @@
         "revision" : "5197d6f06c00753ca299d8424c8e089c6a372f3c",
         "version" : "4.3.2"
       }
+    },
+    {
+      "identity" : "reachability.swift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/ashleymills/Reachability.swift",
+      "state" : {
+        "revision" : "c01bbdf2d633cf049ae1ed1a68a2020a8bda32e2",
+        "version" : "5.1.0"
+      }
+    },
+    {
+      "identity" : "swiftmessages",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftKickMobile/SwiftMessages",
+      "state" : {
+        "revision" : "b29dd21090b708aa0ae9ecbaf6e2d0487028dc3f",
+        "version" : "9.0.6"
+      }
     }
   ],
   "version" : 2

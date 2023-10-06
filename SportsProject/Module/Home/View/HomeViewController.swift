@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftMessages
+
 
 class HomeViewController: UIViewController {
     
@@ -14,22 +16,28 @@ class HomeViewController: UIViewController {
  
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItems = []
         presenter = HomePresenter(view: self)
+        presenter.viewDidLoad()
+        
         configureCollectionView()
         navigationItem.backBarButtonItem?.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Hide the back button
-        self.navigationItem.setHidesBackButton(true, animated: false)
-        self.title = "Sports"
+        presenter.viewDidLoad()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.stopNotification()
+    }
+    
+    // MARK: - Configure CollectionView
     private func configureCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -38,6 +46,7 @@ class HomeViewController: UIViewController {
 
 }
 
+// MARK: - UICollectionView DataSource
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         presenter.getSportsCount()
@@ -58,22 +67,36 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UICollectionView Delegate
 extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.displaySelectItem(index: indexPath.item)
+        if presenter.isConnectedToInternet() {
+            presenter.didsplaySelectItem(index: indexPath.item)
+        } else {
+            presenter.showAlert()
+        }
+//        presenter.didsplaySelectItem(index: indexPath.item)
     }
 }
 
 
-// MARK: - HomeViewProtocol
+// MARK: - HomeView Protocol
 extension HomeViewController: HomeViewProtocol {
-    
+   
     func navigateToLeaguesScreen(_ sportPathURL: String){
         let vc = LeaguesViewController(nibName: "LeaguesViewController", bundle: nil)
         vc.pathURL = sportPathURL
-        
+//        vc.isConnected = isConnected
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func showAlert() {
+        show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
+    }
+
+    
+    
+    
 }
+

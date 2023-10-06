@@ -7,6 +7,12 @@
 
 import UIKit
 
+// MARK: - Protocol for data transfer
+protocol LeagueDataDelegate {
+    func saveLeague(_ league: LeagueModelDB)
+}
+
+
 class LeagueViewController: UIViewController {
     
     // MARK: - Variables
@@ -20,8 +26,10 @@ class LeagueViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        addFavouriteButton()
         
         presenter = LeagueEventsPresenter(view: self, pathURL: pathURL, leagueId: leagueId)
+//        presenter.configConnectivity() // configuer Connectivity
         
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -35,6 +43,27 @@ class LeagueViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        presenter.configConnectivity()
+//    }
+//
+//    override func viewWillDisappear(_ animated: Bool) {
+//        viewWillDisappear(animated)
+//        presenter.stopNotification()
+//    }
+
+    
+    private func addFavouriteButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToCoreData))
+    }
+    
+    @objc func addToCoreData() {
+        print("Added to core data")
+        let details = presenter.getLeagueDetails()
+        let league = LeagueModelDB(leagueId: leagueId, pathURL: pathURL, leagueName: details.leagueName, leagueLogo: details.leagueLogo)
+        presenter.insertleague(league)
+    }
 }
 
 // MARK: - Compostional Layout
@@ -117,10 +146,8 @@ extension LeagueViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            print("Test One: \(presenter.getUpcomingEventsCount())")
             return presenter.getUpcomingEventsCount()
         case 1:
-            print("Test Two: \(presenter.getLatestResultsCount())")
             return presenter.getLatestResultsCount() == 0 ? 1 :  presenter.getLatestResultsCount()
         case 2:
             return presenter.getAllTeamsCount()
@@ -191,6 +218,12 @@ extension LeagueViewController: UICollectionViewDelegate, UICollectionViewDelega
         switch indexPath.section {
         case 2:
             print(indexPath)
+//            print("isConnected ggg: \(presenter.isConnectedToInternet())")
+//            if presenter.isConnectedToInternet() {
+//                presenter.didSelectRow(index: indexPath.item)
+//            } else {
+//                presenter.showAlert()
+//            }
             presenter.didSelectRow(index: indexPath.item)
         default:
             print("Not allowed to select")
@@ -226,4 +259,9 @@ extension LeagueViewController: LeagueEventsView {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    
+    func showAlert() {
+        show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
+    }
+
 }

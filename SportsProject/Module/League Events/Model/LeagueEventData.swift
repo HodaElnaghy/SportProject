@@ -8,35 +8,36 @@
 import Foundation
 
 struct LeagueEventData : Codable {
-	let eventKey : Int?
-	let eventDate : String?
-	let eventTime : String?
-	let eventHomeTeam : String?
-	let eventAwayTeam : String?
-	let eventFinalResult : String?
-	let eventLive : String?
-	let homeTeamLogo : String?
-	let awayTeamLogo : String?
-	let leagueLogo : String?
+    let eventKey : Int?
+    let eventDate : String?
+    let eventTime : String?
+    let eventHomeTeam : String?
+    let eventAwayTeam : String?
+    let eventFinalResult : String?
+    let eventLive : String?
+    let homeTeamLogo : String?
+    let awayTeamLogo : String?
+    let leagueLogo : String?
+    let leagueName: String?
     let eventStatus : String?
-	
-
-	enum CodingKeys: String, CodingKey {
-		case eventKey = "event_key"
-		case eventDate = "event_date"
-		case eventTime = "event_time"
-		case eventHomeTeam = "event_home_team"
-		case eventAwayTeam = "event_away_team"
-		case eventFinalResult = "event_final_result"
+    
+    enum CodingKeys: String, CodingKey {
+        case eventKey = "event_key"
+        case eventDate = "event_date"
+        case eventTime = "event_time"
+        case eventHomeTeam = "event_home_team"
+        case eventAwayTeam = "event_away_team"
+        case eventFinalResult = "event_final_result"
         case eventLive = "event_live"
-		case homeTeamLogo = "home_team_logo"
-		case awayTeamLogo = "away_team_logo"
-		case leagueLogo = "league_logo"
+        case homeTeamLogo = "home_team_logo"
+        case awayTeamLogo = "away_team_logo"
+        case leagueLogo = "league_logo"
+        case leagueName = "league_name"
         case eventStatus = "event_status"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
         eventKey = try values.decodeIfPresent(Int.self, forKey: .eventKey)
         eventDate = try values.decodeIfPresent(String.self, forKey: .eventDate)
         eventTime = try values.decodeIfPresent(String.self, forKey: .eventTime)
@@ -47,8 +48,8 @@ struct LeagueEventData : Codable {
         homeTeamLogo = try values.decodeIfPresent(String.self, forKey: .homeTeamLogo)
         awayTeamLogo = try values.decodeIfPresent(String.self, forKey: .awayTeamLogo)
         leagueLogo = try values.decodeIfPresent(String.self, forKey: .leagueLogo)
+        leagueName = try values.decodeIfPresent(String.self, forKey: .leagueName)
         eventStatus = try values.decodeIfPresent(String.self, forKey: .eventStatus)
-	
-	}
-
+    }
+    
 }

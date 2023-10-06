@@ -9,51 +9,48 @@ import UIKit
 import Foundation
 import CoreData
 
+
 // MARK: - CoreData Protocol
-protocol CoreDataManagerProtocol {
-   
+protocol DataBaseManagerProtocol {
+//    func insertLeague(_ item: LeagueModelDB, completion: () -> Void)
+    func insertLeague(_ item: LeagueModelDB)
+    func fetchLeagues(completionHandler: @escaping(Result<[LeagueModelDB], Error>) -> Void)
+    func fetchSingleLeague(leagueName: String, completionHandler: (Result<LeagueModelDB, Error>) -> Void)
+    func removeLeague(leagueName: String)
 }
 
 // MARK: - CoreData Manager
-final class CoreDataManager {
+final class CoreDataManager: DataBaseManagerProtocol {
     
     // MARK: - Variables
     var context: NSManagedObjectContext!
-    private var items: [TeamModelDB]  = []
-//    var teams : [NSManagedObject]!
-//    var players : [NSManagedObject]!
+    private var items: [LeagueModelDB]  = []
+    
     
     // MARK: - Singletone instance
-    static let instance: CoreDataManager = CoreDataManager()
+//    static let instance: CoreDataManager = CoreDataManager()
     
     // MARK: - Initializer
-    private init() {
+    init() {
         let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
         context = appDelegate.persistentContainer.viewContext
     }
     
     // MARK: - insertLeague
-    func insertLeague(league: LeagueModelDB) {
-        let player = NSEntityDescription.insertNewObject(forEntityName: "PlayerDB", into: context) as! PlayerDB
-        let _ = NSEntityDescription.insertNewObject(forEntityName: "TeamDB", into: context) as! TeamDB
+    func insertLeague(_ item: LeagueModelDB) {
+        let league = NSEntityDescription.insertNewObject(forEntityName: "LeagueDB", into: context) as! LeagueDB
         
-        guard let  leaguePlayers = league.players else { return }
-        // player has 7 Attribute
-        for item in leaguePlayers {
-            player.playerKey = Int32(item.playerKey ?? 0)
-            player.playerName = item.playerName
-            player.playerType = item.playerType
-            player.playerNumber = item.playerNumber
-            player.playerRating  = item.playerRating
-            player.playerImage = item.playerImage
-            //        player.playerImageData = ""
-            if item.playerImageData != nil {
-                player.playerImageData = item.playerImageData
-            }
-        }
+        league.leagueId = Int32(item.leagueId ?? 0)
+        league.pathURL = item.pathURL
+        league.leagueName = item.leagueName
         
-        context.insert(player)
+        // TODO: - Save image, not string
+//        if league.leagueLogo != nil {
+//            league.leagueLogo = item.leagueLogoData
+//        }
+        league.leagueLogo = item.leagueLogo
         
+        context.insert(league)
         do {
             try context.save()  // save after insert
             print("insert Successfully")
@@ -64,22 +61,22 @@ final class CoreDataManager {
     }
     
     // MARK: - Fetch All Teams
-    func fetchTeams(completionHandler: (Result<[TeamModelDB], Error>) -> Void) {
+    func fetchLeagues(completionHandler: @escaping(Result<[LeagueModelDB], Error>) -> Void) {
         //let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
-        let fetchRequest = TeamDB.fetchRequest()
+        let fetchRequest = LeagueDB.fetchRequest()
         fetchRequest.returnsObjectsAsFaults = false // prevent => data: <fault> ERROR
         do {
             let result = try context.fetch(fetchRequest)
             print(result.count)
-            for singleTeam in result {
-                guard let teamName = singleTeam.teamName, let teamLogo = singleTeam.teamLogo, let teamLogoData = singleTeam.teamLogoData, let coaches = singleTeam.coaches else { break }
-                let teamKey = Int(singleTeam.teamKey)
+            for singleLeague in result {
+                guard let pathURL = singleLeague.pathURL, let leagueName = singleLeague.leagueName, let leagueLogo = singleLeague.leagueLogo else { break }
+                let leagueId = Int(singleLeague.leagueId)
                 
-                let team = TeamModelDB(teamKey: teamKey, teamName: teamName, teamLogo: teamLogo, teamLogoData: teamLogoData, coaches: coaches)
+                let league = LeagueModelDB(leagueId: leagueId, pathURL: pathURL, leagueName: leagueName, leagueLogo: leagueLogo)
 
-                items.append(team)
+                items.append(league)
             }
-            print("fetch successfully \(result.count) movie")
+            print("fetch successfully \(result.count) league")
             completionHandler(.success(items))
         } catch {
             print(error)
@@ -89,46 +86,44 @@ final class CoreDataManager {
     }
     
     // MARK: - Fetch Single Team
-    func fetchSingleTeam(title: String, completionHandler: (Result<TeamModelDB, Error>) -> Void) {
+    func fetchSingleLeague(leagueName: String, completionHandler: (Result<LeagueModelDB, Error>) -> Void) {
         //let fetchRequest: NSFetchRequest<Movie> = Movie.fetchRequest()
-        let fetchRequest = TeamDB.fetchRequest()
-        let predeicate = NSPredicate(format: "title='\(title)'")
-
+        let fetchRequest = LeagueDB.fetchRequest()
+        let predeicate = NSPredicate(format: "leagueName='\(leagueName)'")
+        
         fetchRequest.predicate = predeicate
         do {
             let result = try context.fetch(fetchRequest)
-            guard let singleTeam = result.first else { return }
-            guard let teamName = singleTeam.teamName, let teamLogo = singleTeam.teamLogo, let teamLogoData = singleTeam.teamLogoData, let coaches = singleTeam.coaches else { return }
-            let teamKey = Int(singleTeam.teamKey)
+            guard let singleLeague = result.first else { return }
+            guard let pathURL = singleLeague.pathURL, let leagueName = singleLeague.leagueName, let leagueLogo = singleLeague.leagueLogo else { return }
+            let leagueId = Int(singleLeague.leagueId)
             
-            let team = TeamModelDB(teamKey: teamKey, teamName: teamName, teamLogo: teamLogo, teamLogoData: teamLogoData, coaches: coaches)
+            let league = LeagueModelDB(leagueId: leagueId, pathURL: pathURL, leagueName: leagueName, leagueLogo: leagueLogo)
             
-            print("fetch Single Team successfully")
-            completionHandler(.success(team))
+            print("Fetch single league successfully")
+            completionHandler(.success(league))
         } catch {
             print(error)
             completionHandler(.failure(error))
         }
-
     }
 
 
-//    func removeMovie(title: String) {
-//        let fetchRequest = Movie.fetchRequest()
-//        let predicate = NSPredicate(format: "title='\(title)'")
-//        fetchRequest.predicate = predicate
-//        do {
-//            let result = try AppDelegate.context.fetch(fetchRequest)
-//            for singleMovie in result {
-//                AppDelegate.context.delete(singleMovie)
-//            }
-//
-//            try AppDelegate.context.save()
-//            print("remove row successfully")
-//        } catch {
-//            print(error)
-//        }
-//    }
+    func removeLeague(leagueName: String) {
+        let fetchRequest = LeagueDB.fetchRequest()
+        let predicate = NSPredicate(format: "leagueName='\(leagueName)'")
+        fetchRequest.predicate = predicate
+        do {
+            let result = try context.fetch(fetchRequest)
+            for singleLeague in result {
+                context.delete(singleLeague)
+            }
 
+            try context.save()
+            print("remove row successfully")
+        } catch {
+            print(error)
+        }
+    }
 }
 

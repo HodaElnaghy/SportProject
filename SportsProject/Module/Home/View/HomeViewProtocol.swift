@@ -9,4 +9,7 @@ import Foundation
 
 protocol HomeViewProtocol {
     func navigateToLeaguesScreen(_ sportPathURL: String)
+    func showAlert()
+    func displayMessage(message: String, messageError: Bool)
+//    func showAlert(_ index : Int)
 }
