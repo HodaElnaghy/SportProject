@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2" translatesAutoresizingMaskIntoConstraints="NO" id="Hqg-Jy-X0O">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dark" translatesAutoresizingMaskIntoConstraints="NO" id="Hqg-Jy-X0O">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Liverpool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H23-zb-bgy">
@@ -54,17 +54,22 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livepool" translatesAutoresizingMaskIntoConstraints="NO" id="GpV-rh-V35">
                         <rect key="frame" x="306" y="40" width="124" height="105"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Finished" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-Dm-7fL">
-                        <rect key="frame" x="175.66666666666666" y="4" width="98.999999999999972" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Match Finished" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-Dm-7fL">
+                        <rect key="frame" x="176" y="4" width="98.333333333333314" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="livepool" translatesAutoresizingMaskIntoConstraints="NO" id="J97-Rf-rgm">
+                        <rect key="frame" x="180.66666666666666" y="54" width="88.999999999999972" height="92"/>
+                    </imageView>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="J97-Rf-rgm" firstAttribute="centerY" secondItem="Hqg-Jy-X0O" secondAttribute="centerY" id="62V-tl-uQL"/>
                 <constraint firstItem="ZQl-3f-90I" firstAttribute="leading" secondItem="Hqg-Jy-X0O" secondAttribute="leading" constant="20" id="CDg-M4-3wc"/>
+                <constraint firstItem="J97-Rf-rgm" firstAttribute="width" secondItem="Hqg-Jy-X0O" secondAttribute="width" multiplier="0.197778" id="EzL-uq-Uoy"/>
                 <constraint firstItem="t9i-hQ-Qm4" firstAttribute="centerX" secondItem="HaH-9M-cVy" secondAttribute="centerX" id="FXR-bf-66G"/>
                 <constraint firstItem="MkT-ag-E6E" firstAttribute="top" secondItem="ZQl-3f-90I" secondAttribute="bottom" constant="14" id="FhY-xH-Wzc"/>
                 <constraint firstItem="GpV-rh-V35" firstAttribute="width" secondItem="Hqg-Jy-X0O" secondAttribute="width" multiplier="0.275556" id="KT8-95-Sgo"/>
@@ -75,6 +80,7 @@
                 <constraint firstItem="GpV-rh-V35" firstAttribute="trailing" secondItem="Hqg-Jy-X0O" secondAttribute="trailing" constant="-20" id="Rng-jb-e4N"/>
                 <constraint firstItem="t9i-hQ-Qm4" firstAttribute="top" secondItem="HaH-9M-cVy" secondAttribute="bottom" constant="6" id="UXx-un-Csm"/>
                 <constraint firstItem="HaH-9M-cVy" firstAttribute="centerX" secondItem="J54-vK-Ccv" secondAttribute="centerX" id="VDQ-rQ-gO7"/>
+                <constraint firstItem="J97-Rf-rgm" firstAttribute="centerX" secondItem="Hqg-Jy-X0O" secondAttribute="centerX" id="XJU-UO-acu"/>
                 <constraint firstItem="GpV-rh-V35" firstAttribute="height" secondItem="Hqg-Jy-X0O" secondAttribute="height" multiplier="0.525" id="YKk-tU-v79"/>
                 <constraint firstItem="J54-vK-Ccv" firstAttribute="centerX" secondItem="Q4g-Dm-7fL" secondAttribute="centerX" id="dwl-65-1i5"/>
                 <constraint firstItem="ZQl-3f-90I" firstAttribute="height" secondItem="Hqg-Jy-X0O" secondAttribute="height" multiplier="0.525" id="e7q-cw-7NH"/>
@@ -86,6 +92,7 @@
                 <constraint firstItem="Hqg-Jy-X0O" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pFy-cD-Y99"/>
                 <constraint firstItem="Q4g-Dm-7fL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="pqS-YO-qzt"/>
                 <constraint firstItem="J54-vK-Ccv" firstAttribute="top" secondItem="Q4g-Dm-7fL" secondAttribute="bottom" id="r9v-ph-qqa"/>
+                <constraint firstItem="J97-Rf-rgm" firstAttribute="height" secondItem="Hqg-Jy-X0O" secondAttribute="height" multiplier="0.46" id="rvZ-bz-jGB"/>
                 <constraint firstItem="Q4g-Dm-7fL" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ugn-9j-b68"/>
                 <constraint firstAttribute="bottom" secondItem="Hqg-Jy-X0O" secondAttribute="bottom" id="zgz-ih-erb"/>
             </constraints>
@@ -101,11 +108,11 @@
                 <outlet property="eventTimeLabel" destination="HaH-9M-cVy" id="vAw-cf-Ifh"/>
                 <outlet property="homeTeamImageView" destination="ZQl-3f-90I" id="zUW-Ab-c3w"/>
             </connections>
-            <point key="canvasLocation" x="742" y="2"/>
+            <point key="canvasLocation" x="740.4580152671756" y="1.4084507042253522"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="bg2" width="750" height="372"/>
+        <image name="dark" width="842" height="474"/>
         <image name="livepool" width="430" height="580"/>
     </resources>
 </document>

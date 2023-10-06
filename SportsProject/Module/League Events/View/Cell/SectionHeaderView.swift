@@ -22,6 +22,7 @@ class SectionHeader: UICollectionReusableView {
       addSubview(label)
       label.translatesAutoresizingMaskIntoConstraints = false
       label.adjustsFontForContentSizeCategory = true
+        
 
       let inset = CGFloat(10)
       NSLayoutConstraint.activate([
@@ -30,7 +31,10 @@ class SectionHeader: UICollectionReusableView {
         label.topAnchor.constraint(equalTo: topAnchor, constant: inset),
         label.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -inset)
       ])
-      label.font = UIFont.preferredFont(forTextStyle: .title3)
+        label.textColor = UIColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1.0)
+        label.font = UIFont.systemFont(ofSize: 10)
+
+        label.font = UIFont.preferredFont(forTextStyle: .subheadline)
     }
   }
 

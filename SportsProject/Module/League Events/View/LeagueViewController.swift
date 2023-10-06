@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Lottie
+
 
 // MARK: - Protocol for data transfer
 protocol LeagueDataDelegate {
@@ -16,6 +18,7 @@ protocol LeagueDataDelegate {
 class LeagueViewController: UIViewController {
     
     // MARK: - Variables
+    private var animationView: LottieAnimationView?
     private var presenter: LeagueEventsPresenter!
     var pathURL: String!
     var leagueId: Int?
@@ -37,6 +40,7 @@ class LeagueViewController: UIViewController {
 
         self.collectionView.register(UINib(nibName: "TeamCustomCell", bundle: nil), forCellWithReuseIdentifier: "TeamCustomCell")
         self.collectionView.register(UINib(nibName: "LeagueCustomCell", bundle: nil), forCellWithReuseIdentifier: "LeagueCustomCell")
+        self.collectionView.register(UINib(nibName: "EmptyCell", bundle: nil), forCellWithReuseIdentifier: "EmptyCell")
         self.collectionView.register( SectionHeader.self, forSupplementaryViewOfKind: LeagueViewController.sectionHeaderElementKind, withReuseIdentifier: SectionHeader.reuseIdentifier)
         
         // Presenter fetch data
@@ -55,14 +59,53 @@ class LeagueViewController: UIViewController {
 
     
     private func addFavouriteButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addToCoreData))
+   
+        let heartButton = UIButton(type: .custom)
+        heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        heartButton.setImage(UIImage(systemName: "heart.fill"), for: .selected)
+        heartButton.tintColor = UIColor.red
+        heartButton.addTarget(self, action: #selector(toggleFavourite), for: .touchUpInside)
+
+        let heartBarButtonItem = UIBarButtonItem(customView: heartButton)
+        
+        navigationItem.rightBarButtonItem = heartBarButtonItem
     }
-    
+
+    @objc func toggleFavourite(sender: UIButton) {
+        // Toggle the selected state to change the button's image
+        sender.isSelected.toggle()
+        if sender.isSelected {
+            addToCoreData()
+            playAnimation()
+            
+        } else {
+            // remove from CoreData
+        }
+    }
+
     @objc func addToCoreData() {
         print("Added to core data")
         let details = presenter.getLeagueDetails()
         let league = LeagueModelDB(leagueId: leagueId, pathURL: pathURL, leagueName: details.leagueName, leagueLogo: details.leagueLogo)
         presenter.insertleague(league)
+    }
+    func playAnimation() {
+        animationView = .init(name: "Favorite")
+        
+        animationView!.frame = view.bounds
+        animationView!.contentMode = .scaleAspectFit
+        
+        // 4. Set animation loop mode
+        
+        animationView!.loopMode = .playOnce
+        view.addSubview(animationView!)
+        
+        // 6. Play animation
+        
+        
+        animationView?.play { [weak self] _ in
+            self?.animationView?.removeFromSuperview()
+                }
     }
 }
 
@@ -146,7 +189,7 @@ extension LeagueViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return presenter.getUpcomingEventsCount()
+            return presenter.getUpcomingEventsCount() == 0 ? 1 :  presenter.getUpcomingEventsCount()
         case 1:
             return presenter.getLatestResultsCount() == 0 ? 1 :  presenter.getLatestResultsCount()
         case 2:
@@ -160,19 +203,41 @@ extension LeagueViewController: UICollectionViewDataSource {
         
         switch indexPath.section {
         case 0:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueCustomCell", for: indexPath) as? LeagueCustomCell else { return LeagueCustomCell() }
-            presenter.configureUpcomingEvents(cell: cell, for: indexPath.row)
-            cell.isHidden = false
-            return cell
+            
+            if (presenter.getLatestResultsCount() != 0) {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueCustomCell", for: indexPath) as? LeagueCustomCell else { return LeagueCustomCell() }
+                presenter.configureUpcomingEvents(cell: cell, for: indexPath.row)
+                cell.isHidden = false
+                return cell
+            }
+            else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath) as? EmptyCell
+                else { return LeagueCustomCell() }
+                cell.emptyCellLabel.text = "No upcoming events available"
+                cell.isHidden = false
+                return cell
+            }
+            
         case 1:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueCustomCell", for: indexPath) as? LeagueCustomCell else { return LeagueCustomCell() }
             if presenter.getLatestResultsCount() != 0 {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueCustomCell", for: indexPath) as? LeagueCustomCell else { return LeagueCustomCell() }
+            
                 presenter.configurLatestResults(cell: cell, for: indexPath.row)
                 cell.isHidden = false
-            } else {
-                cell.isHidden = true
+               
+                return cell
             }
-            return cell
+            else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath) as? EmptyCell
+                else { return LeagueCustomCell() }
+                cell.emptyCellLabel.text = "No latest events available"
+                cell.isHidden = false
+                return cell
+            }
+            
+            
+            
+            
         case 2:
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCustomCell", for: indexPath) as? TeamCustomCell else { return TeamCustomCell() }
             
@@ -192,7 +257,7 @@ extension LeagueViewController: UICollectionViewDataSource {
 // MARK: - DatSource Objective-C ?? Ask Hoda
 extension LeagueViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: 100, height: 50) // Adjust the height as needed
+        return CGSize(width: 50, height: 20) // Adjust the height as needed
     }
     
     // Provide the view for the section header
