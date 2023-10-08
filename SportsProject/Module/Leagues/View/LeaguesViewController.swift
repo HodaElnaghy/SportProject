@@ -75,8 +75,6 @@ extension LeaguesViewController: UITableViewDelegate {
         } else {
             presenter.showAlert()
         }
-        
-//        presenter.didSelectRow(index: indexPath.row)
     }
 }
 
@@ -86,7 +84,8 @@ extension LeaguesViewController: LeaguesProtocol {
    
     func reloadLeaguesTableView() {
         DispatchQueue.main.async { [weak self] in
-            self?.leaguesTableView.reloadData()
+            guard let self = self else { return }
+            leaguesTableView.reloadData()
         }
     }
     

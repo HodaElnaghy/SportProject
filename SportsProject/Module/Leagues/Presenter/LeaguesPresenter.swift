@@ -112,16 +112,7 @@ class LeaguesPresenter {
     func configureCell(cell: LeaguesCellProtocol, for index: Int) {
         let title = leagues[index].leagueName ?? ""
         cell.displayLeagueTitle(title: title)
-        
-//        switch SportType {
-//        case .basketball:
-//            break
-//        case .football:
-//        case .cricket:
-//        case .tennis:
-//        }
         cell.displayLeagueImage(by: leagues[index].leagueLogo)
-        
     }
     
     // MARK: - View Protocol

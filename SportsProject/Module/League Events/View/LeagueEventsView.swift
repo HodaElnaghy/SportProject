@@ -15,3 +15,8 @@ protocol LeagueEventsView: AnyObject {
     func displayMessage(message: String, messageError: Bool)
     func navigateToTeamScreen(pathURL: String, teamId: Int?)
 }
+
+
+protocol FavoriteDelegate {
+    func updateTableViewData()
+}

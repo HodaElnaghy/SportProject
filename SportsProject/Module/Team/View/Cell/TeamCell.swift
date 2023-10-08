@@ -46,20 +46,9 @@ extension TeamCell: TeamCellProtocol {
     }
     
     func displayImage(by stringURL: String?) {
-        guard let stringURL = stringURL else { return }
-        guard let url = URL(string: stringURL) else { return }
-        
-        // Download image By Kingfisher
-        playerImageView.kf.indicatorType = .activity
-        playerImageView.kf.setImage(with: url) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let imageResult):
-                playerImageView.image = imageResult.image
-            case .failure(let error):
-                print(error.localizedDescription)
-                playerImageView.image = UIImage(systemName: "person.fill")
-            }
+        playerImageView.downloadImageFrom(stringURL)
+        if stringURL == nil {
+            playerImageView.image = UIImage(named: "player")
         }
     }
       

@@ -12,6 +12,7 @@ enum LeaguesNetworking {
     case getLeagues(met: String, APIKey: String, pathURL: String)
 }
 
+// MARK: - Conform TargetType Protocol
 extension LeaguesNetworking: TargetType {
     var baseURL: String {
         return URLs.base

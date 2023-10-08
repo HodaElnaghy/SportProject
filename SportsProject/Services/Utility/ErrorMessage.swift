@@ -23,7 +23,7 @@ struct ViewIdentifier {
 
 struct ConnectivityMessage {
     static let alertTitle = "No internet connection!"
-    static let alertMessage = "Please connect to the internet and try again!."
+    static let alertMessage = "Please connect to the internet and try again."
     
     static let noInternet = "No internet connection!"
     static let wifiConnect = "Connected by wifi"

@@ -12,5 +12,5 @@ struct LeagueModelDB {
     let pathURL: String?
     let leagueName: String?
     let leagueLogo: String?
-//    let leagueLogoData: Data?
+    let leagueLogoImage: Data?
 }

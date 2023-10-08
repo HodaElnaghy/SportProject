@@ -17,6 +17,7 @@ enum Met: String {
     case fixtures = "Fixtures"
     case teams = "Teams"
     case leagues = "Leagues"
+    case players = "Players"
 }
 
 // MARK: - URLs

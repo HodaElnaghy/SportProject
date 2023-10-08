@@ -6,7 +6,7 @@
 //
 
 import Foundation
-struct LeaguesData: Codable {
+struct LeaguesData: Decodable {
 	let success: Int?
 	let result: [LeaguesModel]?
 

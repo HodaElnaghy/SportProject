@@ -9,10 +9,15 @@ import Foundation
 
 protocol FavoriteLeaguesProtocol {
     func reloadLeaguesTableView()
+    func updateTableView(at indexPath: IndexPath)
+    
     func showIndicator()
     func hideIndicator()
-//    func displayMessage(message: String, messageError: Bool)
     
     func showAlert()
+    func displayMessage(message: String, messageError: Bool)
+    
     func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?)
+    
+    //    func displayMessage(message: String, messageError: Bool)
 }

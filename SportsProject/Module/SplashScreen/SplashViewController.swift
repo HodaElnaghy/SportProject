@@ -1,6 +1,14 @@
+//
+//  AnimatedLaunchScreen.swift
+//  SportsProject
+//
+//  Created by Hend on 03/10/2023.
+//
+
 
 import UIKit
 import Lottie
+
 class AnimatedLaunchScreen: UIViewController {
     private var animationView: LottieAnimationView?
     override func viewDidLoad() {
@@ -9,7 +17,6 @@ class AnimatedLaunchScreen: UIViewController {
             print("Current View Controllers in Stack: \(viewControllers)")
             
         }
-
         
         // 2. Start LottieAnimationView with animation name (without extension)
          
@@ -40,10 +47,10 @@ class AnimatedLaunchScreen: UIViewController {
         
     }
     
-
+    
     @objc func MainNav() {
-        let cartVC =  HomeTabBarController()
-        self.navigationController?.pushViewController(cartVC, animated: true)
-        
-        }
+        let homeTabBarController = HomeTabBarController()
+        navigationController?.setViewControllers([homeTabBarController], animated: true)
+    }
+
 }

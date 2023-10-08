@@ -19,9 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n44-er-tBn">
-                    <rect key="frame" x="0.0" y="129" width="393" height="689"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="n44-er-tBn">
+                    <rect key="frame" x="0.0" y="83" width="393" height="755"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="JoC-wx-1Q5">
                         <size key="itemSize" width="128" height="128"/>
@@ -33,6 +32,12 @@
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="n44-er-tBn" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" constant="20" id="McJ-rb-zBU"/>
+                <constraint firstItem="n44-er-tBn" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="QgV-sX-JV9"/>
+                <constraint firstItem="n44-er-tBn" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="UKY-OI-hbu"/>
+                <constraint firstItem="n44-er-tBn" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="24" id="ukz-oT-0mO"/>
+            </constraints>
             <point key="canvasLocation" x="41.984732824427482" y="-72.535211267605632"/>
         </view>
     </objects>

@@ -11,7 +11,7 @@ import SwiftMessages
 
 class HomeViewController: UIViewController {
     
-    // Variables
+    // MARK: - Variables
     var presenter: HomePresenter!
  
     @IBOutlet weak var collectionView: UICollectionView!
@@ -21,8 +21,8 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItems = []
         presenter = HomePresenter(view: self)
-        presenter.viewDidLoad()
         
+        presenter.viewDidLoad()
         configureCollectionView()
         navigationItem.backBarButtonItem?.isHidden = true
     }
@@ -76,7 +76,6 @@ extension HomeViewController: UICollectionViewDelegate {
         } else {
             presenter.showAlert()
         }
-//        presenter.didsplaySelectItem(index: indexPath.item)
     }
 }
 
@@ -94,9 +93,6 @@ extension HomeViewController: HomeViewProtocol {
     func showAlert() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
     }
-
-    
-    
     
 }
 

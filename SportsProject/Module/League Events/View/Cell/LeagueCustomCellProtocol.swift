@@ -20,4 +20,5 @@ protocol LeagueCustomCellProtocol: AnyObject {
 
     func displayHomeTeamImage(by stringURL: String?)
     func displayAwayTeamImage(by stringURL: String?)
+    func displayLeagueImage(by stringURL: String?)
 }

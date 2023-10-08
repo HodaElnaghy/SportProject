@@ -8,15 +8,14 @@
 import Foundation
 
 
-struct TeamResult : Codable {
-	let teamKey : Int?
-	let teamName : String?
-	let teamLogo : String?
-	let players : [Players]?
-	let coaches : [Coaches]?
+struct TeamResult : Decodable {
+	let teamKey: Int?
+	let teamName: String?
+	let teamLogo: String?
+	let players: [Players]?
+    let coaches: [Coaches]?
 
 	enum CodingKeys: String, CodingKey {
-
 		case teamKey = "team_key"
 		case teamName = "team_name"
 		case teamLogo = "team_logo"

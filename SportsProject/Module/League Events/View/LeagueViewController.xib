@@ -19,14 +19,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R5Z-2E-VDI">
-                    <rect key="frame" x="0.0" y="59" width="393" height="44"/>
-                    <items>
-                        <navigationItem title="Title" id="ERG-kF-dxv"/>
-                    </items>
-                </navigationBar>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Gfo-pl-Nw6">
-                    <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TtW-4t-IUW">
                         <size key="itemSize" width="128" height="128"/>
@@ -40,11 +34,8 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Gfo-pl-Nw6" secondAttribute="bottom" id="57r-Tc-mrZ"/>
-                <constraint firstItem="R5Z-2E-VDI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="CAD-7Z-ACp"/>
-                <constraint firstItem="R5Z-2E-VDI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="FeN-Hz-VFR"/>
-                <constraint firstItem="Gfo-pl-Nw6" firstAttribute="top" secondItem="R5Z-2E-VDI" secondAttribute="bottom" id="N2S-Gy-vhz"/>
                 <constraint firstItem="Gfo-pl-Nw6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="OjT-fc-lU2"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="R5Z-2E-VDI" secondAttribute="trailing" id="QbA-nQ-VTt"/>
+                <constraint firstItem="Gfo-pl-Nw6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Tg4-wm-AEf"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Gfo-pl-Nw6" secondAttribute="trailing" id="paE-ex-KFB"/>
             </constraints>
             <point key="canvasLocation" x="48" y="21"/>

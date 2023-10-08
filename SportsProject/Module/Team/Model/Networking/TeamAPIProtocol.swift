@@ -9,4 +9,6 @@ import Foundation
 
 protocol TeamAPIProtocol {
     func getTeamData(met: String, teamId: Int, APIkey: String, pathURL: String, completion: @escaping (Result<TeamData?, NSError>) -> Void)
+    
+    func getPlayerData(met: String, teamId: Int, APIkey: String, pathURL: String, completion: @escaping(Result<TennisPlayerData?, NSError>) -> Void)
 }
