@@ -7,25 +7,23 @@
 
 import Foundation
 
-struct TennisEventModel : Codable {
-    let eventKey : Int?
-    let eventDate : String?
-    let eventTime : String?
-	let eventFirstPlayer : String?
-	let firstPlayerKey : Int?
-	let eventSecondPlayer : String?
-	let secondPlayerKey : Int?
-	let eventFinalResult : String?
-	let eventStatus : String?
-	let leagueName : String?
+struct TennisEventModel: Decodable {
+    let eventKey: Int?
+    let eventDate: String?
+    let eventTime: String?
+	let eventFirstPlayer: String?
+	let firstPlayerKey: Int?
+	let eventSecondPlayer: String?
+	let secondPlayerKey: Int?
+	let eventFinalResult: String?
+	let eventStatus: String?
+	let leagueName: String?
     let leagueKey: Int?
-	let eventLive : String?
-	let eventFirstPlayerLogo : String?
-	let eventSecondPlayerLogo : String?
+	let eventFirstPlayerLogo: String?
+	let eventSecondPlayerLogo: String?
 	
-
+    
 	enum CodingKeys: String, CodingKey {
-
 		case eventKey = "event_key"
 		case eventDate = "event_date"
 		case eventTime = "event_time"
@@ -37,10 +35,8 @@ struct TennisEventModel : Codable {
 		case eventStatus = "event_status"
 		case leagueName = "league_name"
 		case leagueKey = "league_key"
-		case eventLive = "event_live"
 		case eventFirstPlayerLogo = "event_first_player_logo"
 		case eventSecondPlayerLogo = "event_second_player_logo"
-		
 	}
 
 	init(from decoder: Decoder) throws {
@@ -56,7 +52,6 @@ struct TennisEventModel : Codable {
         eventStatus = try values.decodeIfPresent(String.self, forKey: .eventStatus)
         leagueName = try values.decodeIfPresent(String.self, forKey: .leagueName)
         leagueKey = try values.decodeIfPresent(Int.self, forKey: .leagueKey)
-        eventLive = try values.decodeIfPresent(String.self, forKey: .eventLive)
         eventFirstPlayerLogo = try values.decodeIfPresent(String.self, forKey: .eventFirstPlayerLogo)
         eventSecondPlayerLogo = try values.decodeIfPresent(String.self, forKey: .eventSecondPlayerLogo)
 	}

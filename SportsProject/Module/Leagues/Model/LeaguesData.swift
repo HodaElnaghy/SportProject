@@ -11,8 +11,6 @@ struct LeaguesData: Decodable {
 	let result: [LeaguesModel]?
 
 	enum CodingKeys: String, CodingKey {
-//		case success = "success"
-//		case result = "result"
         case success, result
 	}
 
@@ -21,5 +19,4 @@ struct LeaguesData: Decodable {
 		success = try values.decodeIfPresent(Int.self, forKey: .success)
 		result = try values.decodeIfPresent([LeaguesModel].self, forKey: .result)
 	}
-
 }

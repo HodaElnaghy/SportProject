@@ -7,9 +7,7 @@
 
 import Foundation
 
-protocol HomeViewProtocol {
-    func navigateToLeaguesScreen(_ sportPathURL: String)
+protocol HomeViewProtocol: AnyObject, BaseView {
+    func navigateToLeaguesScreen(_ sport: SportType)
     func showAlert()
-    func displayMessage(message: String, messageError: Bool)
-//    func showAlert(_ index : Int)
 }

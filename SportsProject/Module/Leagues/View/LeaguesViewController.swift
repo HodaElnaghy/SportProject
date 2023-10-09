@@ -12,7 +12,7 @@ class LeaguesViewController: UIViewController {
     
     // MARK: - Variables
     var presenter: LeaguesPresenter!
-    var pathURL: String!
+    var sport: SportType!
     
     // MARK: - Outlet
     @IBOutlet weak var leaguesTableView: UITableView!
@@ -22,7 +22,7 @@ class LeaguesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Leagues"
-        presenter = LeaguesPresenter(view: self, pathURL: pathURL)
+        presenter = LeaguesPresenter(view: self, sport: sport)
         presenter.viewDidLoad()
         configureTableView()
     }
@@ -37,7 +37,6 @@ class LeaguesViewController: UIViewController {
         presenter.stopNotification()
     }
     
-    
     //MARK: - Configure TableView
     private func configureTableView() {
         leaguesTableView.dataSource = self
@@ -46,7 +45,6 @@ class LeaguesViewController: UIViewController {
         let nib = UINib(nibName: String(describing: LeaguesCell.self), bundle: nil)
         leaguesTableView.register(nib, forCellReuseIdentifier: LeaguesCell.identifier)
     }
-
 }
 
 // MARK: - TableView DataSource
@@ -66,7 +64,7 @@ extension LeaguesViewController: UITableViewDataSource {
 //MARK: - TableView Delegate
 extension LeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108
+        return 85
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -77,7 +75,6 @@ extension LeaguesViewController: UITableViewDelegate {
         }
     }
 }
-
 
 //MARK: - Conform LeaguesProtocol
 extension LeaguesViewController: LeaguesProtocol {
@@ -99,10 +96,11 @@ extension LeaguesViewController: LeaguesProtocol {
     
     // Note: IF View has reference to Any Model, Code Smells!
     // Code Smells are a result of poor or misguided programming.
-    func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?) {
-        let vc = LeagueViewController(nibName: "LeagueViewController", bundle: nil)
-        vc.pathURL = pathURL
-        vc.leagueId = leagueId
+    func navigateToLeagueEventsScreen(with model: CustomSportModel) {
+        let vc = LeagueEventsViewController(nibName: VCIdentifier.LeagueEventsViewController, bundle: nil)
+//        vc.pathURL = pathURL
+//        vc.leagueId = leagueId
+        vc.model = model
         navigationController?.pushViewController(vc, animated: true)
     }
     

@@ -12,14 +12,11 @@ class HomeCustomCell: UICollectionViewCell {
     @IBOutlet weak var sportName: UILabel!
     @IBOutlet weak var sportImage: UIImageView!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         sportImage.layer.cornerRadius = 16
         sportImage.clipsToBounds = true
-        // Initialization code
     }
-
 }
 
 // MARK: - HomeCellProtocol

@@ -48,14 +48,14 @@ class FavoriteLeaguesViewController: UIViewController {
 
 // MARK: - TableView DataSource
 extension FavoriteLeaguesViewController: UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.getLeaguesCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LeaguesCell.identifier, for: indexPath) as? LeaguesCell else {  return LeaguesCell() }
-        presenter.configureCell(cell: cell, for: indexPath.row)
+        presenter.configureCell(cell, for: indexPath.row)
         return cell
     }
 }
@@ -63,15 +63,14 @@ extension FavoriteLeaguesViewController: UITableViewDataSource {
 //MARK: - TableView Delegate
 extension FavoriteLeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108
+        return 85
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if presenter.isConnectedToInternet() {
-            presenter.didSelectRow(index: indexPath.row)
+            presenter.didSelectRow(at: indexPath.row)
         } else {
-            print("presenter.showAlert()!!!!!")
-            presenter.showAlert()
+            presenter.showAlertForConnectivity()
         }
     }
     
@@ -92,7 +91,6 @@ extension FavoriteLeaguesViewController: UITableViewDelegate {
     }
 }
 
-
 //MARK: - Conform LeaguesProtocol
 extension FavoriteLeaguesViewController: FavoriteLeaguesProtocol {
   
@@ -100,6 +98,15 @@ extension FavoriteLeaguesViewController: FavoriteLeaguesProtocol {
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
             favoritesTableView.reloadData()
+        }
+    }
+    
+    func updateTableView(at indexPath: IndexPath) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            favoritesTableView.beginUpdates()
+            favoritesTableView.deleteRows(at: [indexPath], with: .fade)
+            favoritesTableView.endUpdates()
         }
     }
     
@@ -111,25 +118,20 @@ extension FavoriteLeaguesViewController: FavoriteLeaguesProtocol {
         activityIndicator.stopAnimating()
     }
     
-    // Note: IF View has reference to Any Model, Code Smells!
-    // Code Smells are a result of poor or misguided programming.
-    func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?) {
-        let vc = LeagueViewController(nibName: "LeagueViewController", bundle: nil)
-        vc.pathURL = pathURL
-        vc.leagueId = leagueId
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func showAlert() {
+    func showAlertForConnectivity() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
     }
     
-    func updateTableView(at indexPath: IndexPath) {
-        DispatchQueue.main.async { [weak self] in
-            guard let self = self else { return }
-            favoritesTableView.beginUpdates()
-            favoritesTableView.deleteRows(at: [indexPath], with: .fade)
-            favoritesTableView.endUpdates()
-        }
+//    func showAlertFromBakcend() {
+//        show(messageAlert: BackendMessage.alertTitle, message: BackendMessage.alertMessage)
+//    }
+    
+    // Note: IF View has reference to Any Model, Code Smells!
+    // Code Smells are a result of poor or misguided programming.
+    func navigateToLeagueEventsScreen(with model: CustomSportModel) {
+        let vc = LeagueEventsViewController(nibName: VCIdentifier.LeagueEventsViewController, bundle: nil)
+        vc.model = model
+        navigationController?.pushViewController(vc, animated: true)
     }
+    
 }

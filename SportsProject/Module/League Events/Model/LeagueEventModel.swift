@@ -7,19 +7,18 @@
 
 import Foundation
 
-struct LeagueEventModel : Codable {
-    let eventKey : Int?
-    let eventDate : String?
-    let eventTime : String?
-    let eventHomeTeam : String?
-    let eventAwayTeam : String?
-    let eventFinalResult : String?
-    let eventLive : String?
-    let homeTeamLogo : String?
-    let awayTeamLogo : String?
-    let leagueLogo : String?
+struct LeagueEventModel: Decodable {
+    let eventKey: Int?
+    let eventDate: String?
+    let eventTime: String?
+    let eventHomeTeam: String?
+    let eventAwayTeam: String?
+    let eventFinalResult: String?
+    let homeTeamLogo: String?
+    let awayTeamLogo: String?
+    let leagueLogo: String?
     let leagueName: String?
-    let eventStatus : String?
+    let eventStatus: String?
     
     enum CodingKeys: String, CodingKey {
         case eventKey = "event_key"
@@ -28,7 +27,6 @@ struct LeagueEventModel : Codable {
         case eventHomeTeam = "event_home_team"
         case eventAwayTeam = "event_away_team"
         case eventFinalResult = "event_final_result"
-        case eventLive = "event_live"
         case homeTeamLogo = "home_team_logo"
         case awayTeamLogo = "away_team_logo"
         case leagueLogo = "league_logo"
@@ -44,7 +42,6 @@ struct LeagueEventModel : Codable {
         eventHomeTeam = try values.decodeIfPresent(String.self, forKey: .eventHomeTeam)
         eventAwayTeam = try values.decodeIfPresent(String.self, forKey: .eventAwayTeam)
         eventFinalResult = try values.decodeIfPresent(String.self, forKey: .eventFinalResult)
-        eventLive = try values.decodeIfPresent(String.self, forKey: .eventLive)
         homeTeamLogo = try values.decodeIfPresent(String.self, forKey: .homeTeamLogo)
         awayTeamLogo = try values.decodeIfPresent(String.self, forKey: .awayTeamLogo)
         leagueLogo = try values.decodeIfPresent(String.self, forKey: .leagueLogo)

@@ -6,13 +6,12 @@
 //
 
 import Foundation
-struct LeagueEventData : Codable {
-	let success : Int?
-	let result : [LeagueEventModel]?
+struct LeagueEventData: Decodable {
+	let success: Int?
+	let result: [LeagueEventModel]?
 
 	enum CodingKeys: String, CodingKey {
-		case success = "success"
-		case result = "result"
+		case success, result
 	}
 
 	init(from decoder: Decoder) throws {

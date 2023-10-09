@@ -33,50 +33,51 @@ struct URLs {
     // Football
     //https://apiv2.allsportsapi.com/football/
     /// GET{met, APIkey}
-    static let football = "/football/"
+    static let football = "/football"
     
     // Tennis
     //https://apiv2.allsportsapi.com/tennis/
     /// GET{met, APIkey}
-    static let tennis = "/tennis/"
+    static let tennis = "/tennis"
     
     // Basketball
     //https://apiv2.allsportsapi.com/basketball/
     /// GET{met, APIkey}
-    static let basketball = "/basketball/"
+    static let basketball = "/basketball"
     
     // Cricket
     //https://apiv2.allsportsapi.com/cricket/
     /// GET{met, APIkey}
-    static let cricket = "/cricket/"
+    static let cricket = "/cricket"
     
     
     // MARK: Extra
+    /*
     // Get upcoming events
     // https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=[leagueId]&from=[CurrentDate]&to=[CurrentDate + OneYear]&APIkey=[YourKey]
     // https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=205&from=2023-01-18&to=2024-01-18&APIkey=[YourKey]
     // GET{met, leagueId, from, to, APIkey}
-    static let upComingEvents = "/football/"
+    static let upComingEvents = "/football"
     
     
     // Get Latest Results :
     // https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=[leagueId]&from=[CurrentDate - OneYear]&to=[CurrentDate]&APIkey=[YourKey]
     // https://apiv2.allsportsapi.com/football?met=Fixtures&leagueId=205&from=2022-01-18&to=2023-01-18&APIkey=[YourKey]
     /// GET{met, leagueId, from, to, APIkey}
-    static let latestResults = "/football/"
+    static let latestResults = "/football"
 
     // Get All Teams
     // https://apiv2.allsportsapi.com/football/?met=Teams&leagueId=[leagueId]&APIkey=[YourKey]
     // https://apiv2.allsportsapi.com/football/?met=Teams&APIkey=0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73&leagueId=207
     /// get{met, leagueId, APIkey}
-    static let allTeams = "/football/"
+    static let allTeams = "/football"
     
     // Get Team Details
     // https://apiv2.allsportsapi.com/football/?met=Teams&teamId=[teamId]&APIkey=[YourKey]
     // https://apiv2.allsportsapi.com/football/?&met=Teams&teamId=96&APIkey=0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73
     /// get{met, teamId, APIkey}
-    static let teamDetails = "/football/"
-    
-    
+    // static let teamDetails = "/football"
+     */
+
     
 }
