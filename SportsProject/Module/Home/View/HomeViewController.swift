@@ -34,8 +34,13 @@ class HomeViewController: UIViewController {
         presenter.viewDidLoad()
         configureCollectionView()
         navigationItem.backBarButtonItem?.isHidden = true
+        var image = UIImage(systemName: "square.grid.2x2")
+        if defaults.bool(forKey: "isListView") {
+            image = UIImage(systemName: "list.bullet")
+        }
         
-        toggleButton = UIBarButtonItem(title: "List", style: .plain, target: self, action: #selector(butonTapped(sender:)))
+        
+        toggleButton = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(butonTapped(sender:)))
         self.navigationItem.setRightBarButton(toggleButton, animated: true)
     }
     
@@ -51,11 +56,11 @@ class HomeViewController: UIViewController {
     
     @objc func butonTapped(sender: UIBarButtonItem) {
         if defaults.bool(forKey: "isListView") {
-            toggleButton = UIBarButtonItem(title: "List", style: .plain, target: self, action: #selector(butonTapped(sender:)))
+            toggleButton = UIBarButtonItem(image: UIImage(systemName: "square.grid.2x2"), style: .plain, target: self, action: #selector(butonTapped(sender:)))
             isListView = false
             defaults.set(isListView, forKey: "isListView")
         }else {
-            toggleButton = UIBarButtonItem(title: "Grid", style: .plain, target: self, action: #selector(butonTapped(sender:)))
+            toggleButton = UIBarButtonItem(image: UIImage(systemName: "list.bullet"), style: .plain, target: self, action: #selector(butonTapped(sender:)))
             isListView = true
             defaults.set(isListView, forKey: "isListView")
         }
@@ -121,7 +126,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
         if defaults.bool(forKey: "isListView") == false {
-            return CGSize(width: width - 30, height: 120)
+            return CGSize(width: width - 30, height: ((width - 15)/2)-30)
         } else {
             return CGSize(width: (width - 15)/2, height: (width - 15)/2)
         }

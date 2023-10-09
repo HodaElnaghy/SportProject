@@ -30,7 +30,18 @@ class LeagueCustomCell: UICollectionViewCell {
         // Initialization code
         backgroundImage.layer.cornerRadius = 20
         backgroundImage.clipsToBounds = true
+        self.leagueLogoImageView.layer.cornerRadius = min(leagueLogoImageView.frame.size.width, leagueLogoImageView.frame.size.height) / 2.0
+
+
+        self.leagueLogoImageView.layer.masksToBounds = true
+
+        // Add a circular black stroke (border) around the image view
+        self.leagueLogoImageView.layer.borderWidth = 1.0 // Adjust the border width as needed
+        self.leagueLogoImageView.layer.borderColor = UIColor.black.cgColor
     }
+    
+    
+
 
 }
 

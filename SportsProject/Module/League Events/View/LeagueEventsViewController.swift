@@ -123,7 +123,10 @@ extension LeagueEventsViewController {
 // MARK: - Data Source
 extension LeagueEventsViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        3
+        if presenter.getAllTeamsCount() < 1 {
+            return 2
+        }
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

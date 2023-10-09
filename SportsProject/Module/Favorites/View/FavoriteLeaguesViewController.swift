@@ -16,6 +16,8 @@ class FavoriteLeaguesViewController: UIViewController {
     @IBOutlet weak var favoritesTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var noFavoritesAdded: UIImageView!
+    
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,16 +25,27 @@ class FavoriteLeaguesViewController: UIViewController {
         presenter = FavoritesPresenter(view: self)
         presenter.viewDidLoad()
         configureTableView()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         presenter.viewDidLoad()
+        noFavorites()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         presenter.stopNotification()
+    }
+    
+    func noFavorites() {
+        if presenter.getLeaguesCount() < 1{
+            noFavoritesAdded.isHidden = false
+        }
+        else {
+            noFavoritesAdded.isHidden = true
+        }
     }
 
     //MARK: - Configure TableView
@@ -85,7 +98,6 @@ extension FavoriteLeaguesViewController: UITableViewDelegate {
             }
             alertController.addAction(cancelAction)
             alertController.addAction(confirmAction)
-            
             present(alertController, animated: true)
         }
     }
@@ -107,6 +119,7 @@ extension FavoriteLeaguesViewController: FavoriteLeaguesProtocol {
             favoritesTableView.beginUpdates()
             favoritesTableView.deleteRows(at: [indexPath], with: .fade)
             favoritesTableView.endUpdates()
+            noFavorites()
         }
     }
     
