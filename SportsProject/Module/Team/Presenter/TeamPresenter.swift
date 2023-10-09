@@ -104,6 +104,12 @@ class TeamPresenter {
         return teamResult.first?.teamLogo
     }
     
+    func updatePlayerTypeLabel(for index: Int) {
+        let playerType = players[index].playerType
+        view?.updatePlayerTypeLabel(type: playerType)
+    }
+    
+    
     // MARK: - Configure Cell
     func configureCell(cell: TeamCellProtocol, for index: Int) {
         let player = players[index]

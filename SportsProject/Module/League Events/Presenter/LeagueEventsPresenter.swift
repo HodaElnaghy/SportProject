@@ -242,15 +242,14 @@ class LeagueEventsPresenter {
     // MARK: - View Protocol, Navigation
     
     func didSelectRow(index: Int) {
-        //view?.navigateToTeamScreen(pathURL: pathURL, teamId: team.teamKey)
-        if model?.sport == SportType.tennis {
-            let player = tennisPlayers[index]
-            view?.navigateToTeamScreen(pathURL: (model?.sport.rawValue)!, teamId: player.playerKey)
-        } else {
-            let team = teams[index]
-            view?.navigateToTeamScreen(pathURL:  (model?.sport.rawValue)!, teamId: team.teamKey)
+            if model?.sport == SportType.football {
+                let team = teams[index]
+                view?.navigateToTeamScreen(pathURL:  (model?.sport.rawValue)!, teamId: team.teamKey)
+            } else {
+                view?.showAlertNotAllowedToNavigate()
+               print("Only football allowed to navigate to next screen!!")
+            }
         }
-    }
     
     func showAlert() {
         view?.showAlert()

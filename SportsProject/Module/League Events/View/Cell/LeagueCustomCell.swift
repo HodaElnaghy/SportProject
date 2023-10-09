@@ -9,7 +9,9 @@ import UIKit
 import Kingfisher
 
 class LeagueCustomCell: UICollectionViewCell {
-
+    
+    
+    @IBOutlet weak var leagueBackgroundView: UIView!
     @IBOutlet weak var backgroundImage: UIImageView!
     
     @IBOutlet weak var homeTeamImageView: UIImageView!
@@ -18,7 +20,7 @@ class LeagueCustomCell: UICollectionViewCell {
     
     @IBOutlet weak var eventAwayTeamLabel: UILabel!
     @IBOutlet weak var eventHomeTeamLabel: UILabel!
-
+    
     @IBOutlet weak var eventFinalResult: UILabel!
     @IBOutlet weak var eventTimeLabel: UILabel!
     @IBOutlet weak var eventDateLabel: UILabel!
@@ -31,18 +33,22 @@ class LeagueCustomCell: UICollectionViewCell {
         backgroundImage.layer.cornerRadius = 20
         backgroundImage.clipsToBounds = true
         self.leagueLogoImageView.layer.cornerRadius = min(leagueLogoImageView.frame.size.width, leagueLogoImageView.frame.size.height) / 2.0
-
-
+        
+        
         self.leagueLogoImageView.layer.masksToBounds = true
-
+        
         // Add a circular black stroke (border) around the image view
         self.leagueLogoImageView.layer.borderWidth = 1.0 // Adjust the border width as needed
         self.leagueLogoImageView.layer.borderColor = UIColor.black.cgColor
+        
+        leagueBackgroundView.layer.cornerRadius = 20
+        leagueBackgroundView.clipsToBounds = true
+        leagueBackgroundView.dropShadow()
     }
     
     
-
-
+    
+    
 }
 
 extension LeagueCustomCell: LeagueCustomCellProtocol {
@@ -55,7 +61,11 @@ extension LeagueCustomCell: LeagueCustomCellProtocol {
     }
     
     func displayFinalResult(_ result: String) {
-        eventFinalResult.text = result
+        if result == "-" {
+            eventFinalResult.text = ""
+        } else {
+            eventFinalResult.text = result
+        }
     }
     
     func diaplayEventTime(_ time: String) {
@@ -67,7 +77,11 @@ extension LeagueCustomCell: LeagueCustomCellProtocol {
     }
     
     func displayEventState(_ state: String) {
-        eventStatusLabel.text = state
+        if state.isEmpty {
+            eventStatusLabel.text = "Match scheduled"
+        } else {
+            eventStatusLabel.text = "Match \(state)"
+        }
     }
     
     func displayHomeTeamImage(by stringURL: String?) {

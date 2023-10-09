@@ -46,7 +46,7 @@ extension TeamCell: TeamCellProtocol {
     }
     
     func displayImage(by stringURL: String?) {
-        playerImageView.downloadImageFrom(stringURL)
+        playerImageView.downloadImageFrom(stringURL, placeHolder: "player")
         if stringURL == nil {
             playerImageView.image = UIImage(named: "player")
         }

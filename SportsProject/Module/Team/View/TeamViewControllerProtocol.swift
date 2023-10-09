@@ -10,7 +10,6 @@ import Foundation
 protocol TeamViewControllerProtocol: AnyObject {
     func showIndicator()
     func hideIndicator()
-//    func fetchingDataSuccess()
-//    func showError(error: String)
     func reloadCollectionView()
+    func updatePlayerTypeLabel(type: String?)
 }
