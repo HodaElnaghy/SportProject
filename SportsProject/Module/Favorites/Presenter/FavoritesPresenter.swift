@@ -7,67 +7,28 @@
 
 import Foundation
 
-class FavoritesPresenter {
+class FavoritesPresenter: BasePresenter {
     // MARK: - Variables
-    private var view: FavoriteLeaguesProtocol?
-    private var reachability: ReachabilityManager?
-
-    private var dbManager: DataBaseManagerProtocol?
+    private weak var view: FavoriteLeaguesProtocol?
+    private let dbManager: DataBaseManagerProtocol?
+    
     private var items: [LeagueModelDB] = Array<LeagueModelDB>()
-    private var isConnected: Bool!
     
     // MARK: - Initializer
     init(view: FavoriteLeaguesProtocol? = nil) {
         self.view = view
         dbManager = CoreDataManager()
-        reachability = ReachabilityManager.shared
     }
     
     // MARK: - Life cycle
     func viewDidLoad() {
         startNotification()
-        handleReachability()
+        handleReachability(view: view)
         getLeaguesFromCoreData()
     }
    
-    // MARK: - Connectivity
-    private func startNotification() {
-        print("startNotification")
-        reachability?.startNotification()
-    }
-    
-    func stopNotification() {
-        print("stopNotification")
-        reachability?.stopNotification()
-    }
-    
-   private func handleReachability() {
-        print("handleReachability")
-        reachability?.handleReachability(completion: { [weak self] connection in
-            guard let self = self else { return }
-            switch connection {
-            case .none:
-                isConnected = false
-                view?.displayMessage(message: ConnectivityMessage.noInternet, messageError: true)
-            case .unavailable:
-                isConnected = false
-                view?.displayMessage(message: ConnectivityMessage.noInternet, messageError: true)
-            case .wifi:
-                isConnected = true
-                view?.displayMessage(message: ConnectivityMessage.wifiConnect, messageError: false)
-            case .cellular:
-                isConnected = true
-                view?.displayMessage(message: ConnectivityMessage.cellularConnect, messageError: false)
-            }
-        })
-    }
-    
-    func isConnectedToInternet() -> Bool {
-         return isConnected
-    }
-    
     // MARK: - Core Data
-    func getLeaguesFromCoreData() {
+    private func getLeaguesFromCoreData() {
         view?.showIndicator()
         dbManager?.fetchLeagues(completion: { [weak self] result in
             guard let self = self else { return }
@@ -99,21 +60,24 @@ class FavoritesPresenter {
         return items.count
     }
     
-    func configureCell(cell: LeaguesCellProtocol, for index: Int) {
+    func configureCell(_ cell: LeaguesCellProtocol, for index: Int) {
         let league = items[index]
-        cell.displayLeagueTitle(title: league.leagueName ?? "There is no name")
-        cell.displayLeagueImage(by: league.leagueLogo ?? "person.fill")
+        cell.displayLeagueTitle(title: league.leagueName ?? "")
+        cell.displayLeagueImage(by: league.leagueLogo)
     }
-    
     
     // MARK: - Favorites View Protocol
-    func didSelectRow(index: Int) {
-        guard let pathURL = items[index].pathURL else { return }
-        guard let leagueId = items[index].leagueId else { return }
-        view?.navigateToLeagueEventsScreen(pathURL: pathURL, leagueId: leagueId)
+    func didSelectRow(at index: Int) {
+        let league = items[index]
+        let leagueId = league.leagueId
+        let leagueName = league.leagueName
+        let leagueLogo = league.leagueLogo
+        let sport = SportType(rawValue: league.pathURL ?? "")
+        let model = CustomSportModel(leagueKey: leagueId, leagueName: leagueName, leagueLogo: leagueLogo, sport: sport!)
+        view?.navigateToLeagueEventsScreen(with: model)
     }
     
-    func showAlert() {
-        view?.showAlert()
+    func showAlertForConnectivity() {
+        view?.showAlertForConnectivity()
     }
 }

@@ -7,14 +7,13 @@
 
 import Foundation
 
-protocol LeaguesProtocol: AnyObject {
+protocol LeaguesProtocol: AnyObject, BaseView {
     func reloadLeaguesTableView()
     func showIndicator()
     func hideIndicator()
     func showAlert()
-    func displayMessage(message: String, messageError: Bool)
-    func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?)
-    //    func fetchingDataSuccess()
+//    func displayMessage(_ message: String, theme: MessagesTheme)
+    func navigateToLeagueEventsScreen(with model: CustomSportModel)
 }
 
 

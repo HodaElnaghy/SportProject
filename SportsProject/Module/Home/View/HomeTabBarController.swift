@@ -14,7 +14,7 @@ class HomeTabBarController: UITabBarController {
         let homeController = HomeViewController()
         let favoriteController = FavoriteLeaguesViewController()
         
-        homeController.title = "home"
+        homeController.title = "Sports"
         favoriteController.title = "Favorites"
         
         let homeNavController = UINavigationController(rootViewController: homeController)

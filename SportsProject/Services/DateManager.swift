@@ -51,6 +51,7 @@ final class DateManager {
     }
     
     // MARK: - Last number of days
+    // Note this function can be used for previous & next, depened on day positive or negative.
     func previousDaysInStringFormat(_ day: Int = -7) -> String {
         let dayCopy = day > 0 ? day * -1 : day // To make sure the day will be a negative number
         let sevenDaysBefore = Calendar.current.date(byAdding: .day, value: dayCopy, to: now)!

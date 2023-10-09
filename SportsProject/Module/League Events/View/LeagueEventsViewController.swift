@@ -8,15 +8,13 @@
 import UIKit
 import Lottie
 
-
-class LeagueViewController: UIViewController {
+class LeagueEventsViewController: UIViewController {
     
     // MARK: - Variables
     private var animationView: LottieAnimationView?
     private var presenter: LeagueEventsPresenter!
-    var pathURL: String!
-    var leagueId: Int?
-    var flag: Bool?
+    var model: CustomSportModel?
+    var isFavourite: Bool?
     
     // MARK: - Outlet
     @IBOutlet weak var collectionView: UICollectionView!
@@ -24,36 +22,25 @@ class LeagueViewController: UIViewController {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter = LeagueEventsPresenter(view: self, pathURL: pathURL, leagueId: leagueId)
+        configureCollectionView()
+        presenter = LeagueEventsPresenter(view: self, model: model)
 //        presenter.configConnectivity() // configuer Connectivity
-        
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.setCollectionViewLayout(creatCompositionalLayout(), animated:false)
-
-        self.collectionView.register(UINib(nibName: "TeamCustomCell", bundle: nil), forCellWithReuseIdentifier: "TeamCustomCell")
-        self.collectionView.register(UINib(nibName: "LeagueCustomCell", bundle: nil), forCellWithReuseIdentifier: "LeagueCustomCell")
-        self.collectionView.register(UINib(nibName: "EmptyCell", bundle: nil), forCellWithReuseIdentifier: "EmptyCell")
-        self.collectionView.register( SectionHeader.self, forSupplementaryViewOfKind: LeagueViewController.sectionHeaderElementKind, withReuseIdentifier: SectionHeader.reuseIdentifier)
         
         // Presenter fetch data
         presenter.viewDidLoad()
-       
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //presenter.configConnectivity()
+//        presenter.configConnectivity()
         
         if presenter.isFavorite() {
-            flag = true // set image "heart.fill"
+            isFavourite = true // set image "heart.fill"
             print("viewWillAppear: \(presenter.isFavorite())")
-            
         } else {
-            flag = false // set image "heart"
+            isFavourite = false // set image "heart"
             print("viewWillAppear: \(presenter.isFavorite())")
         }
-        
         addFavouriteButton()
     }
 
@@ -62,11 +49,21 @@ class LeagueViewController: UIViewController {
 //        presenter.stopNotification()
 //    }
     
+    private func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.setCollectionViewLayout(creatCompositionalLayout(), animated:false)
+
+        self.collectionView.register(UINib(nibName: "TeamCustomCell", bundle: nil), forCellWithReuseIdentifier: "TeamCustomCell")
+        self.collectionView.register(UINib(nibName: "LeagueCustomCell", bundle: nil), forCellWithReuseIdentifier: "LeagueCustomCell")
+        self.collectionView.register(UINib(nibName: "EmptyCell", bundle: nil), forCellWithReuseIdentifier: "EmptyCell")
+        self.collectionView.register( SectionHeader.self, forSupplementaryViewOfKind: LeagueEventsViewController.sectionHeaderElementKind, withReuseIdentifier: SectionHeader.reuseIdentifier)
+    }
     
 }
 
 // MARK: - Compostional Layout
-extension LeagueViewController {
+extension LeagueEventsViewController {
     
     func creatCompositionalLayout() -> UICollectionViewCompositionalLayout {
         let layout = UICollectionViewCompositionalLayout { index, environment in
@@ -78,7 +75,7 @@ extension LeagueViewController {
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
                 layoutSize: headerSize,
-                elementKind: LeagueViewController.sectionHeaderElementKind, alignment: .top)
+                elementKind: LeagueEventsViewController.sectionHeaderElementKind, alignment: .top)
             
             let itemSize = NSCollectionLayoutSize(widthDimension: .absolute(environment.container.contentSize.width - 20), heightDimension: .fractionalHeight(1))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
@@ -124,7 +121,7 @@ extension LeagueViewController {
 }
 
 // MARK: - Data Source
-extension LeagueViewController: UICollectionViewDataSource {
+extension LeagueEventsViewController: UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         3
     }
@@ -147,54 +144,41 @@ extension LeagueViewController: UICollectionViewDataSource {
         
         switch indexPath.section {
         case 0:
-            
-            if (presenter.getLatestResultsCount() != 0) {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueCustomCell", for: indexPath) as? LeagueCustomCell else { return LeagueCustomCell() }
-                presenter.configureUpcomingEvents(cell: cell, for: indexPath.row)
-                cell.isHidden = false
-                return cell
-            }
-            else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath) as? EmptyCell
-                else { return LeagueCustomCell() }
-                cell.emptyCellLabel.text = "No upcoming events available"
-                cell.isHidden = false
-                return cell
-            }
-            
+            return setupCellForSection(indexPath: indexPath, identifier: CellIdentifier.LeagueCustomCell, customCell: LeagueCustomCell(), emptyCellText: "No upcoming events available")
         case 1:
-            if presenter.getLatestResultsCount() != 0 {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "LeagueCustomCell", for: indexPath) as? LeagueCustomCell else { return LeagueCustomCell() }
-                
-                presenter.configurLatestResults(cell: cell, for: indexPath.row)
-                cell.isHidden = false
-                
-                return cell
-            }
-            else {
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmptyCell", for: indexPath) as? EmptyCell
-                else { return LeagueCustomCell() }
-                cell.emptyCellLabel.text = "No latest events available"
-                cell.isHidden = false
-                return cell
-            }
-            
+            return setupCellForSection(indexPath: indexPath, identifier: CellIdentifier.LeagueCustomCell, customCell: LeagueCustomCell(), emptyCellText: "No latest events available")
         case 2:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCustomCell", for: indexPath) as? TeamCustomCell else { return TeamCustomCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.TeamCustomCell, for: indexPath) as? TeamCustomCell else { return TeamCustomCell() }
             
             presenter.configureTeam(cell: cell, for: indexPath.row)
             return cell
         default:
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TeamCustomCell", for: indexPath) as? TeamCustomCell else { return TeamCustomCell() }
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.TeamCustomCell, for: indexPath) as? TeamCustomCell else { return TeamCustomCell() }
             
             presenter.configureTeam(cell: cell, for: indexPath.row)
+            return cell
+        }
+    }
+    
+    private func setupCellForSection(indexPath: IndexPath, identifier: String, customCell: UICollectionViewCell, emptyCellText: String) -> UICollectionViewCell {
+        if (presenter.getLatestResultsCount() != 0) {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? LeagueCustomCell else { return customCell }
+            presenter.configureUpcomingEvents(cell: cell, for: indexPath.row)
+            cell.isHidden = false
+            return cell
+        }
+        else {
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.EmptyCell, for: indexPath) as? EmptyCell
+            else { return LeagueCustomCell() }
+            cell.emptyCellLabel.text = emptyCellText
+            cell.isHidden = false
             return cell
         }
     }
 }
 
 // MARK: - DatSource Objective-C ?? Ask Hoda
-extension LeagueViewController {
+extension LeagueEventsViewController {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: 100, height: 50) // Adjust the height as needed
     }
@@ -202,22 +186,20 @@ extension LeagueViewController {
     // Provide the view for the section header
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionHeaderArray: [String] = ["Upcoming Events", "Latest Events", "Teams"]
-        if kind == LeagueViewController.sectionHeaderElementKind {
+        if kind == LeagueEventsViewController.sectionHeaderElementKind {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as! SectionHeader
-            
             // Customize the header view, for example, setting the title
             headerView.label.text = sectionHeaderArray[indexPath.section]
             
             return headerView
         }
-        
         // Return an empty view for other kinds (e.g., footer)
         return UICollectionReusableView()
     }
 }
 
 // MARK: - Delegate & Delegate Flow Layout
-extension LeagueViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension LeagueEventsViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 2:
@@ -235,16 +217,17 @@ extension LeagueViewController: UICollectionViewDelegate, UICollectionViewDelega
     }
 }
 
-extension LeagueViewController {
+// TODO: - Ask Hoda!!
+extension LeagueEventsViewController {
     static let sectionHeaderElementKind = "section-header-element-kind"
 }
 
 //MARK: - Conform LeaguesProtocol
-
-extension LeagueViewController: LeagueEventsView {
+extension LeagueEventsViewController: LeagueEventsView {
     func reloadCollectionView() {
         DispatchQueue.main.async { [weak self] in
-            self?.collectionView.reloadData()
+            guard let self = self else { return }
+            collectionView.reloadData()
         }
     }
     
@@ -257,22 +240,20 @@ extension LeagueViewController: LeagueEventsView {
     }
     
     func navigateToTeamScreen(pathURL: String, teamId: Int?) {
-        let vc = TeamViewController(nibName: "TeamViewController", bundle: nil)
+        let vc = TeamViewController(nibName: VCIdentifier.TeamViewController, bundle: nil)
          vc.pathURL = pathURL
          vc.teamId = teamId
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    
     func showAlert() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
     }
-
 }
 
 
 // MARK: - Save League in CoreData
-extension LeagueViewController {
+extension LeagueEventsViewController {
     private func addFavouriteButton() {
         let heartButton = UIButton(type: .custom)
         heartButton.setImage(UIImage(systemName: "heart"), for: .normal)
@@ -280,7 +261,7 @@ extension LeagueViewController {
         heartButton.tintColor = UIColor.red
         heartButton.addTarget(self, action: #selector(toggleFavourite), for: .touchUpInside)
 
-        if flag ?? false{
+        if isFavourite ?? false{
             heartButton.isSelected = true
         }
 
@@ -330,12 +311,14 @@ extension LeagueViewController {
         var data: Data? = Data()
         let details = presenter.getLeagueDetails()
 
-        let leagueId = leagueId
-        let pathURL = pathURL
+//        let leagueId = leagueId
+//        let pathURL = pathURL
+        let leagueId = model?.leagueKey
+        let pathURL = model?.sport.rawValue
         let leagueName = details.leagueName
         let leagueLogo = details.leagueLogo
         
-        downloadImageFrom(leagueLogo) { image in
+        downloadImage(by: leagueLogo) { image in
             guard let image = image else { return }
             //data = image.jpegData(compressionQuality: 0.5)
             data = image.pngData()
@@ -345,18 +328,7 @@ extension LeagueViewController {
         presenter.insertLeague(leagueModelDB)
     }
     
-    private func downloadImageFrom(_ stringURL: String?, completion: @escaping(UIImage?) -> Void) {
-        guard let stringURL = stringURL else { return }
-        guard let url = URL(string: stringURL) else { return }
-
-        UIImageView().kf.setImage(with: url) { [weak self] result in
-            guard self != nil else { return }
-            switch result {
-            case .success(let imageRes):
-                completion(imageRes.image)
-            case .failure(_):
-                completion(UIImage(named: "heart.fill"))
-            }
-        }
+    private func downloadImage(by stringURL: String?, completion: @escaping(UIImage?) -> Void) {
+        UIImageView().downloadImageFrom(stringURL)
     }
 }

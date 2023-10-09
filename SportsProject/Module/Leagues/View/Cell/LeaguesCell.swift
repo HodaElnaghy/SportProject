@@ -50,14 +50,10 @@ class LeaguesCell: UITableViewCell {
 // MARK: - LeaguesCellProtocol
 extension LeaguesCell: LeaguesCellProtocol {
     func displayLeagueImage(by stringURL: String?) {
-        leagueImageView.downloadImageFrom(stringURL)
-        if stringURL == nil {
-            leagueImageView.image = UIImage(named: "leagueDefault")
-        }
+        leagueImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
     
     func displayLeagueTitle(title: String) {
         leagueTitleLabel.text = title
     }
-    
 }

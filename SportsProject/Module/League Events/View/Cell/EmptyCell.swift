@@ -14,8 +14,6 @@ class EmptyCell: UICollectionViewCell {
         emptyCellLabel.textAlignment = .center
         emptyCellLabel.textColor = .gray
         emptyCellLabel.font = UIFont.systemFont(ofSize: 16)
-       
-        // Initialization code
     }
 
 }

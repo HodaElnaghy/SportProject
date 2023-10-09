@@ -7,16 +7,15 @@
 
 import Foundation
 
-protocol LeagueEventsView: AnyObject {
+protocol LeagueEventsView: AnyObject, BaseView {
 //    func ShowIndicator()
 //    func HideIndicator()
     func reloadCollectionView()
     func showAlert()
-    func displayMessage(message: String, messageError: Bool)
+    func displayMessage(_ message: String, theme: MessagesTheme)
     func navigateToTeamScreen(pathURL: String, teamId: Int?)
 }
 
-
-protocol FavoriteDelegate {
-    func updateTableViewData()
-}
+//protocol FavoriteDelegate {
+//    func updateTableViewData()
+//}

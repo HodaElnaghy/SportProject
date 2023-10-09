@@ -60,23 +60,14 @@ extension LeagueCustomCell: LeagueCustomCellProtocol {
     }
     
     func displayHomeTeamImage(by stringURL: String?) {
-        homeTeamImageView.downloadImageFrom(stringURL)
-        if stringURL == nil {
-            homeTeamImageView.image = UIImage(named: "leagueDefault")
-        }
+        homeTeamImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
     
     func displayAwayTeamImage(by stringURL: String?) {
-        awayTeamImageView.downloadImageFrom(stringURL)
-        if stringURL == nil {
-            awayTeamImageView.image = UIImage(named: "leagueDefault")
-        }
+        awayTeamImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
     
     func displayLeagueImage(by stringURL: String?) {
-        leagueLogoImageView.downloadImageFrom(stringURL)
-        if stringURL == nil {
-            leagueLogoImageView.image = UIImage(named: "leagueDefault")
-        }
+        leagueLogoImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
 }

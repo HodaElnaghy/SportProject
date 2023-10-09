@@ -16,8 +16,7 @@ class TeamPresenter {
     
     private let api: TeamAPIProtocol = TeamAPI()
     private var teamResult: [TeamResult] = Array<TeamResult>()
-//    private var players = Array<Players>()
-//    private var coaches = Array<Coaches>()
+    
     private var players: [Players] = []
     private var coaches: [Coaches] = []
     
@@ -29,7 +28,7 @@ class TeamPresenter {
     private let metPlayer: Met = .players
     private let metTeams: Met = .teams
     private let APIkey = Token.APIKey
-    private let url = URLs.teamDetails
+//    private let url = URLs.teamDetails
     
     // MARK: - Init
     init(view: TeamViewControllerProtocol? = nil, pathURL: String, teamId: Int?) {

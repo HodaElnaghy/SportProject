@@ -19,8 +19,6 @@ struct TeamResult : Decodable {
 		case teamKey = "team_key"
 		case teamName = "team_name"
 		case teamLogo = "team_logo"
-//		case players = "players"
-//		case coaches = "coaches"
         case players, coaches
 	}
 
