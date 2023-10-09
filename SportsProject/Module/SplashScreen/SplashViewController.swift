@@ -42,8 +42,10 @@ class AnimatedLaunchScreen: UIViewController {
     
 
     @objc func MainNav() {
-        let cartVC =  HomeTabBarController()
-        self.navigationController?.pushViewController(cartVC, animated: true)
         
+            let homeTabBarController = HomeTabBarController()
+        homeTabBarController.tabBar.translatesAutoresizingMaskIntoConstraints = false
+            navigationController?.setViewControllers([homeTabBarController], animated: true)
         }
+    
 }

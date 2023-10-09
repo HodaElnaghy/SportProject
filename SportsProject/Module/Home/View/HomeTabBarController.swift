@@ -11,21 +11,32 @@ import UIKit
 class HomeTabBarController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
-//        self.navigationItem.setHidesBackButton(true, animated: false)
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setNeedsLayout()
+        navigationController?.isNavigationBarHidden = true
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem?.isHidden = true
         let homeController = HomeViewController()
         let favoriteController = FavoriteLeaguesViewController()
+        
+        
         
         
         homeController.title = "home"
         favoriteController.title = "Favorites"
         
-        self.setViewControllers([homeController, favoriteController], animated: true)
+        let homeNavController = UINavigationController(rootViewController: homeController)
+        let favoriteNavController = UINavigationController(rootViewController: favoriteController)
+        
+               // Set the view controllers for the tab bar controller
+        self.setViewControllers([homeNavController, favoriteNavController], animated: true)
+              
+        
+        
+       
         guard let items = self.tabBar.items else {return}
         let images = ["football", "heart"]
         
