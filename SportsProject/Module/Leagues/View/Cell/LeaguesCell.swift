@@ -26,8 +26,19 @@ class LeaguesCell: UITableViewCell {
         cardView.dropShadow()
         
         self.leagueImageView.layer.masksToBounds = false
-        self.leagueImageView.layer.cornerRadius = leagueImageView.frame.size.width/2
-        self.leagueImageView.clipsToBounds = true
+        // Set the corner radius to make the image view circular
+    
+
+        self.leagueImageView.layer.cornerRadius = min(leagueImageView.frame.size.width, leagueImageView.frame.size.height) / 2.0
+
+
+        self.leagueImageView.layer.masksToBounds = true
+
+        // Add a circular black stroke (border) around the image view
+        self.leagueImageView.layer.borderWidth = 1.0 // Adjust the border width as needed
+        self.leagueImageView.layer.borderColor = UIColor.black.cgColor
+
+        
         
         // remove separator, shift separatorInset to rigt by 500
         self.separatorInset = UIEdgeInsets(top: 0, left: 500, bottom: 0, right: 0)

@@ -17,7 +17,7 @@ class AnimatedLaunchScreen: UIViewController {
             print("Current View Controllers in Stack: \(viewControllers)")
             
         }
-        
+        view.backgroundColor = .white
         // 2. Start LottieAnimationView with animation name (without extension)
          
          animationView = .init(name: "Sports")
@@ -30,11 +30,11 @@ class AnimatedLaunchScreen: UIViewController {
          
          // 4. Set animation loop mode
          
-         animationView!.loopMode = .loop
+         animationView!.loopMode = .playOnce
          
          // 5. Adjust animation speed
          
-        animationView!.animationSpeed = 1.9
+        // animationView!.animationSpeed = 1.9
          
          view.addSubview(animationView!)
          
@@ -43,7 +43,7 @@ class AnimatedLaunchScreen: UIViewController {
          animationView!.play()
         
        // Timer.scheduledTimer(timeInterval: 4.3 , target: self, selector: #selector(MainNav), userInfo: nil, repeats: false)
-        Timer.scheduledTimer(timeInterval: 1 , target: self, selector: #selector(MainNav), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 3 , target: self, selector: #selector(MainNav), userInfo: nil, repeats: false)
         
     }
     
