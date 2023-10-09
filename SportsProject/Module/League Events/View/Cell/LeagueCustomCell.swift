@@ -14,6 +14,7 @@ class LeagueCustomCell: UICollectionViewCell {
     
     @IBOutlet weak var homeTeamImageView: UIImageView!
     @IBOutlet weak var awayTeamImageView: UIImageView!
+    @IBOutlet weak var leagueLogoImageView: UIImageView!
     
     @IBOutlet weak var eventAwayTeamLabel: UILabel!
     @IBOutlet weak var eventHomeTeamLabel: UILabel!
@@ -59,26 +60,14 @@ extension LeagueCustomCell: LeagueCustomCellProtocol {
     }
     
     func displayHomeTeamImage(by stringURL: String?) {
-        downloadImageFrom(stringURL, to: homeTeamImageView)
+        homeTeamImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
     
     func displayAwayTeamImage(by stringURL: String?) {
-        downloadImageFrom(stringURL, to: awayTeamImageView)
+        awayTeamImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
     
-    private func downloadImageFrom(_ stringURL: String?, to imageView: UIImageView) {
-        guard let stringURL = stringURL else { return }
-        guard let url = URL(string: stringURL) else { return }
-
-        imageView.kf.indicatorType = .activity
-        imageView.kf.setImage(with: url) { [weak self] result in
-            guard self != nil else { return }
-            switch result {
-            case .success(let imageRes):
-                imageView.image = imageRes.image
-            case .failure(_):
-                imageView.image = UIImage(named: "heart.fill")
-            }
-        }
+    func displayLeagueImage(by stringURL: String?) {
+        leagueLogoImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
 }

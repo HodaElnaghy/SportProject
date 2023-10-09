@@ -11,20 +11,32 @@ import SwiftMessages
 
 class HomeViewController: UIViewController {
     
-    // Variables
+    // MARK: - Variables
     var presenter: HomePresenter!
- 
+    let defaults = UserDefaults.standard
+    // TODO: - Save isListView in userDefaults.
+    var isListView: Bool?
+    // TODO: - Adjust image with Button.
+    var toggleButton = UIBarButtonItem()
+
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if defaults.bool(forKey: "isListView").description.isEmpty {
+            isListView = false
+        }
         self.navigationItem.leftBarButtonItems = []
         presenter = HomePresenter(view: self)
-        presenter.viewDidLoad()
         
+        presenter.viewDidLoad()
         configureCollectionView()
         navigationItem.backBarButtonItem?.isHidden = true
+        
+        toggleButton = UIBarButtonItem(title: "List", style: .plain, target: self, action: #selector(butonTapped(sender:)))
+        self.navigationItem.setRightBarButton(toggleButton, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -37,33 +49,46 @@ class HomeViewController: UIViewController {
         presenter.stopNotification()
     }
     
+    @objc func butonTapped(sender: UIBarButtonItem) {
+        if defaults.bool(forKey: "isListView") {
+            toggleButton = UIBarButtonItem(title: "List", style: .plain, target: self, action: #selector(butonTapped(sender:)))
+            isListView = false
+            defaults.set(isListView, forKey: "isListView")
+        }else {
+            toggleButton = UIBarButtonItem(title: "Grid", style: .plain, target: self, action: #selector(butonTapped(sender:)))
+            isListView = true
+            defaults.set(isListView, forKey: "isListView")
+        }
+        self.navigationItem.setRightBarButton(toggleButton, animated: true)
+        self.collectionView?.reloadData()
+    }
+    
     // MARK: - Configure CollectionView
     private func configureCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(UINib(nibName: "HomeCustomCell", bundle: nil), forCellWithReuseIdentifier: "HomeCustomCell")
+        collectionView.register(UINib(nibName: CellIdentifier.HomeCustomCell, bundle: nil), forCellWithReuseIdentifier: CellIdentifier.HomeCustomCell)
     }
 
 }
 
 // MARK: - UICollectionView DataSource
-extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         presenter.getSportsCount()
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCustomCell", for: indexPath) as? HomeCustomCell else { return UICollectionViewCell() }
-        presenter.configureCell(cell: cell, for: indexPath.item)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.HomeCustomCell, for: indexPath) as? HomeCustomCell else { return UICollectionViewCell() }
+//        if isListView {
+//            presenter.configureCell(cell, for: indexPath.item)
+//            return cell
+//        } else {
+//            presenter.configureCell(cell, for: indexPath.item)
+//            return cell
+//        }
+        presenter.configureCell(cell, for: indexPath.item)
         return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width/2)-13, height: (collectionView.frame.width/2)-13 )
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 8, bottom: 10, right: 8)
     }
 }
 
@@ -72,11 +97,34 @@ extension HomeViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if presenter.isConnectedToInternet() {
-            presenter.didsplaySelectItem(index: indexPath.item)
+            presenter.didsplaySelectItem(at: indexPath.item)
         } else {
             presenter.showAlert()
         }
-//        presenter.didsplaySelectItem(index: indexPath.item)
+    }
+}
+
+// MARK: - UICollectionView DelegateFlowLayout
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = view.frame.width
+        if defaults.bool(forKey: "isListView") == false {
+            return CGSize(width: width - 30, height: 120)
+        } else {
+            return CGSize(width: (width - 15)/2, height: (width - 15)/2)
+        }
     }
 }
 
@@ -84,19 +132,14 @@ extension HomeViewController: UICollectionViewDelegate {
 // MARK: - HomeView Protocol
 extension HomeViewController: HomeViewProtocol {
    
-    func navigateToLeaguesScreen(_ sportPathURL: String){
-        let vc = LeaguesViewController(nibName: "LeaguesViewController", bundle: nil)
-        vc.pathURL = sportPathURL
-//        vc.isConnected = isConnected
+    func navigateToLeaguesScreen(_ sport: SportType){
+        let vc = LeaguesViewController(nibName: VCIdentifier.LeaguesViewController, bundle: nil)
+        vc.sport = sport
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func showAlert() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
     }
-
-    
-    
-    
 }
 

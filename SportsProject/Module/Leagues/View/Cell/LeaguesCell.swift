@@ -50,25 +50,10 @@ class LeaguesCell: UITableViewCell {
 // MARK: - LeaguesCellProtocol
 extension LeaguesCell: LeaguesCellProtocol {
     func displayLeagueImage(by stringURL: String?) {
-        guard let stringURL = stringURL else { return }
-        guard let url = URL(string: stringURL) else { return }
-        
-        // Download image By Kingfisher
-        leagueImageView.kf.indicatorType = .activity
-        leagueImageView.kf.setImage(with: url) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let imageResult):
-                self.leagueImageView.image = imageResult.image
-            case .failure(let error):
-                print(error.localizedDescription)
-                self.leagueImageView.image = UIImage(systemName: "heart.fill")
-            }
-        }
+        leagueImageView.downloadImageFrom(stringURL, placeHolder: "leagueDefault")
     }
     
     func displayLeagueTitle(title: String) {
         leagueTitleLabel.text = title
     }
-    
 }

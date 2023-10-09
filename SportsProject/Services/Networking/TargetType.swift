@@ -18,7 +18,7 @@ enum HTTPMethod: String {
 // wrapper
 enum Task {
     case requestPlain
-    // Tupels
+    // associated value
     case requestParameters(parameters : [String: Any], encoding: ParameterEncoding)
 }
 

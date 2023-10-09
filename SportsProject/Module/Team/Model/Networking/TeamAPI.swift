@@ -22,4 +22,15 @@ class TeamAPI: BaseAPI<TeamNetworking>, TeamAPIProtocol {
             }
         }
     }
+    
+    func getPlayerData(met: String, teamId: Int, APIkey: String, pathURL: String, completion: @escaping(Result<TennisPlayerData?, NSError>) -> Void) {
+        fetchData(target: .getTeam(met: met, teamId: teamId, APIkey: APIkey, pathURL: pathURL), model: TennisPlayerData.self) { res in
+            switch res {
+            case .success(let data):
+                completion(.success(data))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

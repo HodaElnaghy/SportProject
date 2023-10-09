@@ -6,12 +6,11 @@
 //
 
 import Foundation
-struct TeamData : Codable {
-	let success : Int?
-	let result : [TeamResult]?
+struct TeamData: Decodable {
+	let success: Int?
+	let result: [TeamResult]?
 
 	enum CodingKeys: String, CodingKey {
-
 		case success = "success"
 		case result = "result"
 	}

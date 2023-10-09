@@ -9,8 +9,7 @@ import Foundation
 import Alamofire
 
 enum LeagueEventsNetworking {
-    case getUpcomingEvents(met: String, leagueId: Int, from: String, to: String, APIkey: String, pathURL: String)
-    case getLatestResults(met: String, leagueId: Int, from: String, to: String, APIkey: String, pathURL: String)
+    case getEvents(met: String, leagueId: Int, from: String, to: String, APIkey: String, pathURL: String)
     case getTeams(met: String, leagueId: Int, APIkey: String, pathURL: String)
 }
 
@@ -21,9 +20,7 @@ extension LeagueEventsNetworking: TargetType {
     
     var pathURL: String {
         switch self {
-        case .getUpcomingEvents(_, _, _, _, _, let pathURL):
-            return pathURL
-        case .getLatestResults(_, _, _, _, _, let pathURL):
+        case .getEvents(_, _, _, _, _, let pathURL):
             return pathURL
         case .getTeams(_, _, _, let pathURL):
             return pathURL
@@ -36,9 +33,7 @@ extension LeagueEventsNetworking: TargetType {
     
     var task: Task {
         switch self {
-        case .getUpcomingEvents(let met, let leagueId, let from, let to, let APIkey, _):
-            return .requestParameters(parameters: ["met" : met, "leagueId": leagueId, "from": from, "to": to, "APIkey": APIkey], encoding: URLEncoding.default)
-        case .getLatestResults(let met, let leagueId, let from, let to, let APIkey, _):
+        case .getEvents(let met, let leagueId, let from, let to, let APIkey, _):
             return .requestParameters(parameters: ["met" : met, "leagueId": leagueId, "from": from, "to": to, "APIkey": APIkey], encoding: URLEncoding.default)
         case .getTeams(let met, let leagueId, let APIkey, _):
             return .requestParameters(parameters: ["met" : met, "leagueId": leagueId, "APIkey": APIkey], encoding: URLEncoding.default)

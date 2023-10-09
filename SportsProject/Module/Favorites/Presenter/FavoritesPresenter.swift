@@ -7,12 +7,12 @@
 
 import Foundation
 
-class FavoritesPresenter {
+class FavoritesPresenter: BasePresenter {
     // MARK: - Variables
-    private var view: FavoriteLeaguesProtocol?
-    private var dbManager: DataBaseManagerProtocol?
-    private var items: [LeagueModelDB] = Array<LeagueModelDB>()
+    private weak var view: FavoriteLeaguesProtocol?
+    private let dbManager: DataBaseManagerProtocol?
     
+    private var items: [LeagueModelDB] = Array<LeagueModelDB>()
     
     // MARK: - Initializer
     init(view: FavoriteLeaguesProtocol? = nil) {
@@ -20,20 +20,22 @@ class FavoritesPresenter {
         dbManager = CoreDataManager()
     }
     
-    
     // MARK: - Life cycle
     func viewDidLoad() {
+        startNotification()
+        handleReachability(view: view)
         getLeaguesFromCoreData()
     }
-    
+   
     // MARK: - Core Data
-    func getLeaguesFromCoreData() {
+    private func getLeaguesFromCoreData() {
         view?.showIndicator()
-        dbManager?.fetchLeagues(completionHandler: { [weak self] result in
+        dbManager?.fetchLeagues(completion: { [weak self] result in
             guard let self = self else { return }
             view?.hideIndicator()
             switch result {
             case .success(let data):
+                print("data Count from favorites: \(data.count)")
                 items = data
                 view?.reloadLeaguesTableView()
             case .failure(let error):
@@ -42,27 +44,40 @@ class FavoritesPresenter {
         })
     }
     
+    func removeLeagueFromCoreData(at index: Int) {
+        guard let leagueId = items[index].leagueId else { return }
+        dbManager?.removeLeague(leagueId: leagueId) // remove from coredata, update coredata
+        items.remove(at: index) // remove from items, update items array
+    }
+    
+    func updateTableView(at indexPath: IndexPath) {
+        view?.updateTableView(at: indexPath)
+    }
+    
     // MARK: - Collection View Data
     func getLeaguesCount() -> Int {
         print("Leagues Count: \(items.count)")
         return items.count
     }
     
-    func configureCell(cell: LeaguesCellProtocol, for index: Int) {
+    func configureCell(_ cell: LeaguesCellProtocol, for index: Int) {
         let league = items[index]
-        cell.displayLeagueTitle(title: league.leagueName ?? "There is no name")
-        cell.displayLeagueImage(by: league.leagueLogo ?? "person.fill")
+        cell.displayLeagueTitle(title: league.leagueName ?? "")
+        cell.displayLeagueImage(by: league.leagueLogo)
     }
     
-    func didsplaySelectItem(index: Int) {
-        let pathURL = items[index].pathURL
-        let leagueId = items[index].leagueId
-        view?.navigateToLeagueEventsScreen(pathURL: pathURL ?? "", leagueId: leagueId ?? 0)
+    // MARK: - Favorites View Protocol
+    func didSelectRow(at index: Int) {
+        let league = items[index]
+        let leagueId = league.leagueId
+        let leagueName = league.leagueName
+        let leagueLogo = league.leagueLogo
+        let sport = SportType(rawValue: league.pathURL ?? "")
+        let model = CustomSportModel(leagueKey: leagueId, leagueName: leagueName, leagueLogo: leagueLogo, sport: sport!)
+        view?.navigateToLeagueEventsScreen(with: model)
     }
     
-    
-    // MARK: - View Protocol
-    func showAlert() {
-        view?.showAlert()
+    func showAlertForConnectivity() {
+        view?.showAlertForConnectivity()
     }
 }

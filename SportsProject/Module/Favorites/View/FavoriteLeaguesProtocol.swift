@@ -7,12 +7,16 @@
 
 import Foundation
 
-protocol FavoriteLeaguesProtocol {
+protocol FavoriteLeaguesProtocol: AnyObject, BaseView {
     func reloadLeaguesTableView()
+    func updateTableView(at indexPath: IndexPath)
+    
     func showIndicator()
     func hideIndicator()
-//    func displayMessage(message: String, messageError: Bool)
     
-    func showAlert()
-    func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?)
+//    func showAlertFromBakcend()
+    func showAlertForConnectivity()
+//    func displayMessage(_ message: String, theme: MessagesTheme)
+    
+    func navigateToLeagueEventsScreen(with model: CustomSportModel)
 }

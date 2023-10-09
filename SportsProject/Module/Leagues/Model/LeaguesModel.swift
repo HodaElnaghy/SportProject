@@ -32,5 +32,4 @@ struct LeaguesModel: Codable {
         leagueLogo = try values.decodeIfPresent(String.self, forKey: .leagueLogo)
         countryLogo = try values.decodeIfPresent(String.self, forKey: .countryLogo)
 	}
-
 }

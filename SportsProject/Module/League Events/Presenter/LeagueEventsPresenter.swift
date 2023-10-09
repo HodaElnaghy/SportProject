@@ -11,61 +11,332 @@ class LeagueEventsPresenter {
     
     // MARK: - Variables
     private weak var view: LeagueEventsView?
-//    private var reachability: ReachabilityManager?
-    private var dbManager: DataBaseManagerProtocol?
-   
+    private let dbManager: DataBaseManagerProtocol?
     private let api: LeagueEventsAPIProtocol = LeagueEventsAPI()
-    private var upcomingEvents = Array<LeagueEventData>()
-    private var latestResults = Array<LeagueEventData>()
+
+    // For (football, basketball, and cricket)
+    private var upcomingEvents = Array<LeagueEventModel>()
+    private var latestResults = Array<LeagueEventModel>()
     private var teams = Array<TeamResult>()
     
+    // For tennis
+    private var tennisUpcomingEvents = [TennisEventModel]()
+    private var tennisLatestResults = [TennisEventModel]()
+    private var tennisPlayers = [TennisPlayerResult]()
     
-    private var pathURL: String!
-    private var leagueId: Int?
-//    private var isConnected: Bool!
-    
-    private var metFixtures: Met = .fixtures
-    private var metTeams: Met = .teams
-    private var apiKey = Token.APIKey
-    
-    private var upcomingFrom = DateManager.shared.currentDateInStringFormat()
-    private var upcomingTo = DateManager.shared.nextDateInStringFormat(6)
-    
-    // var latestTo = upcomingFrom // inside it's function
-    private var latestFrom = DateManager.shared.previousDaysInStringFormat(-6)
-    
-    
-    private var no = "!!"
+////    private let imageData: Data?
+    private let model: CustomSportModel?
+    private let apiKey = Token.APIKey
+
+    // Dates
+    private let upcomingFrom = DateManager.shared.currentDateInStringFormat()
+    private let upcomingTo = DateManager.shared.nextDateInStringFormat(8)
+    private let latestTo = DateManager.shared.currentDateInStringFormat()
+    private let latestFrom = DateManager.shared.previousDaysInStringFormat(-8)
  
     // MARK: - Initializer
-    init(view: LeagueEventsView? = nil, pathURL: String, leagueId: Int?) {
+    init(view: LeagueEventsView? = nil, model: CustomSportModel?) {
         self.view = view
-        self.pathURL = pathURL
-        self.leagueId = leagueId
-//        reachability = ReachabilityManager.shared
+        self.model = model
         dbManager = CoreDataManager()
     }
-    
+
     // MARK: -  Public Functions
     func viewDidLoad() {
 //        configConnectivity()
         getUpcomingEvents()
         getlatestResults()
         getAllTeams()
+        
+        getTennisUpcomingEvnents()
+        getTennisLatestEvnents()
+        getTennisPlayer()
+    }
+
+    
+    // MARK: - Fetch Data For Compositional Layout Controller (Football, Basketball, and Cricket)
+    func getUpcomingEvents() {
+        //view?.sectionOneShowIndicator()
+        guard let leagueId = model?.leagueKey, let pathURL = model?.sport.rawValue else { return }
+        api.getEvents(met: Met.fixtures.rawValue, leagueId: leagueId, from: upcomingFrom, to: upcomingTo, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
+            guard let self = self else { return }
+//            self.view?.sectionOneHideIndicator()
+
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                guard let upcomingEvents = data.result else { return }
+                self.upcomingEvents = upcomingEvents
+                //self.view?.reloadSectionOne()
+                self.view?.reloadCollectionView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
+    func getlatestResults() {
+        //view?.sectionTwoShowIndicator()
+        guard let leagueId = model?.leagueKey, let pathURL = model?.sport.rawValue else { return }
+        api.getEvents(met: Met.fixtures.rawValue, leagueId: leagueId, from: latestFrom, to: latestTo, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
+            guard let self = self else { return }
+            //self.view?.sectionOneHideIndicator()
+            
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                guard let latestResults = data.result else { return }
+                self.latestResults = latestResults
+//                self.view?.reloadSectionTwo()
+                self.view?.reloadCollectionView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getAllTeams() {
+        //view?.sectionThreeShowIndicator()
+        guard let leagueId = model?.leagueKey, let pathURL = model?.sport.rawValue else { return }
+        api.getAllTeams(met: Met.teams.rawValue, leagueId: leagueId, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
+            guard let self = self else { return }
+            //self.view?.sectionThreeHideIndicator()
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                guard let teams = data.result else { return }
+                self.teams = teams
+                //self.view?.reloadSectionThree()
+                self.view?.reloadCollectionView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    // MARK: - Fetch Data For Compositional Layout Controller (Tennis)
+    func getTennisUpcomingEvnents() {
+        guard let leagueId = model?.leagueKey, let pathURL = model?.sport.rawValue else { return }
+        api.getTennisEvents(met: Met.fixtures.rawValue, leagueId: leagueId, from: upcomingFrom, to: upcomingTo, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                guard let events = data.result else { return }
+                tennisUpcomingEvents = events
+                self.view?.reloadCollectionView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getTennisLatestEvnents() {
+        let latestTo = upcomingFrom
+        guard let leagueId = model?.leagueKey, let pathURL = model?.sport.rawValue else { return }
+        api.getTennisEvents(met: Met.fixtures.rawValue, leagueId: leagueId, from: latestFrom, to: latestTo, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
+            guard let self = self else { return }
+            
+            switch result {
+            case .success(let data):
+                guard let data = data else { return }
+                guard let events = data.result else { return }
+                tennisLatestResults = events
+                self.view?.reloadCollectionView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func getTennisPlayer() {
+        guard let leagueId = model?.leagueKey, let pathURL = model?.sport.rawValue else { return }
+        // players count: 47 for leagueId = 2646
+        api.getTennisPlayers(met: Met.players.rawValue, leagueId: leagueId, APIkey: apiKey, pathURL: pathURL) { [weak self] res in
+            guard let self = self else { return }
+            
+            switch res {
+            case .success(let data):
+                guard let data = data else { return }
+                guard let players = data.result else { return }
+                print("players count: \(players.count)")
+                tennisPlayers = players
+                self.view?.reloadCollectionView()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    
+    // MARK: - Configure Sections For (football, basketball, and cricket)
+    func getUpcomingEventsCount() -> Int {
+        if model?.sport == SportType.tennis {
+            return tennisUpcomingEvents.count
+        } else {
+            return upcomingEvents.count
+        }
+    }
+    
+    func getLatestResultsCount() -> Int {
+        if model?.sport == SportType.tennis {
+            return tennisLatestResults.count
+        } else {
+            return latestResults.count
+        }
+    }
+    
+    func getAllTeamsCount() -> Int {
+        if model?.sport == SportType.tennis {
+            return tennisPlayers.count
+        } else {
+            return teams.count
+        }
+    }
+    
+    func configureUpcomingEvents(cell: LeagueCustomCellProtocol, for index: Int) {
+        if model?.sport == SportType.tennis {
+            if !tennisUpcomingEvents.isEmpty {  // To avoid (Out of range error), i return at least one cell in cellForRow at:indexPath while array isEmpty. !!!
+                let event = tennisUpcomingEvents[index]
+                configureCellForTennis(cell: cell, by: event, for: index)
+            }
+        } else {
+            if !upcomingEvents.isEmpty { // To avoid (Out of range error), i return at least one cell in cellForRow at:indexPath while array isEmpty. !!!
+                let event = upcomingEvents[index]
+                configureCell(cell: cell, by: event, for: index)
+            }
+        }
+    }
+    
+    func configurLatestResults(cell: LeagueCustomCellProtocol, for index: Int) {
+        if model?.sport == SportType.tennis {
+            if !tennisLatestResults.isEmpty {
+                let event = tennisLatestResults[index]
+                configureCellForTennis(cell: cell, by: event, for: index)
+            }
+        } else {
+            if !latestResults.isEmpty {
+                let event = latestResults[index]
+                configureCell(cell: cell, by: event, for: index)
+            }
+        }
+    }
+    
+    func configureTeam(cell: TeamCustomCellProtocol, for index: Int) {
+        if model?.sport == SportType.tennis {
+            if !tennisPlayers.isEmpty {
+                let player = tennisPlayers[index]
+                cell.displayName(player.playerName ?? "no")
+                cell.displayImage(by: player.playerLogo)
+            }
+        } else {
+            if !teams.isEmpty {
+                let team = teams[index]
+                cell.displayName(team.teamName ?? "no")
+                cell.displayImage(by: team.teamLogo)
+            }
+        }
+    }
+    
+    // MARK: - View Protocol, Navigation
+    
+    func didSelectRow(index: Int) {
+        //view?.navigateToTeamScreen(pathURL: pathURL, teamId: team.teamKey)
+        if model?.sport == SportType.tennis {
+            let player = tennisPlayers[index]
+            view?.navigateToTeamScreen(pathURL: (model?.sport.rawValue)!, teamId: player.playerKey)
+        } else {
+            let team = teams[index]
+            view?.navigateToTeamScreen(pathURL:  (model?.sport.rawValue)!, teamId: team.teamKey)
+        }
+    }
+    
+    func showAlert() {
+        view?.showAlert()
+    }
+    
+    // MARK: - Core Data
+
+//    func addLeagueToFavorite() {
+//        let flag = checkForLeagueId(leagueId: leagueId!)
+//        if flag {
+////            view?.downloadImage(from: (selectedLeague?.leagueLogo)!)
+//            let leagueModelDB = LeagueModelDB(leagueId: leagueId, pathURL: pathURL, leagueName: selectedLeague?.leagueName, leagueLogo: selectedLeague?.leagueLogo, leagueLogoImage: imageData)
+//            
+//            dbManager?.insertLeague(leagueModelDB) // Insert League into favorites
+//        } else {
+//            print("Can't Find The League!!!")
+//        }
+//    }
+    
+//    func getImageData(_ data: Data?) {
+//        guard let data = data else { return }
+//        imageData = data
+//    }
+    
+    func getLeagueDetails() -> (leagueName: String?, leagueLogo: String?) {
+        return (model?.leagueName, model?.leagueLogo)
+    }
+    
+    func insertLeague(_ item: LeagueModelDB) {
+        dbManager?.insertLeague(item)
+    }
+    
+    func removeLeague() {
+//        dbManager?.removeLeague(leagueId: leagueId!)
+        guard let legueId = model?.leagueKey else { return }
+        dbManager?.removeLeague(leagueId: legueId)
+    }
+    
+    func isFavorite() -> Bool {
+//        return dbManager?.isFavorite(leagueId: leagueId!) ?? false
+        guard let legueId = model?.leagueKey else { return false}
+        return dbManager?.isFavorite(leagueId: legueId) ?? false
+    }
+    
+    
+    // MARK: - Private Functions
+    // MARK: Football, Basketball, and Cricket
+    private func configureCell(cell: LeagueCustomCellProtocol, by event: LeagueEventModel, for index: Int) {
+        cell.displayEventHomeTeamName(event.eventHomeTeam ?? "no")
+        cell.displayEventAwayTeamName(event.eventAwayTeam ?? "no")
+        
+        cell.displayHomeTeamImage(by: event.homeTeamLogo)
+        cell.displayAwayTeamImage(by: event.awayTeamLogo)
+        cell.displayLeagueImage(by: event.leagueLogo)
+        
+        cell.displayEventState(event.eventStatus ?? "no")
+        cell.displayFinalResult(event.eventFinalResult ?? "no")
+        
+        cell.diaplayEventTime(event.eventTime ?? "no")
+        cell.diaplayEventDate(event.eventDate ?? "no")
+    }
+    
+    // MARK: Tennis
+    private func configureCellForTennis(cell: LeagueCustomCellProtocol, by event: TennisEventModel, for index: Int) {
+        cell.displayEventHomeTeamName(event.eventFirstPlayer ?? "no")
+        cell.displayEventAwayTeamName(event.eventSecondPlayer ?? "no")
+        
+        cell.displayHomeTeamImage(by: event.eventFirstPlayerLogo)
+        cell.displayAwayTeamImage(by: event.eventSecondPlayerLogo)
+        cell.displayLeagueImage(by: "")
+        
+        cell.displayEventState(event.eventStatus ?? "no")
+        cell.displayFinalResult(event.eventFinalResult ?? "no")
+        
+        cell.diaplayEventTime(event.eventTime ?? "no")
+        cell.diaplayEventDate(event.eventDate ?? "no")
+    }
+    
+}
+
+
+// MARK: - Connectivity
+
 //    func configConnectivity() {
 //        startNotification()
-//        handleReachability()
-//    }
-//
-    // MARK: - Connectivity
-//    private func startNotification() {
-//        reachability?.startNotification()
-//    }
-//
-//    func stopNotification() {
-//        reachability?.stopNotification()
+//        handleReachability(view: view)
 //    }
 //
 //    private func handleReachability() {
@@ -101,145 +372,4 @@ class LeagueEventsPresenter {
 //            }
 //        })
 //    }
-//
-//    func isConnectedToInternet() -> Bool {
-//        return isConnected
-//    }
-    
-    // MARK: - Fetch Data For Compositional Layout Controller
-    func getUpcomingEvents() {
-        //view?.sectionOneShowIndicator()
-        guard let leagueId = leagueId else { return }
-        api.getUpcomingEvents(met: metFixtures.rawValue, leagueId: leagueId, from: upcomingFrom, to: upcomingTo, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
-            guard let self = self else { return }
-//            self.view?.sectionOneHideIndicator()
 
-            switch result {
-            case .success(let data):
-                guard let data = data else { return }
-                guard let upcomingEvents = data.result else { return }
-                self.upcomingEvents = upcomingEvents
-
-                //self.view?.reloadSectionOne()
-                self.view?.reloadCollectionView()
-
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func getlatestResults() {
-        let latestTo = upcomingFrom
-        
-        // TODO: - api.getUpcomingEvents Error call api.upcoming events
-        //view?.sectionTwoShowIndicator()
-        guard let leagueId = leagueId else { return }
-        api.getUpcomingEvents(met: metFixtures.rawValue, leagueId: leagueId, from: latestFrom, to: latestTo, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
-            guard let self = self else { return }
-            //self.view?.sectionOneHideIndicator()
-            
-            switch result {
-            case .success(let data):
-                guard let data = data else { return }
-                guard let latestResults = data.result else { return }
-                self.latestResults = latestResults
-                
-//                self.view?.reloadSectionTwo()
-                self.view?.reloadCollectionView()
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    func getAllTeams() {
-        //view?.sectionThreeShowIndicator()
-        guard let leagueId = leagueId else { return }
-        api.getAllTeams(met: metTeams.rawValue, leagueId: leagueId, APIkey: apiKey, pathURL: pathURL) { [weak self] result in
-            guard let self = self else { return }
-            //self.view?.sectionThreeHideIndicator()
-            switch result {
-            case .success(let data):
-                guard let data = data else { return }
-                guard let teams = data.result else { return }
-                self.teams = teams
-                
-                //self.view?.reloadSectionThree()
-                self.view?.reloadCollectionView()
-                
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-    }
-    
-    // MARK: - Configure Sections
-    func getUpcomingEventsCount() -> Int {
-        return upcomingEvents.count
-    }
-    
-    func getLatestResultsCount() -> Int {
-        return latestResults.count
-    }
-    
-    func getAllTeamsCount() -> Int {
-        return teams.count
-    }
-    
-    func configureUpcomingEvents(cell: LeagueCustomCellProtocol, for index: Int) {
-        let event = upcomingEvents[index]
-        configureCell(cell: cell, by: event, for: index)
-    }
-    
-    func configurLatestResults(cell: LeagueCustomCellProtocol, for index: Int) {
-        let event = latestResults[index]
-        configureCell(cell: cell, by: event, for: index)
-    }
-
-    func configureTeam(cell: TeamCustomCellProtocol, for index: Int) {
-        let team = teams[index]
-        cell.displayName(team.teamName ?? no)
-        cell.displayImage(by: team.teamLogo ?? no)
-    }
-    
-    // MARK: - View Protocol, Navigation
-    
-    func didSelectRow(index: Int) {
-        let team = teams[index]
-        print(team.teamKey)
-        print(pathURL)
-        view?.navigateToTeamScreen(pathURL: pathURL, teamId: team.teamKey)
-    }
-    
-    func showAlert() {
-        view?.showAlert()
-    }
-    
-    // MARK: - Private Functions
-    
-    func getLeagueDetails() -> (leagueName: String?, leagueLogo: String?) {
-        let event = upcomingEvents.first
-        return(event?.leagueName, event?.leagueLogo)
-    }
-    
-    func insertleague(_ item: LeagueModelDB) {
-        dbManager?.insertLeague(item)
-    }
-    
-    // MARK: - Private Functions
-    private func configureCell(cell: LeagueCustomCellProtocol, by event: LeagueEventData, for index: Int) {
-        cell.displayEventHomeTeamName(event.eventHomeTeam ?? no)
-        cell.displayEventAwayTeamName(event.eventAwayTeam ?? no)
-        
-        cell.displayHomeTeamImage(by: event.homeTeamLogo ?? no)
-        cell.displayAwayTeamImage(by: event.awayTeamLogo ?? no)
-
-        cell.displayEventState(event.eventStatus ?? no)
-        cell.displayFinalResult(event.eventFinalResult ?? no)
-        
-        cell.diaplayEventTime(event.eventTime ?? no)
-        cell.diaplayEventDate(event.eventDate ?? no)
-    }
-}

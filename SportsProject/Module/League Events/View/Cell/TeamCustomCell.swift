@@ -29,19 +29,7 @@ extension TeamCustomCell: TeamCustomCellProtocol {
     }
     
     func displayImage(by stringURL: String?) {
-        guard let stringURL = stringURL else { return }
-        guard let url = URL(string: stringURL) else { return }
-        
-        teamLogoImageView.kf.indicatorType = .activity
-        teamLogoImageView.kf.setImage(with: url) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let imageRes):
-                teamLogoImageView.image = imageRes.image
-            case .failure(_):
-                teamLogoImageView.image = UIImage(systemName: "heart.fill")
-            }
-        }
+        teamLogoImageView.downloadImageFrom(stringURL)
     }
     
 }

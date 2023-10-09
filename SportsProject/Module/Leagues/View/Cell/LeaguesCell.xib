@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -33,13 +33,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="youtube" translatesAutoresizingMaskIntoConstraints="NO" id="n1s-gW-uFv">
-                                <rect key="frame" x="253" y="-0.3333333333333357" width="70" height="70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="QU0-3V-o3i"/>
-                                    <constraint firstAttribute="height" constant="70" id="gq6-3X-Jwi"/>
-                                </constraints>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.97647058959999999" green="0.97647058959999999" blue="0.97647058959999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -48,8 +41,6 @@
                             <constraint firstItem="Mdi-y0-NQH" firstAttribute="centerY" secondItem="qaK-tz-TCr" secondAttribute="centerY" id="K71-XU-icq"/>
                             <constraint firstItem="Mdi-y0-NQH" firstAttribute="leading" secondItem="qaK-tz-TCr" secondAttribute="trailing" constant="16" id="MSp-zg-un3"/>
                             <constraint firstItem="qaK-tz-TCr" firstAttribute="top" secondItem="hTl-t8-nhG" secondAttribute="top" constant="5" id="gqv-xj-df4"/>
-                            <constraint firstItem="n1s-gW-uFv" firstAttribute="centerY" secondItem="Mdi-y0-NQH" secondAttribute="centerY" id="qPX-yW-O1p"/>
-                            <constraint firstAttribute="trailing" secondItem="n1s-gW-uFv" secondAttribute="trailing" id="wW4-WP-zEo"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -71,6 +62,5 @@
     </objects>
     <resources>
         <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="youtube" width="2272" height="1704"/>
     </resources>
 </document>

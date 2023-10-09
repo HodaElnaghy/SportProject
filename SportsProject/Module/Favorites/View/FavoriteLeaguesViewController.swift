@@ -29,6 +29,11 @@ class FavoriteLeaguesViewController: UIViewController {
         super.viewWillAppear(animated)
         presenter.viewDidLoad()
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presenter.stopNotification()
+    }
 
     //MARK: - Configure TableView
     private func configureTableView() {
@@ -43,14 +48,14 @@ class FavoriteLeaguesViewController: UIViewController {
 
 // MARK: - TableView DataSource
 extension FavoriteLeaguesViewController: UITableViewDataSource {
-   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return presenter.getLeaguesCount()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: LeaguesCell.identifier, for: indexPath) as? LeaguesCell else {  return LeaguesCell() }
-        presenter.configureCell(cell: cell, for: indexPath.row)
+        presenter.configureCell(cell, for: indexPath.row)
         return cell
     }
 }
@@ -58,26 +63,50 @@ extension FavoriteLeaguesViewController: UITableViewDataSource {
 //MARK: - TableView Delegate
 extension FavoriteLeaguesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108
+        return 85
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        if presenter.isConnectedToInternet() {
-//            presenter.didSelectRow(index: indexPath.row)
-//        } else {
-//            presenter.showAlert()
-//        }
-        print("Tapped on Cell")
+        if presenter.isConnectedToInternet() {
+            presenter.didSelectRow(at: indexPath.row)
+        } else {
+            presenter.showAlertForConnectivity()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let alertController = UIAlertController(title: "Warning", message: "Are you sure u want to delete league from list?", preferredStyle: .actionSheet)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            let confirmAction = UIAlertAction(title: "Confirm", style: .destructive) { [weak self] action in
+                guard let self = self else { return }
+                presenter.removeLeagueFromCoreData(at: indexPath.row)
+                presenter.updateTableView(at: indexPath)
+            }
+            alertController.addAction(cancelAction)
+            alertController.addAction(confirmAction)
+            
+            present(alertController, animated: true)
+        }
     }
 }
-
 
 //MARK: - Conform LeaguesProtocol
 extension FavoriteLeaguesViewController: FavoriteLeaguesProtocol {
   
     func reloadLeaguesTableView() {
         DispatchQueue.main.async { [weak self] in
-            self?.favoritesTableView.reloadData()
+            guard let self = self else { return }
+            favoritesTableView.reloadData()
+        }
+    }
+    
+    func updateTableView(at indexPath: IndexPath) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            favoritesTableView.beginUpdates()
+            favoritesTableView.deleteRows(at: [indexPath], with: .fade)
+            favoritesTableView.endUpdates()
         }
     }
     
@@ -89,17 +118,20 @@ extension FavoriteLeaguesViewController: FavoriteLeaguesProtocol {
         activityIndicator.stopAnimating()
     }
     
-    // Note: IF View has reference to Any Model, Code Smells!
-    // Code Smells are a result of poor or misguided programming.
-    func navigateToLeagueEventsScreen(pathURL: String, leagueId: Int?) {
-//        let vc = LeagueViewController(nibName: "LeagueViewController", bundle: nil)
-//        vc.pathURL = pathURL
-//        vc.leagueId = leagueId
-//        navigationController?.pushViewController(vc, animated: true)
-        print("SIIIIIIIII")
-    }
-    
-    func showAlert() {
+    func showAlertForConnectivity() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
     }
+    
+//    func showAlertFromBakcend() {
+//        show(messageAlert: BackendMessage.alertTitle, message: BackendMessage.alertMessage)
+//    }
+    
+    // Note: IF View has reference to Any Model, Code Smells!
+    // Code Smells are a result of poor or misguided programming.
+    func navigateToLeagueEventsScreen(with model: CustomSportModel) {
+        let vc = LeagueEventsViewController(nibName: VCIdentifier.LeagueEventsViewController, bundle: nil)
+        vc.model = model
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }

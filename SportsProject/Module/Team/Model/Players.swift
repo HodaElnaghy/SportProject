@@ -8,18 +8,17 @@
 import Foundation
 
 
-struct Players : Codable {
+struct Players: Decodable {
     
-	let playerKey : Int?
-	let playerImage : String?
-	let playerName : String?
-	let playerNumber : String?
+	let playerKey: Int?
+	let playerImage: String?
+	let playerName: String?
+	let playerNumber: String?
     let playerType: String?
-	let playerAge : String?
-	let playerRating : String?
+	let playerAge: String?
+	let playerRating: String?
 
 	enum CodingKeys: String, CodingKey {
-
 		case playerKey = "player_key"
 		case playerImage = "player_image"
 		case playerName = "player_name"

@@ -6,13 +6,11 @@
 //
 
 import Foundation
-struct LeaguesData: Codable {
+struct LeaguesData: Decodable {
 	let success: Int?
 	let result: [LeaguesModel]?
 
 	enum CodingKeys: String, CodingKey {
-//		case success = "success"
-//		case result = "result"
         case success, result
 	}
 
@@ -21,5 +19,4 @@ struct LeaguesData: Codable {
 		success = try values.decodeIfPresent(Int.self, forKey: .success)
 		result = try values.decodeIfPresent([LeaguesModel].self, forKey: .result)
 	}
-
 }
