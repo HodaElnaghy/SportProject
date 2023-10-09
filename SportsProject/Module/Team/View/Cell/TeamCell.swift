@@ -14,7 +14,6 @@ class TeamCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerNameLabel: UILabel!
-
     
     override func awakeFromNib() {
         super.awakeFromNib()

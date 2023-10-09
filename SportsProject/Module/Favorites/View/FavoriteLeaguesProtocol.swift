@@ -14,9 +14,7 @@ protocol FavoriteLeaguesProtocol: AnyObject, BaseView {
     func showIndicator()
     func hideIndicator()
     
-//    func showAlertFromBakcend()
     func showAlertForConnectivity()
 //    func displayMessage(_ message: String, theme: MessagesTheme)
-    
     func navigateToLeagueEventsScreen(with model: CustomSportModel)
 }

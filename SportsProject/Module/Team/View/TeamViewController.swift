@@ -12,7 +12,6 @@ class TeamViewController: UIViewController {
     
     // MARK: - Variables
     var teamPresenter: TeamPresenter!
-    
     var pathURL: String!
     var teamId: Int?
     
@@ -20,7 +19,6 @@ class TeamViewController: UIViewController {
     @IBOutlet weak var playerTypeLabel: UILabel!
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var playersCollectionView: UICollectionView!
-    //    @IBOutlet weak var coachNameLabel: UILabel!
     @IBOutlet weak var teamTitleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -112,17 +110,17 @@ extension TeamViewController: UICollectionViewDataSource {
 // MARK: - Collection View Delegate Flow Layout
 extension TeamViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = collectionView.frame.width * 0.96
-        let height = collectionView.frame.height * 0.95
+        let width = collectionView.frame.width
+        let height = collectionView.frame.height
         return CGSize.init(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1, left: 5, bottom: 1, right: 5)
+        return UIEdgeInsets(top: 5, left: 0, bottom: 5, right: 0)
     }
     
 }
@@ -135,7 +133,7 @@ extension TeamViewController: TeamViewControllerProtocol {
     }
     
     func hideIndicator() {
-        //        activityIndicator.hidesWhenStopped = true // chanaged the value from attribute inspector
+        //activityIndicator.hidesWhenStopped = true // chanaged the value from attribute inspector
         activityIndicator.stopAnimating()
     }
     

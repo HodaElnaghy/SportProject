@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LeaguesViewController" customModule="SportsProject" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="nMb-2F-9ZK" id="7c2-9I-RFZ"/>
+                <outlet property="emptyImageView" destination="Z8M-pX-lUL" id="dtc-xD-kKV"/>
                 <outlet property="leaguesTableView" destination="j6b-Wp-Mm9" id="1Lm-QS-syU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -27,21 +28,29 @@
                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="nMb-2F-9ZK">
                     <rect key="frame" x="186.66666666666666" y="428.66666666666669" width="20" height="20"/>
                 </activityIndicatorView>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="emptyFavorites" translatesAutoresizingMaskIntoConstraints="NO" id="Z8M-pX-lUL">
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Z8M-pX-lUL" secondAttribute="trailing" id="2Gh-m7-foJ"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="j6b-Wp-Mm9" secondAttribute="bottom" id="6oT-vo-A52"/>
                 <constraint firstItem="nMb-2F-9ZK" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="6zX-8U-B7S"/>
                 <constraint firstItem="j6b-Wp-Mm9" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="859-vm-vMr"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Z8M-pX-lUL" secondAttribute="bottom" id="HYK-Gr-Dk1"/>
                 <constraint firstItem="j6b-Wp-Mm9" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VQ7-PA-mkc"/>
                 <constraint firstItem="nMb-2F-9ZK" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="VdA-tU-AUN"/>
+                <constraint firstItem="Z8M-pX-lUL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="XdM-Hg-M5b"/>
+                <constraint firstItem="Z8M-pX-lUL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="kTb-fG-svh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="j6b-Wp-Mm9" secondAttribute="trailing" id="wlQ-IA-7kf"/>
             </constraints>
             <point key="canvasLocation" x="120" y="20"/>
         </view>
     </objects>
     <resources>
+        <image name="emptyFavorites" width="400" height="300"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

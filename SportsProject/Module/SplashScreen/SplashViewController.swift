@@ -47,7 +47,6 @@ class AnimatedLaunchScreen: UIViewController {
         
     }
     
-    
     @objc func MainNav() {
         let homeTabBarController = HomeTabBarController()
         navigationController?.setViewControllers([homeTabBarController], animated: true)
