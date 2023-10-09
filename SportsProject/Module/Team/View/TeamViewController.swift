@@ -15,16 +15,16 @@ class TeamViewController: UIViewController {
     
     var pathURL: String!
     var teamId: Int?
-
+    
     // MARK: - Outlets
+    @IBOutlet weak var playerTypeLabel: UILabel!
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var playersCollectionView: UICollectionView!
-//    @IBOutlet weak var coachNameLabel: UILabel!
+    //    @IBOutlet weak var coachNameLabel: UILabel!
     @IBOutlet weak var teamTitleLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var officialWebsiteView: UIView!
-    @IBOutlet weak var officialWebsiteButton: UIButton!
     @IBOutlet weak var stadiumImageView: UIImageView!
     
     // MARK: - Life Cycle
@@ -39,38 +39,29 @@ class TeamViewController: UIViewController {
         officialWebsiteView.clipsToBounds = true
         officialWebsiteView.dropShadow()
         
-        // Set the button title
-        officialWebsiteButton.setTitle("Official website ", for: .normal)
+        // Create the gradient layer
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = stadiumImageView.bounds
         
-        // Add a system image to the button
-        if let systemImage = UIImage(systemName: "arrow.right.circle.fill") {
-            officialWebsiteButton.setImage(systemImage, for: .normal)
-            officialWebsiteButton.semanticContentAttribute = .forceRightToLeft
-            officialWebsiteButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 0) // Adjust the inset as needed
-        }
-            // Create the gradient layer
-            let gradientLayer = CAGradientLayer()
-            gradientLayer.frame = stadiumImageView.bounds
-            
-            // Define the colors
-            let whiteColor = UIColor.white.cgColor
-            let clearColor = UIColor.clear.cgColor
-            
-            gradientLayer.colors = [whiteColor, clearColor, whiteColor]
-            
-            // Define the locations for color stops
-            gradientLayer.locations = [0.0, 0.5, 1.0]
-            
-            // Configure the gradient direction
-            gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
-            gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
-            
-            // Add the gradient layer to your view's layer
-            stadiumImageView.layer.addSublayer(gradientLayer)
-
+        // Define the colors
+        let whiteColor = UIColor.white.cgColor
+        let clearColor = UIColor.clear.cgColor
+        
+        gradientLayer.colors = [whiteColor, clearColor, whiteColor]
+        
+        // Define the locations for color stops
+        gradientLayer.locations = [0.0, 0.5, 1.0]
+        
+        // Configure the gradient direction
+        gradientLayer.startPoint = CGPoint(x: 0.5, y: 0.0)
+        gradientLayer.endPoint = CGPoint(x: 0.5, y: 1.0)
+        
+        // Add the gradient layer to your view's layer
+        stadiumImageView.layer.addSublayer(gradientLayer)
+        
     }
-
-
+    
+    
     // MARK: - Actions
     @IBAction func isFavouriteButtonPressed(_ sender: Any) {
         print("button pressed")
@@ -89,12 +80,12 @@ class TeamViewController: UIViewController {
     
     private func updateViewContorllerUI() {
         DispatchQueue.main.async { [weak self] in
-//            self?.coachNameLabel.text = self?.teamPresenter.getCoachName()
-            self?.teamTitleLabel.text = self?.teamPresenter.getTeamName()
-            let stringURL: String? = self?.teamPresenter.getTeamLog()
+            guard let self = self else { return }
+            teamTitleLabel.text = teamPresenter.getTeamName()
+            let stringURL: String? = teamPresenter.getTeamLog()
             guard let stringURL = stringURL else { return }
             guard let url = URL(string: stringURL) else { return }
-            self?.teamImageView.kf.setImage(with: url)
+            teamImageView.kf.setImage(with: url)
         }
     }
 }
@@ -111,39 +102,30 @@ extension TeamViewController: UICollectionViewDataSource {
         teamPresenter.configureCell(cell: cell, for: indexPath.row)
         return cell
     }
-    
-}
-
-// MARK: - Collection View Delegate
-extension TeamViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        teamPresenter.updatePlayerTypeLabel(for: indexPath.item)
+    }
     
 }
 
 
 // MARK: - Collection View Delegate Flow Layout
 extension TeamViewController: UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 128, height: 128)
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        // very important note:-
-        // don't forget to assign  Collection View Estimate Size = none, from size inspector.
         let width = collectionView.frame.width * 0.96
-        let height = collectionView.frame.height * 0.96
+        let height = collectionView.frame.height * 0.95
         return CGSize.init(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 4
     }
-
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 1, left: 4, bottom: 1, right: 4)
+        return UIEdgeInsets(top: 1, left: 5, bottom: 1, right: 5)
     }
+    
 }
-
 
 // MARK: - TeamViewController Protocol
 
@@ -153,7 +135,7 @@ extension TeamViewController: TeamViewControllerProtocol {
     }
     
     func hideIndicator() {
-//        activityIndicator.hidesWhenStopped = true // chanaged the value from attribute inspector
+        //        activityIndicator.hidesWhenStopped = true // chanaged the value from attribute inspector
         activityIndicator.stopAnimating()
     }
     
@@ -161,6 +143,12 @@ extension TeamViewController: TeamViewControllerProtocol {
         DispatchQueue.main.async { [weak self] in
             self?.playersCollectionView.reloadData()
             self?.updateViewContorllerUI()
+        }
+    }
+    func updatePlayerTypeLabel(type: String?) {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            playerTypeLabel.text = type
         }
     }
     

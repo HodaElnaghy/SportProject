@@ -14,6 +14,7 @@ protocol LeagueEventsView: AnyObject, BaseView {
     func showAlert()
     func displayMessage(_ message: String, theme: MessagesTheme)
     func navigateToTeamScreen(pathURL: String, teamId: Int?)
+    func showAlertNotAllowedToNavigate()
 }
 
 //protocol FavoriteDelegate {

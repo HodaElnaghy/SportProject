@@ -15,37 +15,41 @@
                 <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaguesbg" translatesAutoresizingMaskIntoConstraints="NO" id="Hqg-Jy-X0O">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JxD-De-GQM">
+                        <rect key="frame" x="5" y="5" width="440" height="190"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hqg-Jy-X0O">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="200"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H23-zb-bgy">
                         <rect key="frame" x="368" y="159" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J54-vK-Ccv">
-                        <rect key="frame" x="225" y="4" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J54-vK-Ccv">
+                        <rect key="frame" x="225" y="10.000000000000004" width="0.0" height="47.333333333333343"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t9i-hQ-Qm4">
                         <rect key="frame" x="225" y="192" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="9"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HaH-9M-cVy">
-                        <rect key="frame" x="225" y="186" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <rect key="frame" x="225" y="189" width="0.0" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkT-ag-E6E">
                         <rect key="frame" x="82" y="159" width="0.0" height="0.0"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ZQl-3f-90I">
@@ -55,17 +59,17 @@
                         <rect key="frame" x="306" y="40" width="124" height="105"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4g-Dm-7fL">
-                        <rect key="frame" x="225" y="4" width="0.0" height="0.0"/>
+                        <rect key="frame" x="225" y="10" width="0.0" height="0.0"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J97-Rf-rgm">
-                        <rect key="frame" x="179" y="54" width="92" height="92"/>
+                        <rect key="frame" x="185" y="60" width="80" height="80"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="92" id="iQm-tk-QVw"/>
-                            <constraint firstAttribute="width" constant="92" id="mW2-Ha-MSt"/>
+                            <constraint firstAttribute="height" constant="80" id="iQm-tk-QVw"/>
+                            <constraint firstAttribute="width" constant="80" id="mW2-Ha-MSt"/>
                         </constraints>
                     </imageView>
                 </subviews>
@@ -73,16 +77,19 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstItem="J97-Rf-rgm" firstAttribute="centerY" secondItem="Hqg-Jy-X0O" secondAttribute="centerY" id="62V-tl-uQL"/>
+                <constraint firstAttribute="bottom" secondItem="JxD-De-GQM" secondAttribute="bottom" constant="5" id="BfN-Xw-8Xp"/>
                 <constraint firstItem="ZQl-3f-90I" firstAttribute="leading" secondItem="Hqg-Jy-X0O" secondAttribute="leading" constant="20" id="CDg-M4-3wc"/>
                 <constraint firstItem="t9i-hQ-Qm4" firstAttribute="centerX" secondItem="HaH-9M-cVy" secondAttribute="centerX" id="FXR-bf-66G"/>
                 <constraint firstItem="MkT-ag-E6E" firstAttribute="top" secondItem="ZQl-3f-90I" secondAttribute="bottom" constant="14" id="FhY-xH-Wzc"/>
+                <constraint firstItem="JxD-De-GQM" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="GaT-Nv-V4b"/>
+                <constraint firstItem="JxD-De-GQM" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="HvO-TC-DAF"/>
                 <constraint firstItem="GpV-rh-V35" firstAttribute="width" secondItem="Hqg-Jy-X0O" secondAttribute="width" multiplier="0.275556" id="KT8-95-Sgo"/>
                 <constraint firstAttribute="trailing" secondItem="Hqg-Jy-X0O" secondAttribute="trailing" id="LKe-Gj-oL5"/>
                 <constraint firstItem="H23-zb-bgy" firstAttribute="centerX" secondItem="GpV-rh-V35" secondAttribute="centerX" id="LKk-lX-5Ve"/>
                 <constraint firstItem="MkT-ag-E6E" firstAttribute="centerX" secondItem="ZQl-3f-90I" secondAttribute="centerX" id="LOH-GQ-S1D"/>
                 <constraint firstItem="ZQl-3f-90I" firstAttribute="width" secondItem="Hqg-Jy-X0O" secondAttribute="width" multiplier="0.275556" id="LaM-uz-y5W"/>
                 <constraint firstItem="GpV-rh-V35" firstAttribute="trailing" secondItem="Hqg-Jy-X0O" secondAttribute="trailing" constant="-20" id="Rng-jb-e4N"/>
-                <constraint firstItem="t9i-hQ-Qm4" firstAttribute="top" secondItem="HaH-9M-cVy" secondAttribute="bottom" constant="6" id="UXx-un-Csm"/>
+                <constraint firstItem="t9i-hQ-Qm4" firstAttribute="top" secondItem="HaH-9M-cVy" secondAttribute="bottom" constant="3" id="UXx-un-Csm"/>
                 <constraint firstItem="HaH-9M-cVy" firstAttribute="centerX" secondItem="J54-vK-Ccv" secondAttribute="centerX" id="VDQ-rQ-gO7"/>
                 <constraint firstItem="J97-Rf-rgm" firstAttribute="centerX" secondItem="Hqg-Jy-X0O" secondAttribute="centerX" id="XJU-UO-acu"/>
                 <constraint firstItem="GpV-rh-V35" firstAttribute="height" secondItem="Hqg-Jy-X0O" secondAttribute="height" multiplier="0.525" id="YKk-tU-v79"/>
@@ -92,10 +99,12 @@
                 <constraint firstItem="Hqg-Jy-X0O" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="fr6-0I-fVR"/>
                 <constraint firstAttribute="bottom" secondItem="t9i-hQ-Qm4" secondAttribute="bottom" constant="8" id="gbq-Au-gy2"/>
                 <constraint firstItem="GpV-rh-V35" firstAttribute="top" secondItem="Hqg-Jy-X0O" secondAttribute="top" constant="40" id="kYK-AT-jFi"/>
+                <constraint firstAttribute="trailing" secondItem="JxD-De-GQM" secondAttribute="trailing" constant="5" id="lCr-O5-dL7"/>
+                <constraint firstItem="J97-Rf-rgm" firstAttribute="top" secondItem="J54-vK-Ccv" secondAttribute="bottom" constant="2.6666666666666714" id="mCR-kC-1SA"/>
                 <constraint firstItem="H23-zb-bgy" firstAttribute="top" secondItem="GpV-rh-V35" secondAttribute="bottom" constant="14" id="myg-5E-LJW"/>
                 <constraint firstItem="Hqg-Jy-X0O" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pFy-cD-Y99"/>
-                <constraint firstItem="Q4g-Dm-7fL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="4" id="pqS-YO-qzt"/>
-                <constraint firstItem="J54-vK-Ccv" firstAttribute="top" secondItem="Q4g-Dm-7fL" secondAttribute="bottom" id="r9v-ph-qqa"/>
+                <constraint firstItem="Q4g-Dm-7fL" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="pqS-YO-qzt"/>
+                <constraint firstItem="J54-vK-Ccv" firstAttribute="top" secondItem="Q4g-Dm-7fL" secondAttribute="bottom" id="tTz-JH-d9n"/>
                 <constraint firstItem="Q4g-Dm-7fL" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ugn-9j-b68"/>
                 <constraint firstAttribute="bottom" secondItem="Hqg-Jy-X0O" secondAttribute="bottom" id="zgz-ih-erb"/>
             </constraints>
@@ -110,12 +119,10 @@
                 <outlet property="eventStatusLabel" destination="Q4g-Dm-7fL" id="TUk-xG-2iY"/>
                 <outlet property="eventTimeLabel" destination="HaH-9M-cVy" id="vAw-cf-Ifh"/>
                 <outlet property="homeTeamImageView" destination="ZQl-3f-90I" id="zUW-Ab-c3w"/>
+                <outlet property="leagueBackgroundView" destination="JxD-De-GQM" id="EnA-VD-qUL"/>
                 <outlet property="leagueLogoImageView" destination="J97-Rf-rgm" id="iZN-Ga-aXF"/>
             </connections>
             <point key="canvasLocation" x="740.4580152671756" y="1.4084507042253522"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="leaguesbg" width="750" height="372"/>
-    </resources>
 </document>

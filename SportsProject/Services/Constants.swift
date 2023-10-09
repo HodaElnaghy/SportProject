@@ -20,6 +20,11 @@ struct ConnectivityMessage {
     static let cellularConnect = "Connected by cellular"
 }
 
+struct NavigationMessage {
+    static let alertTitle = "No more data to show"
+    static let alertMessage = "Only foootball has more data!."
+}
+
 struct BackendMessage {
     static let alertTitle = "500"
     static let alertMessage = "Some Thing going wrong, Please try again later."

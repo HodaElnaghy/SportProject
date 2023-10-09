@@ -162,23 +162,27 @@ extension LeagueEventsViewController: UICollectionViewDataSource {
             return cell
         }
     }
-    
     private func setupCellForSection(indexPath: IndexPath, identifier: String, customCell: UICollectionViewCell, emptyCellText: String) -> UICollectionViewCell {
-        if (presenter.getLatestResultsCount() != 0) {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? LeagueCustomCell else { return customCell }
-            presenter.configureUpcomingEvents(cell: cell, for: indexPath.row)
-            cell.isHidden = false
-            return cell
+            if (presenter.getLatestResultsCount() != 0) {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as? LeagueCustomCell else { return customCell }
+                if indexPath.section == 0 {
+                    presenter.configureUpcomingEvents(cell: cell, for: indexPath.row)
+                } else if indexPath.section == 1 {
+                    presenter.configurLatestResults(cell: cell, for: indexPath.row)
+                }
+                cell.isHidden = false
+                return cell
+            }
+            else {
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.EmptyCell, for: indexPath) as? EmptyCell
+                else { return EmptyCell() }
+                cell.emptyCellLabel.text = emptyCellText
+                cell.isHidden = false
+                return cell
+            }
         }
-        else {
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellIdentifier.EmptyCell, for: indexPath) as? EmptyCell
-            else { return LeagueCustomCell() }
-            cell.emptyCellLabel.text = emptyCellText
-            cell.isHidden = false
-            return cell
-        }
+
     }
-}
 
 // MARK: - DatSource Objective-C ?? Ask Hoda
 extension LeagueEventsViewController {
@@ -252,6 +256,9 @@ extension LeagueEventsViewController: LeagueEventsView {
     func showAlert() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
     }
+    func showAlertNotAllowedToNavigate() {
+            show(messageAlert: NavigationMessage.alertTitle, message: NavigationMessage.alertMessage)
+        }
 }
 
 
@@ -313,9 +320,6 @@ extension LeagueEventsViewController {
     func saveLeagueIntoCoreData() {
         var data: Data? = Data()
         let details = presenter.getLeagueDetails()
-
-//        let leagueId = leagueId
-//        let pathURL = pathURL
         let leagueId = model?.leagueKey
         let pathURL = model?.sport.rawValue
         let leagueName = details.leagueName

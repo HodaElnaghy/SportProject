@@ -19,6 +19,7 @@ class TeamCustomCell: UICollectionViewCell {
         // Initialization code
         TeamCusonCellBackground.layer.cornerRadius = 16
         TeamCusonCellBackground.clipsToBounds = true
+        TeamCusonCellBackground.dropShadow()
     }
     
 }

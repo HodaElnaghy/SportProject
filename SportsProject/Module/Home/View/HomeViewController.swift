@@ -126,7 +126,7 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = view.frame.width
         if defaults.bool(forKey: "isListView") == false {
-            return CGSize(width: width - 30, height: ((width - 15)/2)-30)
+            return CGSize(width: width - 30, height: 140)
         } else {
             return CGSize(width: (width - 15)/2, height: (width - 15)/2)
         }
