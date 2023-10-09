@@ -57,7 +57,6 @@ class LeaguesCell: UITableViewCell {
     
 }
 
-
 // MARK: - LeaguesCellProtocol
 extension LeaguesCell: LeaguesCellProtocol {
     func displayLeagueImage(by stringURL: String?) {

@@ -30,36 +30,6 @@ class LeaguesPresenter: BasePresenter {
 //        getData() // Call getData() inside handleReachability()
     }
     
-    // MARK: - Connectivity
-
-//   private func handleReachability() {
-//        print("handleReachability")
-//        reachability?.handleReachability(completion: { [weak self] connection in
-//            guard let self = self else { return }
-//            switch connection {
-//            case .none:
-//                isConnected = false
-//                view?.displayMessage(ConnectivityMessage.noInternet, theme: .warning)
-//            case .unavailable:
-//                isConnected = false
-//                view?.displayMessage(ConnectivityMessage.noInternet, theme: .warning)
-//            case .wifi:
-//                isConnected = true
-//                if leagues.isEmpty { // to make sure it called once
-//                    getData()
-//                }
-//                view?.displayMessage(ConnectivityMessage.wifiConnect, theme: .success)
-//            case .cellular:
-//                isConnected = true
-//                if leagues.isEmpty {
-//                    getData()
-//                }
-//                view?.displayMessage(ConnectivityMessage.cellularConnect, theme: .success)
-//            }
-//        })
-//    }
-
-    
     // MARK: - Configure Table View
     private func getData() {
         print(leagues.count)
@@ -72,6 +42,7 @@ class LeaguesPresenter: BasePresenter {
             
             switch result {
             case .success(let leaguesData):
+                view?.hideNoLeaguesImage()
                 guard let leaguesData = leaguesData else { return }
                 guard let leagues = leaguesData.result else { return }
                 
@@ -81,10 +52,10 @@ class LeaguesPresenter: BasePresenter {
                 
             case .failure(let error):
                 print(error.localizedDescription)
+                view?.showNoLeaguesImage()
             }
         }
     }
-    
     
     func getLeaguesCount() -> Int {
         return leagues.count
@@ -115,5 +86,33 @@ class LeaguesPresenter: BasePresenter {
     func showAlert() {
         view?.showAlert()
     }
-    
 }
+
+// MARK: - Connectivity
+
+//   private func handleReachability() {
+//        print("handleReachability")
+//        reachability?.handleReachability(completion: { [weak self] connection in
+//            guard let self = self else { return }
+//            switch connection {
+//            case .none:
+//                isConnected = false
+//                view?.displayMessage(ConnectivityMessage.noInternet, theme: .warning)
+//            case .unavailable:
+//                isConnected = false
+//                view?.displayMessage(ConnectivityMessage.noInternet, theme: .warning)
+//            case .wifi:
+//                isConnected = true
+//                if leagues.isEmpty { // to make sure it called once
+//                    getData()
+//                }
+//                view?.displayMessage(ConnectivityMessage.wifiConnect, theme: .success)
+//            case .cellular:
+//                isConnected = true
+//                if leagues.isEmpty {
+//                    getData()
+//                }
+//                view?.displayMessage(ConnectivityMessage.cellularConnect, theme: .success)
+//            }
+//        })
+//    }

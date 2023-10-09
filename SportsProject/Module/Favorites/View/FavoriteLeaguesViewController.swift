@@ -15,7 +15,6 @@ class FavoriteLeaguesViewController: UIViewController {
     // MARK: - Outlet
     @IBOutlet weak var favoritesTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
     @IBOutlet weak var noFavoritesAdded: UIImageView!
     
     // MARK: - Life Cycle
@@ -39,11 +38,14 @@ class FavoriteLeaguesViewController: UIViewController {
         presenter.stopNotification()
     }
     
+    // MARK: - No Favorites
     func noFavorites() {
         if presenter.getLeaguesCount() < 1{
+            favoritesTableView.isHidden = true
             noFavoritesAdded.isHidden = false
         }
         else {
+            favoritesTableView.isHidden = false
             noFavoritesAdded.isHidden = true
         }
     }

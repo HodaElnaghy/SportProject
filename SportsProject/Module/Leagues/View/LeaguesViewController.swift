@@ -15,6 +15,7 @@ class LeaguesViewController: UIViewController {
     var sport: SportType!
     
     // MARK: - Outlet
+    @IBOutlet weak var emptyImageView: UIImageView!
     @IBOutlet weak var leaguesTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
@@ -22,6 +23,7 @@ class LeaguesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Leagues"
+        emptyImageView.isHidden = true
         presenter = LeaguesPresenter(view: self, sport: sport)
         presenter.viewDidLoad()
         configureTableView()
@@ -36,7 +38,7 @@ class LeaguesViewController: UIViewController {
         super.viewWillDisappear(animated)
         presenter.stopNotification()
     }
-    
+ 
     //MARK: - Configure TableView
     private func configureTableView() {
         leaguesTableView.dataSource = self
@@ -98,14 +100,28 @@ extension LeaguesViewController: LeaguesProtocol {
     // Code Smells are a result of poor or misguided programming.
     func navigateToLeagueEventsScreen(with model: CustomSportModel) {
         let vc = LeagueEventsViewController(nibName: VCIdentifier.LeagueEventsViewController, bundle: nil)
-//        vc.pathURL = pathURL
-//        vc.leagueId = leagueId
         vc.model = model
         navigationController?.pushViewController(vc, animated: true)
     }
     
     func showAlert() {
         show(messageAlert: ConnectivityMessage.alertTitle, message: ConnectivityMessage.alertMessage)
+    }
+    
+    func showNoLeaguesImage() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            leaguesTableView.isHidden = true
+            emptyImageView.isHidden = false
+        }
+    }
+    
+    func hideNoLeaguesImage() {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            leaguesTableView.isHidden = false
+            emptyImageView.isHidden = true
+        }
     }
     
 }

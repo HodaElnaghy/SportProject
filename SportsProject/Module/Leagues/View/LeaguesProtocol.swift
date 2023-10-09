@@ -14,6 +14,8 @@ protocol LeaguesProtocol: AnyObject, BaseView {
     func showAlert()
 //    func displayMessage(_ message: String, theme: MessagesTheme)
     func navigateToLeagueEventsScreen(with model: CustomSportModel)
+    func showNoLeaguesImage()
+    func hideNoLeaguesImage()
 }
 
 
