@@ -9,7 +9,8 @@ import Foundation
 
 // MARK: - Token
 struct Token {
-    static let APIKey = "0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73"
+//    static let APIKey = "0537e30da2720f6e62679690742a746c3831f677ea92b00dab26a3918ecbae73" // old APIKey
+    static let APIKey = "186650e3d372f3aaf0b301606734a2d9ac20c430ffa717ff31657c838963c357" // new APIKey
 }
 
 // MARK: - Met
