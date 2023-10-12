@@ -1,0 +1,825 @@
+{
+   "success":1,
+   "result":[
+      {
+         "event_key":1243051,
+         "event_date":"2023-10-23",
+         "event_time":"20:45",
+         "event_home_team":"Fiorentina",
+         "home_team_key":4974,
+         "event_away_team":"Empoli",
+         "away_team_key":4979,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Stadio Artemio Franchi (Firenze)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4974_fiorentina.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4979_empoli.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243058,
+         "event_date":"2023-10-23",
+         "event_time":"18:30",
+         "event_home_team":"Udinese",
+         "home_team_key":4984,
+         "event_away_team":"Lecce",
+         "away_team_key":5010,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Bluenergy Stadium (Udine)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4984_udinese.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/5010_lecce.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243049,
+         "event_date":"2023-10-22",
+         "event_time":"18:00",
+         "event_home_team":"Atalanta",
+         "home_team_key":85,
+         "event_away_team":"Genoa",
+         "away_team_key":4986,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Gewiss Stadium (Bergamo)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/85_atalanta.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4986_genoa.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243050,
+         "event_date":"2023-10-22",
+         "event_time":"15:00",
+         "event_home_team":"Bologna",
+         "home_team_key":4983,
+         "event_away_team":"Frosinone",
+         "away_team_key":5000,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Stadio Renato Dall'Ara (Bologna)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4983_bologna.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/5000_frosinone.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243053,
+         "event_date":"2023-10-22",
+         "event_time":"20:45",
+         "event_home_team":"AC Milan",
+         "home_team_key":159,
+         "event_away_team":"Juventus",
+         "away_team_key":96,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Stadio Giuseppe Meazza (Milano)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/159_ac-milan.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/96_juventus.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243054,
+         "event_date":"2023-10-22",
+         "event_time":"12:30",
+         "event_home_team":"Roma",
+         "home_team_key":139,
+         "event_away_team":"Monza",
+         "away_team_key":4990,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Stadio Olimpico (Roma)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/139_roma.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4990_monza.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243055,
+         "event_date":"2023-10-22",
+         "event_time":"15:00",
+         "event_home_team":"Salernitana",
+         "home_team_key":5012,
+         "event_away_team":"Cagliari",
+         "away_team_key":4981,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Stadio Arechi (Salerno)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/5012_salernitana.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4981_cagliari.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243052,
+         "event_date":"2023-10-21",
+         "event_time":"15:00",
+         "event_home_team":"Verona",
+         "home_team_key":4982,
+         "event_away_team":"Napoli",
+         "away_team_key":152,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Stadio Marc'Antonio Bentegodi (Verona)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4982_verona.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/152_napoli.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243056,
+         "event_date":"2023-10-21",
+         "event_time":"20:45",
+         "event_home_team":"Sassuolo",
+         "home_team_key":4975,
+         "event_away_team":"Lazio",
+         "away_team_key":93,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"MAPEI Stadium - Citt\u00e0 del Tricolore (Reggio Emilia)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4975_sassuolo.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/93_lazio.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      },
+      {
+         "event_key":1243057,
+         "event_date":"2023-10-21",
+         "event_time":"18:00",
+         "event_home_team":"Torino",
+         "home_team_key":4973,
+         "event_away_team":"Inter Milan",
+         "away_team_key":79,
+         "event_halftime_result":"",
+         "event_final_result":"-",
+         "event_ft_result":"",
+         "event_penalty_result":"",
+         "event_status":"",
+         "country_name":"Italy",
+         "league_name":"Serie A",
+         "league_key":207,
+         "league_round":"Round 9",
+         "league_season":"2023\/2024",
+         "event_live":"0",
+         "event_stadium":"Stadio Olimpico Grande Torino (Torino)",
+         "event_referee":"",
+         "home_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/4973_torino.jpg",
+         "away_team_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/79_inter-milan.jpg",
+         "event_country_key":5,
+         "league_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_leagues\/207_serie-a.png",
+         "country_logo":"https:\/\/apiv2.allsportsapi.com\/logo\/logo_country\/5_italy.png",
+         "event_home_formation":"",
+         "event_away_formation":"",
+         "fk_stage_key":331,
+         "stage_name":"Current",
+         "league_group":null,
+         "goalscorers":[
+            
+         ],
+         "substitutes":[
+            
+         ],
+         "cards":[
+            
+         ],
+         "vars":{
+            "home_team":[
+               
+            ],
+            "away_team":[
+               
+            ]
+         },
+         "lineups":{
+            "home_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            },
+            "away_team":{
+               "starting_lineups":[
+                  
+               ],
+               "substitutes":[
+                  
+               ],
+               "coaches":[
+                  
+               ],
+               "missing_players":[
+                  
+               ]
+            }
+         },
+         "statistics":[
+            
+         ]
+      }
+   ]
+}

@@ -30,9 +30,9 @@ class LeagueEventsPresenter {
 
     // Dates
     private let upcomingFrom = DateManager.shared.currentDateInStringFormat()
-    private let upcomingTo = DateManager.shared.nextDateInStringFormat(8)
+    private let upcomingTo = DateManager.shared.nextDateInStringFormat(14)
     private let latestTo = DateManager.shared.currentDateInStringFormat()
-    private let latestFrom = DateManager.shared.previousDaysInStringFormat(-8)
+    private let latestFrom = DateManager.shared.previousDaysInStringFormat(-14)
  
     // MARK: - Initializer
     init(view: LeagueEventsView? = nil, model: CustomSportModel?) {

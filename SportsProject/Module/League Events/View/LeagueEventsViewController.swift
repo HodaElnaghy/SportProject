@@ -70,7 +70,7 @@ extension LeagueEventsViewController {
             
             // MARK: - Horizental Cell
             let groupSize = NSCollectionLayoutSize(
-                widthDimension: .absolute(380), heightDimension: .absolute(200))
+                widthDimension: .fractionalWidth(1), heightDimension: .absolute(200))
             
             let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
